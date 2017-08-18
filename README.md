@@ -15,7 +15,7 @@ Optionally (which is enabled by default) overlay is also shown when the game is 
 * [UI (player profile)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayerProfile.png)
 
 ## Download
-[Download v1.0.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.0.0/AoE2HDLobbyCompanion-V1.0.0.zip)
+[Download v1.1.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.1.0/AoE2HDLobbyCompanion-V1.1.0.zip)
 
 **Minimum Requirements**: Windows 7 SP1 or newer
 
