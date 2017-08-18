@@ -5,7 +5,7 @@ Additional info that is being displayed is **Location, Total Games, Win Ratio an
 To keep the track of players who you don't want to play with in the future or who you would like to **you can use a reputation system**.
 Reputation system **allows to assign negative or positive reputation** for players who you played the game with so the next time the same player joins your lobby you can **check the reputation history** of that player and decide whether to let that person stay or not.
 **Players are tracked by SteamID**, so evasion is not possible by changing a name. To make the experience more nicer Lobby Companion is capable of **projecting in-game overlay** with all the information you need to make a decision about the player without having to alt-tab into the actual Lobby Companion app.
-Optionally (which is enabled by default) overlay is also shown when the game is not active, so you can do other stuff while waiting for your lobby to get full and still keep an eye on the lobby progress without constantly alt-tabbing to check if the lobby is full.
+Optionally (which is enabled by default) overlay is also shown when the game is not active, so you can do other stuff while waiting for your lobby to get full and still keep an eye on the lobby progress without constantly alt-tabbing to check if the lobby is full. Additional features include **balanced team calculation** either based on Rank (ELO), Total Games or Win Ratio.
 
 ## [Reddit](https://www.reddit.com/r/aoe2lc)
 
