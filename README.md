@@ -7,12 +7,15 @@ Reputation system **allows to assign negative or positive reputation** for playe
 **Players are tracked by SteamID**, so evasion is not possible by changing a name. To make the experience more nicer Lobby Companion is capable of **projecting in-game overlay** with all the information you need to make a decision about the player without having to alt-tab into the actual Lobby Companion app.
 Optionally (which is enabled by default) overlay is also shown when the game is not active, so you can do other stuff while waiting for your lobby to get full and still keep an eye on the lobby progress without constantly alt-tabbing to check if the lobby is full.
 
+## [Reddit](https://www.reddit.com/r/aoe2lc)
+
 ## Screenshots
 * [UI (running lobby session)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/LobbySessionRunning.png)
 * [Overlay (in-game)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/InGameOverlay.png)
 * [Overlay (always on, over desktop)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PermanentOverlay.png)
 * [UI (assign reputation)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/AssignReputation.png)
 * [UI (player profile)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayerProfile.png)
+* [UI (calculate balanced teams)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/CalculateBalancedTeams.png)
 
 ## Download
 [Download v1.1.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.1.0/AoE2HDLobbyCompanion-V1.1.0.zip)
