@@ -1,0 +1,91 @@
+﻿<center-spinner [hidden]="!loading"></center-spinner>
+<div [hidden]="loading">
+    <md-table [dataSource]="lobbyPlayersDataSource">
+        <ng-container cdkColumnDef="name">
+            <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span *ngIf="!player.steamId">{{player.nameFormatted}}</span>
+                <span *ngIf="player.steamId" class="clickable" (click)="openUserProfileDialog(player)">{{player.nameFormatted}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="rank">
+            <md-header-cell *cdkHeaderCellDef>Rank</md-header-cell>
+            <md-cell *cdkCellDef="let player"><span *ngIf="player.rank > 0">{{player.rank}}</span></md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="location">
+            <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
+            <md-cell *cdkCellDef="let player">{{player.profile?.location}}</md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="games">
+            <md-header-cell *cdkHeaderCellDef>Shared Games</md-header-cell>
+            <md-cell *cdkCellDef="let player"><span [ngClass]="{cellColorSafe: player.fieldColors?.Games == 1, cellColorDanger: player.fieldColors?.Games == 2}">{{player.reputationStats?.games}}</span></md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="negativeRep">
+            <md-header-cell *cdkHeaderCellDef>Negative Rep.</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <table>
+                    <tr>
+                        <td>
+                            <span [ngClass]="{cellColorSafe: player.fieldColors?.NegativeReputation == 1, cellColorDanger: player.fieldColors?.NegativeReputation == 2}">{{player.reputationStats?.negativeReputation}}</span>
+                        </td>
+                        <td>
+                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorDanger" style="margin-left: 5px; margin-top: 7px; cursor: pointer;" mdTooltip="Assign Negative Reputation" (click)="openNegativeReputationAssingmentDialog(player)">thumb_down</i>
+                        </td>
+                    </tr>
+                </table>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="positiveRep">
+            <md-header-cell *cdkHeaderCellDef>Positive Rep.</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <table>
+                    <tr>
+                        <td>
+                            <span [ngClass]="{cellColorSafe: player.fieldColors?.PositiveReputation == 1, cellColorDanger: player.fieldColors?.PositiveReputation == 2}">{{player.reputationStats?.positiveReputation}}</span>
+                        </td>
+                        <td>
+                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorSafe" style="margin-left: 5px; margin-top: -4px; cursor: pointer;" mdTooltip="Assign Positive Reputation" (click)="openPositiveReputationAssingmentDialog(player)">thumb_up</i>
+                        </td>
+                    </tr>
+                </table>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="totalGames">
+            <md-header-cell *cdkHeaderCellDef>Total Games</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}">{{player.gameStatsNormalized?.totalGames}}</span>
+                <span *ngIf="player.profile?.profilePrivate && !player.profile?.profileDataFetched" class="cellColorDanger">PRIVATE ACCOUNT</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}">[{{player.gameStatsNormalized?.totalGames}}]</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="winRatio">
+            <md-header-cell *cdkHeaderCellDef>Win Ratio</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}">{{player.gameStatsNormalized?.winRatio}}<span *ngIf="player.gameStatsNormalized">%</span></span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}">[{{player.gameStatsNormalized?.winRatio}}<span *ngIf="player.gameStatsNormalized">%</span>]</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="dropRatio">
+            <md-header-cell *cdkHeaderCellDef>Drop Ratio</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}">{{player.gameStatsNormalized?.dropRatio}}<span *ngIf="player.gameStatsNormalized">%</span></span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}">[{{player.gameStatsNormalized?.dropRatio}}<span *ngIf="player.gameStatsNormalized">%</span>]</span>
+            </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let player; columns: displayedColumns;"></md-row>
+    </md-table>
+    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 18px; margin-top: 20px;"><span class="clickable" (click)="stopSession()">Stop the session</span> when you are no longer going to play. <span class="clickable" (click)="startLobby()">Start the lobby manually</span> when the game has started. <span class="clickable" (click)="openMoreOptions()">More options</span>.</div>
+    <div *ngIf="lobbyStarted" style="font-size: 18px; margin-top: 10px;">
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td><span class="clickable" (click)="sealLobby()">Seal the lobby</span> when you are finished and have assigned reputations using</td>
+                <td> <i class="material-icons md-24 cellColorDanger" style="margin-top: 7px; cursor: pointer;">thumb_down</i></td>
+                <td> and</td>
+                <td> <i class="material-icons md-24 cellColorSafe" style="margin-top: -4px; cursor: pointer;">thumb_up</i></td>
+                <td> buttons.</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3801FCEA-E24D-44A2-B4DC-DF10C5190811}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Commons</RootNamespace>
+    <AssemblyName>Commons</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\PlayerFieldColors.cs" />
+    <Compile Include="Constants\PlayerFields.cs" />
+    <Compile Include="Extensions\RepositoryExtensions.cs" />
+    <Compile Include="Models\AssignReputationRequest.cs" />
+    <Compile Include="Models\Commands\BaseCommand.cs" />
+    <Compile Include="Models\Commands\LogCommand.cs" />
+    <Compile Include="Models\Commands\UpdateAvailableCommand.cs" />
+    <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\BasePlayer.cs" />
+    <Compile Include="Models\GetPlayerStatsResponse.cs" />
+    <Compile Include="Models\GetUsersResponse.cs" />
+    <Compile Include="Models\Lobby.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\NameValuePair.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerGameStats.cs" />
+    <Compile Include="Models\PlayerProfile.cs" />
+    <Compile Include="Models\PlayerRepStats.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\PlayerStats.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Version.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{5276492b-878f-426b-ae37-6789bfc7e328}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

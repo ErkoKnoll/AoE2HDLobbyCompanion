@@ -1,0 +1,14 @@
+﻿<center-spinner *ngIf="loading"></center-spinner>
+<div *ngIf="!loading" style="padding: 10px;">
+    <md-slide-toggle style="display: block;" color="primary" [checked]="conf.showOverlay" [(ngModel)]="conf.showOverlay">Show overlay</md-slide-toggle>
+    <md-slide-toggle style="display: block; margin-top: 10px;" color="primary" [checked]="conf.showOverlayWhenFocused" [(ngModel)]="conf.showOverlayWhenFocused">Show overlay only when game is focused</md-slide-toggle>
+    <md-input-container style="width: 100%;">
+        <input mdInput placeholder="Steam API Key" [value]="conf.steamApiKey" [(ngModel)]="conf.steamApiKey" />
+    </md-input-container>
+    <md-input-container style="width: 100%;">
+        <input mdInput placeholder="CMD Path" [value]="conf.cmdPath" [(ngModel)]="conf.cmdPath" />
+    </md-input-container>
+    <div style="text-align: center;">
+        <button md-raised-button class="primaryButton" (click)="save()">Save</button>
+    </div>
+</div>

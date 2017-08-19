@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$primary-color: #3f51b5;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.header {
+  background-color: $primary-color;
+}
+
+.primaryButton {
+    background-color: $primary-color;
+    color: white !important;
+}
+
+.footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: $primary-color;
+  text-align: center;
+  color: white;
+}
+
+.clickable {
+    color: $primary-color;
+    cursor: pointer;
+}
+
+.cellColorSafe {
+    color: green;
+    font-weight: bold;
+}
+
+.cellColorDanger {
+    color: red;
+    font-weight: bold;
+}
+
+.noTablePadding > .mat-header-row {
+    padding: 0 !important;
+}
+
+.noTablePadding > .mat-row {
+    padding: 0 !important;
+}
+
+.toast-top-right {
+    top: 70px !important;
+}

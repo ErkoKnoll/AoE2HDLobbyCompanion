@@ -1,0 +1,112 @@
+﻿<Window x:Class="Overlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Overlay"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Topmost="True"
+        AllowsTransparency="True"
+        Visibility="Hidden"
+        Top="0"
+        Left="0"
+        Title="MainWindow" Height="200" Width="715.96">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.5" Color="Black" />
+    </Window.Background>
+    <Grid x:Name="GridContainer">
+        <Label Content="Name" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Width="169" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Rank" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Loc" HorizontalAlignment="Left" Margin="223,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0" Width="51" HorizontalContentAlignment="Center"/>
+        <Label Content="Games" HorizontalAlignment="Left" Margin="294,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Neg Rep" HorizontalAlignment="Left" Margin="354,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Pos Rep" HorizontalAlignment="Left" Margin="428,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Total Games" HorizontalAlignment="Left" Margin="519,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Wins" HorizontalAlignment="Left" Margin="621,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+        <Label Content="Drops" HorizontalAlignment="Left" Margin="665,0,0,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label1PlayerName" Content="" HorizontalAlignment="Left" Margin="4,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label1PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,24,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label2PlayerName" Content="" HorizontalAlignment="Left" Margin="4,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label2PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label2PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,46,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label3PlayerName" Content="" HorizontalAlignment="Left" Margin="4,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label3PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label3PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,68,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label4PlayerName" Content="" HorizontalAlignment="Left" Margin="4,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label4PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label4PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,90,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label5PlayerName" Content="" HorizontalAlignment="Left" Margin="4,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label5PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label5PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,112,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label6PlayerName" Content="" HorizontalAlignment="Left" Margin="4,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label6PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label6PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,134,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label7PlayerName" Content="" HorizontalAlignment="Left" Margin="4,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label7PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label7PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,156,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label x:Name="Label8PlayerName" Content="" HorizontalAlignment="Left" Margin="4,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="169" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerRank" Content="" HorizontalAlignment="Left" Margin="179,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0" />
+        <Label x:Name="Label8PlayerLocation" Content="" HorizontalAlignment="Left" Margin="223,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerGames" Content="" HorizontalAlignment="Left" Margin="294,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerBadRep" Content="" HorizontalAlignment="Left" Margin="353,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerGoodRep" Content="" HorizontalAlignment="Left" Margin="428,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerTotalGames" Content="" HorizontalAlignment="Left" Margin="519,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="97" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+        <Label x:Name="Label8PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
+
+        <Label Content="Overlay will close automatically in 1 minute if the game started. If you want to close the overlay right now" HorizontalAlignment="Left" Margin="4,203,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="696" Padding="0,0,0,0"/>
+        <Label Content="or left the lobby then act in the Lobby Companion UI or join a new lobby." HorizontalAlignment="Left" Margin="4,220,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Padding="0,0,0,0"/>
+    </Grid>
+</Window>

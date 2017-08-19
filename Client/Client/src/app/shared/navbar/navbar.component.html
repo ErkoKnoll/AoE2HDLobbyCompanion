@@ -1,0 +1,16 @@
+<nav class="navbar">
+    <a *ngIf="appState == 3" md-button routerLink="/">Lobby</a>
+    <div class="flex-spacer"></div>
+    <button *ngIf="appState == 3" md-icon-button mdTooltip="Settings" routerLink="/settings">
+        <md-icon style="color: white;">settings</md-icon>
+    </button>
+    <button md-icon-button mdTooltip="Logs" (click)="toggleLogs()">
+        <md-icon style="color: white;">warning</md-icon>
+    </button>
+    <button md-icon-button mdTooltip="GitHub">
+        <span class="icon-github" style="color: white; font-size: 24px;" (click)="openGithub()"></span>
+    </button>
+    <button md-icon-button mdTooltip="Reddit">
+        <span class="icon-reddit" style="color: white; font-size: 24px;" (click)="openReddit()"></span>
+    </button>
+</nav>

@@ -1,0 +1,24 @@
+﻿<h2 md-dialog-title>Assign Reputation</h2>
+<md-dialog-content style="width: 500px;">
+    <center-spinner *ngIf="loading"></center-spinner>
+    <div *ngIf="!loading">
+        <md-input-container style="width: 100%;">
+            <input mdInput placeholder="Player Name" disabled [value]="playerName" />
+        </md-input-container>
+        <md-input-container style="width: 100%;">
+            <input *ngIf="reputationType == 0" mdInput placeholder="Reputation" disabled value="Negative" />
+            <input *ngIf="reputationType == 1" mdInput placeholder="Reputation" disabled value="Positive" />
+        </md-input-container>
+        <md-select placeholder="Reputation Type" style="width: 100%; margin-bottom: 20px; margin-top: 20px;" [(ngModel)]="selectedReputationId" (change)="reputationValueChange()">
+            <md-option *ngFor="let reputation of reputationList" [value]="reputation.id">{{reputation.name}}</md-option>
+        </md-select>
+        <md-input-container style="width: 100%;">
+            <input *ngIf="selectedReputation?.commentRequired" mdInput placeholder="Comment" required [(ngModel)]="comment" />
+            <input *ngIf="!selectedReputation?.commentRequired" mdInput placeholder="Comment" [(ngModel)]="comment" />
+        </md-input-container>
+    </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="!loading">
+    <button md-raised-button class="primaryButton" style="margin-left: auto;" (click)="save()">Save</button>
+    <button md-raised-button style="margin-left: 5px; margin-right: auto;" [md-dialog-close]="false">Cancel</button>
+</md-dialog-actions>

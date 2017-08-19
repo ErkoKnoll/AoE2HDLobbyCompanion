@@ -1,0 +1,96 @@
+﻿<h2 md-dialog-title class="clickable" (click)="openSteamProfile()">{{profile?.name}}</h2>
+<md-dialog-content style="margin-top: -10px;">
+    <center-spinner *ngIf="!profile"></center-spinner>
+    <div *ngIf="profile">
+        <div *ngIf="profile.profilePrivate" style="background-color: darkorange; color: white; padding: 5px; font-size: 15px;">
+            <span *ngIf="!profile.profileDataFetched">User profile is private. Game stats are not available.</span>
+            <span *ngIf="profile.profileDataFetched">User profile is private. Game stats are not up to date. Last retrieval date: {{profile.profileDataFetched}}.</span>
+        </div>
+        <table style="border-collapse: collapse;">
+            <tr>
+                <td *ngIf="profile.location">
+                    <span style="margin-right: 10px;">Location <strong>{{profile.location}}</strong></span>
+                </td>
+                <td>
+                    <span style="margin-right: 10px;" [ngClass]="{cellColorSafe: profile.fieldColors?.Games == 1, cellColorDanger: profile.fieldColors?.Games == 2}">Shared Games <strong>{{profile.games}}</strong></span>
+                </td>
+                <td>
+                    <i class="material-icons md-24" style="margin-right: 5px; margin-top: 7px; color: red;">thumb_down</i>
+                </td>
+                <td>
+                    <span style="margin-right: 10px; font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.NegativeReputation == 1, cellColorDanger: profile.fieldColors?.NegativeReputation == 2}">{{profile.negativeReputation}}</span>
+                </td>
+                <td>
+                    <i class="material-icons md-24" style="margin-right: 5px; color: green;">thumb_up</i>
+                </td>
+                <td>
+                    <span style="margin-right: 10px; font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.PositiveReputation == 1, cellColorDanger: profile.fieldColors?.PositiveReputation == 2}">{{profile.positiveReputation}}</span>
+                </td>
+            </tr>
+        </table>
+        <table style="border-collapse: collapse;">
+            <tr>
+                <td><span style="margin-right: 10px;">Match Type</span></td>
+                <td><span style="margin-right: 10px;">Rank</span></td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched"><span style="margin-right: 10px;">Total Games</span></td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched"><span style="margin-right: 10px;">Win Ratio</span></td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched"><span style="margin-right: 10px;">Drop Ratio</span></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">RM</td>
+                <td style="font-weight: bold;">{{profile.rankRM}}</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.TotalGamesRM == 1, cellColorDanger: profile.fieldColors?.TotalGamesRM == 2}">{{profile.gameStats.totalGamesRM}}</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.WinRatioRM == 1, cellColorDanger: profile.fieldColors?.WinRatioRM == 2}">{{profile.gameStats.winRatioRM}}%</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.DropRatioRM == 1, cellColorDanger: profile.fieldColors?.DropRatioRM == 2}">{{profile.gameStats.dropRatioRM}}%</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">DM</td>
+                <td style="font-weight: bold;">{{profile.rankDM}}</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.TotalGamesDM == 1, cellColorDanger: profile.fieldColors?.TotalGamesDM == 2}">{{profile.gameStats.totalGamesDM}}</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.WinRatioDM == 1, cellColorDanger: profile.fieldColors?.WinRatioDM == 2}">{{profile.gameStats.winRatioDM}}%</td>
+                <td *ngIf="!profile.profilePrivate || profile.profileDataFetched" style="font-weight: bold;" [ngClass]="{cellColorSafe: profile.fieldColors?.DropRatioDM == 1, cellColorDanger: profile.fieldColors?.DropRatioDM == 2}">{{profile.gameStats.dropRatioDM}}%</td>
+            </tr>
+        </table>
+        <div *ngIf="knownNames" style="margin-top: 10px;">
+            Known Names: {{knownNames}}
+        </div>
+        <md-table *ngIf="profile.reputations?.length > 0" [dataSource]="userReputationsDataSource" class="noTablePadding">
+            <ng-container cdkColumnDef="lobbyName">
+                <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">{{reputation.lobby?.name}}</md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="reputationType">
+                <md-header-cell *cdkHeaderCellDef>Reputation Type</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">
+                    <table>
+                        <tr>
+                            <td>
+                                <i *ngIf="reputation.reputation.type == 0" class="material-icons md-24 cellColorDanger" style="margin-right: 5px; margin-top: 7px;">thumb_down</i>
+                                <i *ngIf="reputation.reputation.type == 1" class="material-icons md-24 cellColorSafe" style="margin-right: 5px; margin-top: -2px;">thumb_up</i>
+                            </td>
+                            <td>{{reputation.reputation.name}}</td>
+                        </tr>
+                    </table>
+                </md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="added">
+                <md-header-cell *cdkHeaderCellDef>Added</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">{{reputation.added}}</md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="comment">
+                <md-header-cell *cdkHeaderCellDef>Comment</md-header-cell>
+                <md-cell *cdkCellDef="let reputation"><div style="max-width: 150px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" [title]="reputation.comment">{{reputation.comment}}</div></md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="actions">
+                <md-header-cell *cdkHeaderCellDef></md-header-cell>
+                <md-cell *cdkCellDef="let reputation"><i class="material-icons md-24 clickable" mdTooltip="Delete Reputation" (click)="deleteReputation(reputation)">delete_forever</i></md-cell>
+            </ng-container>
+
+            <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+            <md-row *cdkRowDef="let reputation; columns: displayedColumns;"></md-row>
+        </md-table>
+    </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="profile">
+    <button md-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
+</md-dialog-actions>

@@ -1,0 +1,6 @@
+﻿<h2 md-dialog-title>Update available!</h2>
+<md-dialog-content>A new version is available. Please consider updating. Just click on the Update button which will download a new verion and then extract it to the same location as your current installation is.</md-dialog-content>
+<md-dialog-actions style="margin-top: 10px;">
+    <button md-raised-button class="primaryButton" style="margin-left: auto;" [md-dialog-close] (click)="update()">Update</button>
+    <button md-raised-button style="margin-left: 5px; margin-right: auto;" [md-dialog-close] (click)="skip()">Not now</button>
+</md-dialog-actions>

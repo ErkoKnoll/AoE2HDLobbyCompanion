@@ -1,0 +1,5 @@
+﻿rcedit.exe C:\AoE2HDLobbyCompanion\AoE2HDLobbyCompanion.exe --set-version-string "FileDescription" "AoE 2 HD Lobby Companion"
+rcedit.exe C:\AoE2HDLobbyCompanion\AoE2HDLobbyCompanion.exe --set-version-string "LegalCopyright" "AoE2HDLobbyCompanion"
+rcedit.exe C:\AoE2HDLobbyCompanion\AoE2HDLobbyCompanion.exe --set-version-string "ProductName" "AoE2HDLobbyCompanion"
+rcedit.exe C:\AoE2HDLobbyCompanion\AoE2HDLobbyCompanion.exe --set-version-string "OriginalFilename" "AoE2HDLobbyCompanion.exe"
+rcedit.exe C:\AoE2HDLobbyCompanion\AoE2HDLobbyCompanion.exe --set-version-string "CompanyName" "AoE 2 HD Lobby Companion"

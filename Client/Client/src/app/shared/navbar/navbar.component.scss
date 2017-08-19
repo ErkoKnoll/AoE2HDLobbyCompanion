@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.navbar a {
+  color: white;
+  font-size: 20px;
+}

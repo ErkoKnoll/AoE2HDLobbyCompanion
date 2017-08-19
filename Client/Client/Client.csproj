@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{B88F89FD-F83B-4CAB-BDF8-E6D1732ECB01}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".angular-cli.json" />
+    <Content Include=".editorconfig" />
+    <Content Include=".travis.yml" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <None Include="rcedit.bat" />
+    <Content Include="rcedit.exe" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\lobby\lobby-page\lobby-page.component.html" />
+    <Content Include="src\app\lobby\initial-page\initial-page.component.html" />
+    <Content Include="src\app\lobby\more-options-dialog\more-options-dialog.component.html" />
+    <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
+    <Content Include="src\app\lobby\session-help-page\session-help-page.component.html" />
+    <Content Include="src\app\settings\general-page\general-page.component.html" />
+    <Content Include="src\app\settings\settings-page\settings-page.component.html" />
+    <Content Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.html" />
+    <Content Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.html" />
+    <Content Include="src\app\shared\navbar\navbar.component.html" />
+    <Content Include="src\app\shared\update-available-dialog\update-available-dialog.component.html" />
+    <Content Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.html" />
+    <Content Include="src\assets\icomoon\style.css" />
+    <Content Include="src\assets\img\ElevatedPermissions.png" />
+    <Content Include="src\assets\img\NetHook2.png" />
+    <Content Include="src\assets\material-icons\material-icons.css" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.svg" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <Content Include="_config.yml" />
+    <Content Include="src\assets\icomoon\selection.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="karma.conf.js" />
+    <Content Include="NetHook2.dll" />
+    <Content Include="package.js" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="main.ts" />
+    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.models.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\lobby\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\lobby-page\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\lobby-page\lobby-page.component.ts" />
+    <TypeScriptCompile Include="src\app\lobby\initial-page\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\initial-page\initial-page.component.ts" />
+    <TypeScriptCompile Include="src\app\lobby\lobby.module.ts" />
+    <TypeScriptCompile Include="src\app\lobby\more-options-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\more-options-dialog\more-options-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\lobby\running-session-page\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\running-session-page\running-session-page.component.ts" />
+    <TypeScriptCompile Include="src\app\lobby\session-help-page\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\session-help-page\session-help-page.component.ts" />
+    <TypeScriptCompile Include="src\app\lobby\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\lobby\shared\lobby.models.ts" />
+    <TypeScriptCompile Include="src\app\lobby\shared\lobby.service.ts" />
+    <TypeScriptCompile Include="src\app\settings\general-page\general-page.component.ts" />
+    <TypeScriptCompile Include="src\app\settings\general-page\index.ts" />
+    <TypeScriptCompile Include="src\app\settings\index.ts" />
+    <TypeScriptCompile Include="src\app\settings\settings-page\index.ts" />
+    <TypeScriptCompile Include="src\app\settings\settings-page\settings-page.component.ts" />
+    <TypeScriptCompile Include="src\app\settings\settings.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\app.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\assign-reputation-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\center-spinner\center-spinner.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\center-spinner\center-spinner.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\center-spinner\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\command.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\configuration.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\confirmation-dialog\confirmation-dialog.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\confirmation-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\http.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\navbar\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\navbar\navbar.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\navbar\navbar.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\reputation.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\tracking.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\update-available-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\update-available-dialog\update-available-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\update-available-dialog\update-available-dialog.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\user-profile-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\user-profile-dialog\user-profile-dialog.module.ts" />
+    <TypeScriptCompile Include="src\environments\index.prod.ts" />
+    <TypeScriptCompile Include="src\environments\index.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\app.component.scss" />
+    <Content Include="src\app\shared\navbar\navbar.component.scss" />
+    <Content Include="src\assets\.gitkeep" />
+    <Content Include="src\styles.scss" />
+    <Content Include="src\tsconfig.app.json" />
+    <Content Include="src\tsconfig.spec.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\shared\center-spinner\center-spinner.component.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\lobby\lobby-page\lobby-page.component.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\lobby\running-session-page\running-session-page.component.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\assets\material-icons\codepoints" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.eot" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.ijmap" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.ttf" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.woff" />
+    <Content Include="src\assets\material-icons\MaterialIcons-Regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\settings\settings-page\settings-page.component.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\assets\icomoon\fonts\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Client</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64962</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64962/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

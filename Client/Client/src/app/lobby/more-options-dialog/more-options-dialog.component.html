@@ -1,0 +1,16 @@
+﻿<h2 md-dialog-title>More Options</h2>
+<md-dialog-content style="width: 400px;">
+    <center-spinner *ngIf="loading"></center-spinner>
+    <div *ngIf="!loading">
+        <div class="clickable" style="font-size: 16px;" (click)="copyPlayerStats()">Copy player stats</div>
+        <div style="font-size: 16px; margin-top: 5px;">Calculate balanced teams based on player</div>
+        <ul style="margin-top: 5px;">
+            <li class="clickable" style="font-size: 16px;" (click)="calculateBalancedTeamsBasedOnRank()">Rank (ELO)</li>
+            <li class="clickable" style="font-size: 16px; margin-top: 5px;" (click)="calculateBalancedTeamsBasedOnTotalGames()">Total Games</li>
+            <li class="clickable" style="font-size: 16px; margin-top: 5px;" (click)="calculateBalancedTeamsBasedOnWinRatio()">Win Ratio</li>
+        </ul>
+    </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="!loading">
+    <button md-raised-button style="margin-left: auto; margin-right: auto;" [md-dialog-close]="false">Close</button>
+</md-dialog-actions>
