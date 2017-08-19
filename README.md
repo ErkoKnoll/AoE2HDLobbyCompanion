@@ -41,3 +41,6 @@ There are 3 distinct components that work together: AoE2HDLobbyCompanion.exe, Ba
 * NetHook2.dll purpose is to be injected into Steam Client's address space so the network traffic could be dumped for further inspection.
 
 Database is stored separately from the installation folder to make the sure the database is not lost while upgrading. To make a backup of your database make a copy of C:\Users\\[user]\AppData\Roaming\AoE2HDLobbyCompanion (AppData is hidden folder).
+
+## Wiki
+[Building and Development](https://github.com/ThorConzales/AoE2HDLobbyCompanion/wiki/Building-and-Development)
