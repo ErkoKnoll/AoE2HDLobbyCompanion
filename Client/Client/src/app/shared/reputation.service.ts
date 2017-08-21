@@ -1,7 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 
 import { HttpService } from './';
-import { Reputation, ReputationType } from '../app.models';
 
 @Injectable()
 export class ReputationService {
@@ -26,7 +25,11 @@ export class ReputationService {
         }
     }
 
-    public fetchReputations(reputationType) {
+    public getReputationsWithCount() {
+        return this.httpService.get<ReputationWithCount[]>("/api/manageReputations");
+    }
+
+    public fetchReputations(reputationType: ReputationType) {
         return new Promise<Reputation[]>((resolve, reject) => {
             this.httpService.get<Reputation[]>("/api/reputations").subscribe(reputations => {
                 this.reputations = reputations;
@@ -48,7 +51,19 @@ export class ReputationService {
     private getReputationsFromCache(reputationType: ReputationType) {
         return this.reputations.filter(r => r.type == reputationType).sort((a, b) => a.orderSequence - b.orderSequence);
     }
+}
 
+export interface Reputation {
+    id: number;
+    name: string;
+    type: ReputationType;
+    commentRequired: boolean;
+    orderSequence: number;
+}
+
+export enum ReputationType {
+    NEGATIVE = 0,
+    POSITIVE = 1
 }
 
 export interface AssignReputationRequest {
@@ -57,4 +72,8 @@ export interface AssignReputationRequest {
     lobbySlotId: number;
     reputationId: number;
     comment: string;
+}
+
+export interface ReputationWithCount extends Reputation {
+    total: number;
 }

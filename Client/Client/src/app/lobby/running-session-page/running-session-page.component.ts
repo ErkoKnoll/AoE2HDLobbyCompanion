@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ReputationType } from '../../app.models';
-import { ConfirmationDialogComponent, ConfirmationDialogData, AssignReputationDialogComponent, AssignReputationDialogData, UserProfileDialogComponent, UserProfileDialogData, CommandService, Commands, AppService, TrackingService } from '../../shared';
+import { ConfirmationDialogComponent, ConfirmationDialogData, AssignReputationDialogComponent, AssignReputationDialogData, UserProfileDialogComponent, UserProfileDialogData, CommandService, Commands, AppService, TrackingService, ReputationType } from '../../shared';
 import { LobbyService, Lobby, Player } from '../shared';
 import { MoreOptionsDialogComponent } from '../more-options-dialog';
 
@@ -152,6 +151,5 @@ export class LobbyPlayersDataSource extends DataSource<Player> {
     }
 
     public disconnect(collectionViewer: CollectionViewer) {
-        //this.players.unsubscribe();
     }
 }

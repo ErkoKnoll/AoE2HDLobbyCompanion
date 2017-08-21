@@ -5,8 +5,8 @@ import { shell } from 'electron';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Reputation, BasePlayer } from '../../app.models';
-import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService } from '../';
+import { BasePlayer } from '../../app.models';
+import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, Reputation } from '../';
 
 @Component({
     selector: 'user-profile-dialog',
@@ -82,7 +82,6 @@ export class UserReputationsDataSource extends DataSource<UserReputation> {
     }
 
     public disconnect(collectionViewer: CollectionViewer) {
-        //this.reputations.unsubscribe();
     }
 }
 

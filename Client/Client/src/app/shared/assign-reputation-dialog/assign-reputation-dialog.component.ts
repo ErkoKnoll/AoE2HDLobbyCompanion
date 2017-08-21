@@ -1,8 +1,7 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 
-import { Reputation, ReputationType } from '../../app.models';
-import { AppService, ReputationService, TrackingService } from '../';
+import { AppService, ReputationService, TrackingService, Reputation, ReputationType } from '../';
 
 @Component({
     selector: 'assign-reputation-dialog',

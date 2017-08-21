@@ -1,5 +1,6 @@
 <nav class="navbar">
     <a *ngIf="appState == 3" md-button routerLink="/">Lobby</a>
+    <a *ngIf="appState == 3" md-button routerLink="/reputations">Reputations</a>
     <div class="flex-spacer"></div>
     <button *ngIf="appState == 3" md-icon-button mdTooltip="Settings" routerLink="/settings">
         <md-icon style="color: white;">settings</md-icon>

@@ -36,19 +36,6 @@ export interface Configuration {
     cmdPath: string;
 }
 
-export interface Reputation {
-    id: number;
-    name: string;
-    type: ReputationType;
-    commentRequired: boolean;
-    orderSequence: number;
-}
-
-export enum ReputationType {
-    NEGATIVE = 0,
-    POSITIVE = 1
-}
-
 export interface BasePlayer {
     fieldColors: { [key: string]: number };
     gameStats: PlayerGameStats;

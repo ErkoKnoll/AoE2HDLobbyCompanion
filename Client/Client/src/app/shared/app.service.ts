@@ -19,15 +19,15 @@ export class AppService {
     }
 
     constructor(private toastsManager: ToastsManager, private trackingService: TrackingService, private configurationService: ConfigurationService) {
-        this.startBackend();
-        window.onbeforeunload = (e) => {
-            if (this.nethookActive) {
-                this.stopNethook(() => { });
-            }
-            if (this.backendProcess) {
-                this.backendProcess.kill();
-            }
-        }
+        //this.startBackend();
+        //window.onbeforeunload = (e) => {
+        //    if (this.nethookActive) {
+        //        this.stopNethook(() => { });
+        //    }
+        //    if (this.backendProcess) {
+        //        this.backendProcess.kill();
+        //    }
+        //}
     }
 
     public toastInfo(message: string) {
