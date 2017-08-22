@@ -25,12 +25,6 @@ export class HttpService {
         });
     }
 
-    public delete(api: string) {
-        return this.http.delete(this.URL + api, {
-            headers: this.headers
-        });
-    }
-
     public putAndReadResponse<T>(api: string, payload?: any) {
         return this.http.put(this.URL + api, payload ? JSON.stringify(payload) : null, {
             headers: this.headers
@@ -39,6 +33,18 @@ export class HttpService {
 
     public putAndReadRawResponse<T>(api: string, payload?: any) {
         return this.http.put(this.URL + api, payload ? JSON.stringify(payload) : null, {
+            headers: this.headers
+        });
+    }
+
+    public post(api: string, payload?: any) {
+        return this.http.post(this.URL + api, payload ? JSON.stringify(payload) : null, {
+            headers: this.headers
+        });
+    }
+
+    public delete(api: string) {
+        return this.http.delete(this.URL + api, {
             headers: this.headers
         });
     }

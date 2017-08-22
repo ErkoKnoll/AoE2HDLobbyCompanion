@@ -2,7 +2,7 @@
 <table *ngIf="!loading" style="width: 100%; height: 100%; border-collapse: collapse;">
     <tr>
         <td colspan="1" style="height: 1px; padding-left: 5px; padding-top: 5px; padding-bottom: 10px;">
-            <button md-button class="primaryButton">Add New</button>
+            <button md-button class="primaryButton" (click)="openSaveReputationDialog(null)">Add New</button>
         </td>
     </tr>
     <tr>
@@ -33,7 +33,7 @@
                         <md-cell *cdkCellDef="let reputation">
                             <i class="material-icons md-24 clickable" mdTooltip="Move Up">arrow_drop_up</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Move Up">arrow_drop_down</i>
-                            <i class="material-icons md-24 clickable" mdTooltip="Edit">edit</i>
+                            <i class="material-icons md-24 clickable" mdTooltip="Edit" (click)="openSaveReputationDialog(reputation)">edit</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Delete">delete_forever</i>
                         </md-cell>
                     </ng-container>
@@ -65,7 +65,7 @@
                         <md-cell *cdkCellDef="let reputation">
                             <i class="material-icons md-24 clickable" mdTooltip="Move Up">arrow_drop_up</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Move Up">arrow_drop_down</i>
-                            <i class="material-icons md-24 clickable" mdTooltip="Edit">edit</i>
+                            <i class="material-icons md-24 clickable" mdTooltip="Edit" (click)="openSaveReputationDialog(reputation)">edit</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Delete">delete_forever</i>
                         </md-cell>
                     </ng-container>

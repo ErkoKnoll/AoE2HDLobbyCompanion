@@ -36,6 +36,7 @@
     <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
     <Content Include="src\app\lobby\session-help-page\session-help-page.component.html" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
+    <Content Include="src\app\reputations\save-reputation-dialog\save-reputation-dialog.component.html" />
     <Content Include="src\app\settings\general-page\general-page.component.html" />
     <Content Include="src\app\settings\settings-page\settings-page.component.html" />
     <Content Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.html" />
@@ -88,6 +89,8 @@
     <TypeScriptCompile Include="src\app\reputations\reputations-page\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations-page\reputations-page.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations.module.ts" />
+    <TypeScriptCompile Include="src\app\reputations\save-reputation-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\reputations\save-reputation-dialog\save-reputation-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\settings\general-page\general-page.component.ts" />
     <TypeScriptCompile Include="src\app\settings\general-page\index.ts" />
     <TypeScriptCompile Include="src\app\settings\index.ts" />

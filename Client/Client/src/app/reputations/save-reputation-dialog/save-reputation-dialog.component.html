@@ -1,0 +1,21 @@
+﻿<h2 *ngIf="!data.reputation" md-dialog-title>Add Reputation</h2>
+<h2 *ngIf="data.reputation" md-dialog-title>Save Reputation</h2>
+<md-dialog-content style="width: 400px; height: 175px;">
+    <center-spinner *ngIf="loading"></center-spinner>
+    <div *ngIf="!loading">
+        <md-input-container style="width: 100%;">
+            <input mdInput placeholder="Name" required [value]="name" [(ngModel)]="name"/>
+        </md-input-container>
+        <md-select placeholder="Reputation Type" style="width: 100%; margin-bottom: 20px; margin-top: 20px;" [(ngModel)]="reputationType">
+            <md-option value="0">Negative</md-option>
+            <md-option value="1">Positive</md-option>
+        </md-select>
+        <md-checkbox [checked]="commentRequired" [(ngModel)]="commentRequired">
+            Comment Required
+        </md-checkbox>
+    </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="!loading">
+    <button md-raised-button class="primaryButton" style="margin-left: auto;" (click)="save()">Save</button>
+    <button md-raised-button style="margin-left: 5px; margin-right: auto;" [md-dialog-close]="false">Cancel</button>
+</md-dialog-actions>

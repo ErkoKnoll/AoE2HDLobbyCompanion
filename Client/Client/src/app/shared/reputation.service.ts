@@ -48,6 +48,14 @@ export class ReputationService {
         return this.httpService.delete("/api/userReputations/" + id);
     }
 
+    public addReputation(request: SaveReputationRequest) {
+        return this.httpService.put("/api/manageReputations", request);
+    }
+
+    public saveReputation(id: number, request: SaveReputationRequest) {
+        return this.httpService.post("/api/manageReputations/" + id, request);
+    }
+
     private getReputationsFromCache(reputationType: ReputationType) {
         return this.reputations.filter(r => r.type == reputationType).sort((a, b) => a.orderSequence - b.orderSequence);
     }
@@ -76,4 +84,11 @@ export interface AssignReputationRequest {
 
 export interface ReputationWithCount extends Reputation {
     total: number;
+}
+
+interface SaveReputationRequest {
+    name: string;
+    reputationType: number;
+    commentRequired: boolean;
+    orderSequence?: number;
 }
