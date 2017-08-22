@@ -86,7 +86,7 @@ export interface ReputationWithCount extends Reputation {
     total: number;
 }
 
-interface SaveReputationRequest {
+export interface SaveReputationRequest {
     name: string;
     reputationType: number;
     commentRequired: boolean;

@@ -54,7 +54,7 @@ namespace Backend.Controllers {
                 reputation.Name = request.Name;
                 reputation.Type = GetReputationType(request.ReputationType);
                 reputation.CommentRequired = request.CommentRequired;
-                request.OrderSequence = request.OrderSequence;
+                reputation.OrderSequence = request.OrderSequence;
                 _repository.SetModified(reputation);
                 _repository.SaveChanges();
             } catch (Exception e) {
