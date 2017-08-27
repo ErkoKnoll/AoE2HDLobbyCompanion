@@ -44,7 +44,7 @@ namespace Backend.Utils {
         private static void PersistLobbyStart(Lobby lobby) {
             try {
                 using (IRepository repository = new Repository()) {
-                    var persistedLobby = repository.Lobbies.Include(l => l.Players).FirstOrDefault(l => l.LobbyId == lobby.LobbyId);
+                    var persistedLobby = repository.Lobbies.Include(l => l.Players).ThenInclude(p => p.User).FirstOrDefault(l => l.LobbyId == lobby.LobbyId);
                     if (persistedLobby != null) {
                         foreach (var player in persistedLobby.Players) {
                             if (player.User != null) {
@@ -58,7 +58,7 @@ namespace Backend.Utils {
                             try {
                                 if (player.SteamId != 0) {
                                     var lobbyPlayer = UserUtils.GetUser(repository, player);
-                                    var lobbySlot = repository.LobbySlots.Include(ls => ls.User).GetLobbySlot(player.SteamId, lobby.LobbyId).FirstOrDefault();
+                                    var lobbySlot = persistedLobby.Players.FirstOrDefault(p => p.User != null && p.User.SteamId == player.SteamId);
                                     if (lobbySlot == null) {
                                         lobbySlot = new Database.Domain.LobbySlot() {
                                             Name = player.Name,
