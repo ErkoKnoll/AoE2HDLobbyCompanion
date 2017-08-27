@@ -33,8 +33,9 @@ namespace Overlay {
         private DispatcherTimer _listUpdateTimer;
         private ProcessSharp _processSharp;
         private IWindow _processWindow;
-        private bool _hidden = true;
         private Configuration _config;
+        private bool _inLobby = false;
+        private bool _sessionRunning = false;
 
         public MainWindow() {
             InitializeComponent();
@@ -46,16 +47,48 @@ namespace Overlay {
             try {
                 if (configuration != null) {
                     _config = configuration;
-                    if (!_config.ShowOverlay) {
-                        Hide();
-                    } else if (sessionRunning) {
-                        Show();
-                    }
-                    if (_config.ShowOverlay && _config.ShowOverlayWhenFocused && (_processWindow == null || !_processWindow.IsActivated)) {
-                        Hide();
-                    }
+                    _sessionRunning = sessionRunning;
+                    UpdateVisibility();
                 }
             } catch { }
+        }
+
+        public void UpdateVisibility() {
+            try {
+                bool show = true;
+                if (_config == null || !_config.ShowOverlay) {
+                    show = false;
+                } else {
+                    if (_config.ShowOverlayWhenInLobby) {
+                        show = _inLobby;
+                    }
+                    if (show == true) {
+                        if (_config.ShowOverlayWhenFocused && (_processWindow == null || !_processWindow.IsActivated)) {
+                            show = false;
+                        }
+                    }
+                    if (show == true && _sessionRunning == false) {
+                        show = false;
+                    }
+                }
+                if (Visibility == Visibility.Visible && show == false) {
+                    Application.Current.Dispatcher.Invoke(() => Hide());
+                } else if (Visibility == Visibility.Hidden && show == true) {
+                    Application.Current.Dispatcher.Invoke(() => Show());
+                }
+            } catch (Exception e) {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                try {
+                    if (_config != null && _config.ShowOverlay) {
+                        Show();
+                    }
+                } catch { }
+            }
+        }
+
+        public void UpdateLobbyPresence(bool inLobby) {
+            _inLobby = inLobby;
+            UpdateVisibility();
         }
 
         public void UpdatePlayers(List<Player> players, bool dm) {
@@ -183,20 +216,7 @@ namespace Overlay {
         private void StartVisibilityTimer() {
             _visibilityTimer = new DispatcherTimer();
             _visibilityTimer.Tick += (sender, args) => {
-                if (_config != null && _config.ShowOverlay && _config.ShowOverlayWhenFocused) {
-                    if (_processWindow != null) {
-                        if (_processWindow.IsActivated && _hidden) {
-                            Show();
-                            _hidden = false;
-                        } else if (!_processWindow.IsActivated && !_hidden) {
-                            Hide();
-                            _hidden = true;
-                        }
-                    } else {
-                        Hide();
-                        _hidden = true;
-                    }
-                }
+                UpdateVisibility();
             };
             _visibilityTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             _visibilityTimer.Start();

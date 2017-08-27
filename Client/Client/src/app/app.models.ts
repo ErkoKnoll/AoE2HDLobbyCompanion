@@ -30,6 +30,7 @@ export interface Configuration {
     clientId: string;
     showOverlay: boolean;
     showOverlayWhenFocused: boolean;
+    showOverlayWhenInLobby: boolean;
     steamApiKey: string;
     tosAccepted: boolean;
     skipSessionHelp: boolean;

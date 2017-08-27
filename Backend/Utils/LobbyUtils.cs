@@ -218,7 +218,7 @@ namespace Backend.Utils {
         public static void LobbySessionStop() {
             Variables.LobbySession = false;
             if (Variables.OverlayWindow != null) {
-                Variables.OverlayWindow.Dispatcher.Invoke(() => Variables.OverlayWindow.Hide());
+                Variables.OverlayWindow.UpdateConfiguration(Variables.Config, Variables.LobbySession);
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Commons.Models {
         public string ClientId { get; set; }
         public bool ShowOverlay { get; set; }
         public bool ShowOverlayWhenFocused { get; set; }
+        public bool ShowOverlayWhenInLobby { get; set; }
         public string SteamApiKey { get; set; }
         public bool TosAccepted { get; set; }
         public bool SkipSessionHelp { get; set; }

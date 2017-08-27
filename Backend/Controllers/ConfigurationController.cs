@@ -56,6 +56,7 @@ namespace Backend.Controllers {
             var existingConfiguration = _repository.KeyValuePairs.SingleOrDefault(k => k.Key == Keys.CONFIGURATION);
             if (!configuration.ShowOverlay) {
                 configuration.ShowOverlayWhenFocused = false;
+                configuration.ShowOverlayWhenInLobby = false;
             }
             if (existingConfiguration == null) {
                 _repository.Add(new KeyValuePair {
@@ -72,7 +73,7 @@ namespace Backend.Controllers {
         private void ApplyConfiguration(Configuration configuration) {
             Variables.Config = configuration;
             if (Variables.OverlayWindow != null) {
-                Variables.OverlayWindow.Dispatcher.Invoke(() => Variables.OverlayWindow.UpdateConfiguration(configuration, Variables.LobbySession));
+                Variables.OverlayWindow.UpdateConfiguration(configuration, Variables.LobbySession);
             }
         }
 

@@ -95,9 +95,11 @@ namespace Backend.Jobs {
                             case EMsg.ClientMMSCreateLobby:
                             case EMsg.ClientMMSJoinLobby:
                                 LobbyUtils.ResetLobbyData();
+                                SetLobbyPresence(true);
                                 break;
                             case EMsg.ClientMMSLeaveLobby:
                                 ProcessLobbyLeave();
+                                SetLobbyPresence(false);
                                 break;
                             case EMsg.ClientLBSSetScore:
                                 ProcessLeaderBoardUpdate(item);
@@ -110,6 +112,12 @@ namespace Backend.Jobs {
             }
         }
 
+        private void SetLobbyPresence(bool inLobby) {
+            if (Variables.OverlayWindow != null) {
+                Variables.OverlayWindow.UpdateLobbyPresence(inLobby);
+            }
+        }
+
         private void ProcessCreateLobbyResponse(NetHookItem item) {
             var msg = item.ReadAsProtobufMsg<CMsgClientMMSCreateLobbyResponse>();
             Variables.Lobby.LobbyId = msg.Body.steam_id_lobby;
@@ -119,7 +127,11 @@ namespace Backend.Jobs {
         private void ProcessJoinLobbyResponse(NetHookItem item) {
             var msg = item.ReadAsProtobufMsg<CMsgClientMMSJoinLobbyResponse>();
             Variables.Lobby.LobbyId = msg.Body.steam_id_lobby;
-            CheckIfReJoiningStartedLobby();
+            if (msg.Body.chat_room_enter_response != 2) {
+                CheckIfReJoiningStartedLobby();
+            } else { //Lobby is not joinable any more
+                SetLobbyPresence(false);
+            }
         }
 
         private void CheckIfReJoiningStartedLobby() {

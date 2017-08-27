@@ -13,7 +13,7 @@ export class SaveReputationDialogComponent {
     public reputationType = "0";
     public commentRequired = false;
 
-    constructor( @Inject(MD_DIALOG_DATA) private data: SaveReputationDialogData, private appService: AppService, private reputationService: ReputationService, private dialog: MdDialogRef<SaveReputationDialogComponent>) {
+    constructor( @Inject(MD_DIALOG_DATA) public data: SaveReputationDialogData, private appService: AppService, private reputationService: ReputationService, private dialog: MdDialogRef<SaveReputationDialogComponent>) {
         if (data.reputation) {
             this.name = data.reputation.name;
             this.reputationType = data.reputation.type + "";

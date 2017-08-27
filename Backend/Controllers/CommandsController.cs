@@ -323,15 +323,13 @@ namespace Backend.Controllers {
                 Variables.OverlayThread = new Thread(() => {
                     Variables.OverlayApp = new Application();
                     Variables.OverlayWindow = new MainWindow();
-                    Task.Delay(500).ContinueWith(task => Variables.OverlayWindow.Dispatcher.Invoke(() => Variables.OverlayWindow.UpdateConfiguration(Variables.Config, Variables.LobbySession)));
+                    Task.Delay(500).ContinueWith(task => Variables.OverlayWindow.UpdateConfiguration(Variables.Config, Variables.LobbySession));
                     Variables.OverlayApp.Run(Variables.OverlayWindow);
                 });
                 Variables.OverlayThread.SetApartmentState(ApartmentState.STA);
                 Variables.OverlayThread.Start();
             } else {
-                if (Variables.Config != null && Variables.Config.ShowOverlay) {
-                    Variables.OverlayWindow.Dispatcher.Invoke(() => Variables.OverlayWindow.UpdateConfiguration(Variables.Config, Variables.LobbySession));
-                }
+                Variables.OverlayWindow.UpdateConfiguration(Variables.Config, Variables.LobbySession);
             }
             if (Variables.ReplayMode) {
                 Task.Factory.StartNew(() => new NetHookDumpReaderJob());
