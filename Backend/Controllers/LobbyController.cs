@@ -64,7 +64,7 @@ namespace Backend.Controllers {
                             NegativeReputation = p.User.NegativeReputation
                         } : null,
                         GameStats = p.User != null ? UserUtils.GetGameStats(p.GamesStartedRM, p.GamesStartedDM, p.GamesWonRM, p.GamesWonDM, p.GamesEndedRM, p.GamesEndedDM) : null,
-                    })
+                    }).ToList()
                 };
                 foreach (var player in lobby.Players) {
                     LobbyUtils.CalculateUserFieldColors(player, lobby.Ranked);

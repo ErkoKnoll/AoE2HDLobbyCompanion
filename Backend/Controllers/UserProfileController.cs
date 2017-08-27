@@ -20,8 +20,8 @@ namespace Backend.Controllers {
             _repository = repository;
         }
 
-        [HttpGet("{id}/{lobbyId}")]
-        public User Get(string id, string lobbyId) {
+        [HttpGet("{id}")]
+        public User Get(string id) {
             var user = _repository.Users.Include(u => u.LobbySlots).Include(u => u.Reputations).ThenInclude(ur => ur.Reputation).Include(u => u.Reputations).ThenInclude(u => u.Lobby).Select(u => new User {
                 Id = u.Id,
                 SSteamId = u.SteamId.ToString(),
@@ -61,10 +61,8 @@ namespace Backend.Controllers {
                     } : null
                 }).ToList()
             }).FirstOrDefault(u => u.SSteamId == id);
-            user.GameStats = UserUtils.GetGameStats(user.GamesStartedRM, user.GamesStartedDM, user.GamesWonRM, user.GamesWonRM, user.GamesEndedRM, user.GamesEndedDM);
-            var longLobbyId = ulong.Parse(lobbyId);
-            var lobby = _repository.Lobbies.FirstOrDefault(l => l.LobbyId == longLobbyId);
-            LobbyUtils.CalculateUserFieldColors(user, lobby.Ranked);
+            user.GameStats = UserUtils.GetGameStats(user.GamesStartedRM, user.GamesStartedDM, user.GamesWonRM, user.GamesWonDM, user.GamesEndedRM, user.GamesEndedDM);
+            LobbyUtils.CalculateUserFieldColors(user, 0);
             return user;
         }
 

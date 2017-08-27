@@ -212,7 +212,7 @@ namespace Backend.Utils {
                                     throw new Exception("User not found in database");
                                 }
                                 player.ReputationStats = new PlayerReputationStats() {
-                                    Games = 0,
+                                    Games = user.Games,
                                     PositiveReputation = user.PositiveReputation,
                                     NegativeReputation = user.NegativeReputation
                                 };

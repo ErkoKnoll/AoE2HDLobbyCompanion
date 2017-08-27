@@ -34,6 +34,7 @@ export class RunningSessionPageComponent implements OnInit, OnDestroy {
         this.startLobbyFetcherTimer();
         if (this.lobbyId == "0") {
             this.subscriptions.push(this.appService.Events.gameStarted.subscribe(() => {
+                this.lobbyId = this.lobby.sLobbyId;
                 this.lobbyStarted = true;
                 this.appService.stopNethook(() => { });
                 this.appService.toastInfo("Lobby started!");

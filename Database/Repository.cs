@@ -71,7 +71,11 @@ namespace Database {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            var path = Path.Combine(Environment.GetEnvironmentVariable("AppData"), "AoE2HDLobbyCompanion\\database.db");
+            var databaseName = "AoE2HDLobbyCompanion\\database.db";
+#if DEBUG
+            databaseName = "AoE2HDLobbyCompanion\\database_test.db";
+#endif
+            var path = Path.Combine(Environment.GetEnvironmentVariable("AppData"), databaseName);
             optionsBuilder.UseSqlite("Data Source=" + path);
         }
     }

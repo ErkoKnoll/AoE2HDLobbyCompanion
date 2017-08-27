@@ -113,11 +113,39 @@ namespace Backend.Jobs {
         private void ProcessCreateLobbyResponse(NetHookItem item) {
             var msg = item.ReadAsProtobufMsg<CMsgClientMMSCreateLobbyResponse>();
             Variables.Lobby.LobbyId = msg.Body.steam_id_lobby;
+            CheckIfReJoiningStartedLobby();
         }
 
         private void ProcessJoinLobbyResponse(NetHookItem item) {
             var msg = item.ReadAsProtobufMsg<CMsgClientMMSJoinLobbyResponse>();
             Variables.Lobby.LobbyId = msg.Body.steam_id_lobby;
+            CheckIfReJoiningStartedLobby();
+        }
+
+        private void CheckIfReJoiningStartedLobby() {
+            try {
+                using (IRepository repository = new Repository()) {
+                    var lobby = repository.Lobbies.Include(l => l.Players).ThenInclude(p => p.User).FirstOrDefault(l => l.LobbyId == Variables.Lobby.LobbyId && l.Started.HasValue);
+                    if (lobby != null) {
+                        lobby.Joined = DateTime.UtcNow;
+                        lobby.Started = null;
+                        lobby.Sealed = false;
+                        repository.SetModified(lobby);
+                        repository.SaveChanges();
+                        foreach (var player in lobby.Players.Where(p => p.Position > 0 && p.User != null)) {
+                            try {
+                                player.User.Games--;
+                                repository.SetModified(player.User);
+                                repository.SaveChanges();
+                            } catch (Exception e) {
+                                LogUtils.Error("Error while modifing user for re-joined lobby: "+player.User.Name, e);
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                LogUtils.Error("Error while checking if re-joining started lobby", e);
+            }
         }
 
         private void ProcessLeaderBoardUpdate(NetHookItem item) {

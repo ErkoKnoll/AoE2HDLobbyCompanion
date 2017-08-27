@@ -55,7 +55,7 @@ export class UserProfileDialogComponent implements OnInit {
     }
 
     private fetchProfile() {
-        this.httpService.get<UserProfile>("/api/userProfile/" + this.data.steamId + "/" + this.data.lobbyId).subscribe(response => {
+        this.httpService.get<UserProfile>("/api/userProfile/" + this.data.steamId).subscribe(response => {
             this.profile = response;
             this.userReputationsDataSource = new UserReputationsDataSource(response.reputations);
             if (this.profile.knownNames.length > 1) {

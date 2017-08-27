@@ -12,7 +12,7 @@
                     <span style="margin-right: 10px;">Location <strong>{{profile.location}}</strong></span>
                 </td>
                 <td>
-                    <span style="margin-right: 10px;" [ngClass]="{cellColorSafe: profile.fieldColors?.Games == 1, cellColorDanger: profile.fieldColors?.Games == 2}">Shared Games <strong>{{profile.games}}</strong></span>
+                    <span style="margin-right: 10px;">Shared Games <span [ngClass]="{cellColorSafe: profile.fieldColors?.Games == 1, cellColorDanger: profile.fieldColors?.Games == 2}" style="font-weight: bold;">{{profile.games}}</span></span>
                 </td>
                 <td>
                     <i class="material-icons md-24" style="margin-right: 5px; margin-top: 7px; color: red;">thumb_down</i>
