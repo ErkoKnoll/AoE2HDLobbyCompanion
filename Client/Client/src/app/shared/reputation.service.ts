@@ -59,6 +59,10 @@ export class ReputationService {
     private getReputationsFromCache(reputationType: ReputationType) {
         return this.reputations.filter(r => r.type == reputationType).sort((a, b) => a.orderSequence - b.orderSequence);
     }
+
+    public deleteReputationType(id: number, migrateTo: number) {
+        return this.httpService.delete("/api/manageReputations/" + id + "/?migrateTo=" + migrateTo);
+    }
 }
 
 export interface Reputation {

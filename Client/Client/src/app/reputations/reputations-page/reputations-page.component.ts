@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { AppService, ReputationService, ReputationWithCount, ReputationType, SaveReputationRequest } from '../../shared';
 import { SaveReputationDialogComponent, SaveReputationDialogData } from '../save-reputation-dialog';
+import { DeleteReputationDialogComponent } from '../delete-reputation-dialog';
 
 @Component({
     selector: 'reputations-page',
@@ -33,6 +34,17 @@ export class ReputationsPageComponent implements OnInit {
                 existingReputations: this.reputations,
                 reputation: reputation
             }
+        });
+        dialog.afterClosed().subscribe((saved: boolean) => {
+            if (saved) {
+                this.getReputations();
+            }
+        });
+    }
+
+    public openDeleteReputationDialog(reputation: ReputationWithCount) {
+        let dialog = this.dialog.open(DeleteReputationDialogComponent, {
+            data: reputation
         });
         dialog.afterClosed().subscribe((saved: boolean) => {
             if (saved) {

@@ -47,7 +47,7 @@ namespace Backend.Controllers {
             }
         }
 
-        [HttpPost("{id}")] 
+        [HttpPost("{id}")]
         public void Post(int id, [FromBody] SaveReputationRequest request) {
             try {
                 var reputation = _repository.Reputations.SingleOrDefault(r => r.Id == id);
@@ -59,6 +59,56 @@ namespace Backend.Controllers {
                 _repository.SaveChanges();
             } catch (Exception e) {
                 LogUtils.Error("Failed to save reputation", e);
+                throw e;
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id, [FromQuery] int migrateTo) {
+            try {
+                var reputation = _repository.Reputations.Include(u => u.UserReputations).SingleOrDefault(r => r.Id == id);
+                var users = _repository.Users.Include(u => u.Reputations).ThenInclude(ur => ur.Reputation).Where(u => u.Reputations.Any(r => r.Reputation.Id == id)).ToList();
+                if (migrateTo == 0) {
+                    foreach (var userReputation in reputation.UserReputations) {
+                        _repository.Delete(userReputation);
+                    }
+                } else {
+                    var migrateToReputation = _repository.Reputations.SingleOrDefault(r => r.Id == migrateTo);
+                    if (migrateToReputation == null) {
+                        throw new Exception("Migration reputation type not found: " + migrateTo);
+                    }
+                    foreach (var userReputation in new List<Database.Domain.UserReputation>(reputation.UserReputations)) {
+                        userReputation.Reputation = migrateToReputation;
+                        _repository.SetModified(userReputation);
+                    }
+                }
+                _repository.Delete(reputation);
+                _repository.SaveChanges();
+
+                try {
+                    foreach (var user in users) {
+                        user.NegativeReputation = user.Reputations.Count(r => r.Reputation.Type == ReputationType.NEGATIVE);
+                        user.PositiveReputation = user.Reputations.Count(r => r.Reputation.Type == ReputationType.POSITIVE);
+                        _repository.SetModified(user);
+                    }
+                    _repository.SaveChanges();
+                } catch (Exception e) {
+                    LogUtils.Error("Failed to recalculate user reputations", e);
+                }
+                try {
+                    var reputations = _repository.Reputations.Where(r => r.Type == reputation.Type).OrderBy(r => r.OrderSequence).ToList();
+                    int index = 0;
+                    foreach (var rep in reputations) {
+                        rep.OrderSequence = index;
+                        _repository.SetModified(rep);
+                        index++;
+                    }
+                    _repository.SaveChanges();
+                } catch (Exception e) {
+                    LogUtils.Error("Failed to recalculate reputations sort order", e);
+                }
+            } catch (Exception e) {
+                LogUtils.Error("Failed to delete reputation", e);
                 throw e;
             }
         }

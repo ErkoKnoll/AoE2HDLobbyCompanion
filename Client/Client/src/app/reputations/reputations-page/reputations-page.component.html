@@ -34,7 +34,7 @@
                             <i class="material-icons md-24 clickable" mdTooltip="Move Up" (click)="moveUp(reputation)">arrow_drop_up</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Move Down" (click)="moveDown(reputation)">arrow_drop_down</i>
                             <i class="material-icons md-24 clickable" mdTooltip="Edit" (click)="openSaveReputationDialog(reputation)">edit</i>
-                            <i class="material-icons md-24 clickable" mdTooltip="Delete">delete_forever</i>
+                            <i class="material-icons md-24 clickable" mdTooltip="Delete" (click)="openDeleteReputationDialog(reputation)">delete_forever</i>
                         </md-cell>
                     </ng-container>
                     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
