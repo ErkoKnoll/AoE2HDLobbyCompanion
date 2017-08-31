@@ -12,8 +12,8 @@ using System.Windows;
 
 namespace Backend.Global {
     public class Variables {
-        public static int NumericVersion = 2;
-        public static bool ReplayMode = true;
+        public static int NumericVersion = 3;
+        public static bool ReplayMode = false;
         public static bool LobbySession = false;
         public static string NethookDumpDir { get; set; }
         public static string NethookDumpDirParsed { get; set; }

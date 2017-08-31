@@ -9,7 +9,7 @@ import { TrackingService, ConfigurationService } from './';
 
 @Injectable()
 export class AppService {
-    public stringVersion = "1.1.0";
+    public stringVersion = "1.2.0";
     public lobbiesPageOpened = false;
     public sessionRunning = false;
     private nethookActive = false;
@@ -19,15 +19,15 @@ export class AppService {
     }
 
     constructor(private toastsManager: ToastsManager, private trackingService: TrackingService, private configurationService: ConfigurationService) {
-        //this.startBackend();
-        //window.onbeforeunload = (e) => {
-        //    if (this.nethookActive) {
-        //        this.stopNethook(() => { });
-        //    }
-        //    if (this.backendProcess) {
-        //        this.backendProcess.kill();
-        //    }
-        //}
+        this.startBackend();
+        window.onbeforeunload = (e) => {
+            if (this.nethookActive) {
+                this.stopNethook(() => { });
+            }
+            if (this.backendProcess) {
+                this.backendProcess.kill();
+            }
+        }
     }
 
     public toastInfo(message: string) {
