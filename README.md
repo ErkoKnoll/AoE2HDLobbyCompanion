@@ -13,12 +13,13 @@ Short link for sharing: [aoe2lc.net](http://aoe2lc.net)
 ## [Reddit](https://www.reddit.com/r/aoe2lc)
 
 ## Screenshots
-* [UI (running lobby session)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/LobbySessionRunning.png)
-* [Overlay (in-game)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/InGameOverlay.png)
-* [Overlay (always on, over desktop)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PermanentOverlay.png)
-* [UI (assign reputation)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/AssignReputation.png)
-* [UI (player profile)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayerProfile.png)
-* [UI (calculate balanced teams)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/CalculateBalancedTeams.png)
+* [[UI] Running lobby session (v1.0.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/LobbySessionRunning.png)
+* [[Overlay] In-game](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/InGameOverlay.png)
+* [[Overlay] Always on, over desktop](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PermanentOverlay.png)
+* [[UI] Assign reputation (v1.0.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/AssignReputation.png)
+* [[UI] Player profile (v1.0.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayerProfile.png)
+* [[UI] Calculate balanced teams (v1.1.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/CalculateBalancedTeams.png)
+* [[UI] Reputations page (v1.2.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/ReputationsPage.png)
 
 ## Download
 [Download v1.1.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.1.0/AoE2HDLobbyCompanion-V1.1.0.zip)
