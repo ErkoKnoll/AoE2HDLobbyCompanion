@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 
 import { HttpService } from './';
+import { Reputation, ReputationType, User, Lobby, UserReputation } from '../app.models';
 
 @Injectable()
 export class ReputationService {
@@ -40,6 +41,10 @@ export class ReputationService {
         });
     }
 
+    public getUserReputationsForReputationType(id: number) {
+        return this.httpService.get<UserReputation[]>("/api/manageReputations/" + id);
+    }
+
     public assignReputation(request: AssignReputationRequest) {
         return this.httpService.put("/api/userReputations", request);
     }
@@ -63,19 +68,6 @@ export class ReputationService {
     public deleteReputationType(id: number, migrateTo: number) {
         return this.httpService.delete("/api/manageReputations/" + id + "/?migrateTo=" + migrateTo);
     }
-}
-
-export interface Reputation {
-    id: number;
-    name: string;
-    type: ReputationType;
-    commentRequired: boolean;
-    orderSequence: number;
-}
-
-export enum ReputationType {
-    NEGATIVE = 0,
-    POSITIVE = 1
 }
 
 export interface AssignReputationRequest {

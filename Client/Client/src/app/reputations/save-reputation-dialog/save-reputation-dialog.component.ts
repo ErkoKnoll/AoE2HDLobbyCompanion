@@ -1,7 +1,8 @@
 ﻿import { Component, Inject } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 
-import { AppService, ReputationService, Reputation, ReputationType } from '../../shared';
+import { AppService, ReputationService } from '../../shared';
+import { Reputation, ReputationType } from '../../app.models';
 
 @Component({
     selector: 'save-reputation-dialog',

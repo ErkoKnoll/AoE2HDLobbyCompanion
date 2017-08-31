@@ -3,9 +3,11 @@ import { DataSource, CollectionViewer } from '@angular/cdk';
 import { MdDialog } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { AppService, ReputationService, ReputationWithCount, ReputationType, SaveReputationRequest } from '../../shared';
+import { AppService, ReputationService, ReputationWithCount,  SaveReputationRequest, TrackingService } from '../../shared';
 import { SaveReputationDialogComponent, SaveReputationDialogData } from '../save-reputation-dialog';
 import { DeleteReputationDialogComponent } from '../delete-reputation-dialog';
+import { ReputationDetailsDialogComponent, ReputationDetailsDialogData } from '../reputation-details-dialog';
+import { ReputationType } from '../../app.models';
 
 @Component({
     selector: 'reputations-page',
@@ -21,7 +23,7 @@ export class ReputationsPageComponent implements OnInit {
     public displayedColumns = ["name", "commentRequired", "total", "actions"];
     private reputations: ReputationWithCount[];
 
-    constructor(private appService: AppService, private reputationService: ReputationService, private dialog: MdDialog) {
+    constructor(private appService: AppService, private reputationService: ReputationService, private trackingService: TrackingService, private dialog: MdDialog) {
     }
 
     public ngOnInit() {
@@ -37,6 +39,11 @@ export class ReputationsPageComponent implements OnInit {
         });
         dialog.afterClosed().subscribe((saved: boolean) => {
             if (saved) {
+                if (reputation == null) {
+                    this.trackingService.sendEvent("Reputations", "ReputationTypeSaved");
+                } else {
+                    this.trackingService.sendEvent("Reputations", "ReputationTypeUpdated");
+                }
                 this.getReputations();
             }
         });
@@ -48,9 +55,21 @@ export class ReputationsPageComponent implements OnInit {
         });
         dialog.afterClosed().subscribe((saved: boolean) => {
             if (saved) {
+                this.trackingService.sendEvent("Reputations", "ReputationTypeDeleted");
                 this.getReputations();
             }
         });
+    }
+
+    public openReputationDetailsDialog(reputation: ReputationWithCount) {
+        this.dialog.open(ReputationDetailsDialogComponent, {
+            data: <ReputationDetailsDialogData>{
+                reputation: reputation,
+                reputationDeleted: () => this.getReputations()
+            },
+            width: window.innerWidth * 0.75 + "px"
+        });
+        this.trackingService.sendEvent("Reputations", "ReputationTypeDetailsOpened");
     }
 
     public moveUp(reputation: ReputationWithCount) {
@@ -62,6 +81,7 @@ export class ReputationsPageComponent implements OnInit {
             this.loading = true;
             this.reputationService.saveReputation(reputation.id, this.getReputationSaveRequest(reputation)).subscribe(() => {
                 this.reputationService.saveReputation(previousReputation.id, this.getReputationSaveRequest(previousReputation)).subscribe(() => {
+                    this.trackingService.sendEvent("Reputations", "ReputationTypeMovedUp");
                     this.getReputations();
                     this.reputationService.fetchReputations(ReputationType.NEGATIVE);
                 }, error => {
@@ -86,6 +106,7 @@ export class ReputationsPageComponent implements OnInit {
             this.loading = true;
             this.reputationService.saveReputation(reputation.id, this.getReputationSaveRequest(reputation)).subscribe(() => {
                 this.reputationService.saveReputation(nextReputation.id, this.getReputationSaveRequest(nextReputation)).subscribe(() => {
+                    this.trackingService.sendEvent("Reputations", "ReputationTypeMovedDown");
                     this.getReputations();
                     this.reputationService.fetchReputations(ReputationType.NEGATIVE);
                 }, error => {

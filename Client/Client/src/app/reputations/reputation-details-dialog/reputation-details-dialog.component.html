@@ -1,0 +1,42 @@
+﻿<h2 md-dialog-title>Reputation History</h2>
+<md-dialog-content>
+    <center-spinner *ngIf="loading"></center-spinner>
+    <div [hidden]="loading" style="margin-top: -10px;">
+        <md-table [dataSource]="userReputationsDataSource" class="noTablePadding">
+            <ng-container cdkColumnDef="lobbyName">
+                <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">{{reputation.lobby?.name}}</md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="player">
+                <md-header-cell *cdkHeaderCellDef>Player</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">
+                    <span class="clickable" (click)="openUserProfileDialog(reputation)">{{reputation.user?.name}}</span>
+                </md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="added">
+                <md-header-cell *cdkHeaderCellDef>Added</md-header-cell>
+                <md-cell *cdkCellDef="let reputation">{{reputation.added}}</md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="comment">
+                <md-header-cell *cdkHeaderCellDef>Comment</md-header-cell>
+                <md-cell *cdkCellDef="let reputation"><div style="max-width: 150px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" [title]="reputation.comment">{{reputation.comment}}</div></md-cell>
+            </ng-container>
+            <ng-container cdkColumnDef="actions">
+                <md-header-cell *cdkHeaderCellDef></md-header-cell>
+                <md-cell *cdkCellDef="let reputation"><i class="material-icons md-24 clickable" mdTooltip="Delete Reputation" (click)="deleteReputation(reputation)">delete_forever</i></md-cell>
+            </ng-container>
+
+            <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+            <md-row *cdkRowDef="let reputation; columns: displayedColumns;"></md-row>
+        </md-table>
+        <md-paginator #paginator
+                      [length]="userReputationsDataSource?.userReputations.value.length"
+                      [pageIndex]="0"
+                      [pageSize]="5"
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+        </md-paginator>
+    </div>
+</md-dialog-content>
+<md-dialog-actions>
+    <button md-raised-button style="margin-left: auto; margin-right: auto;" [md-dialog-close]>Close</button>
+</md-dialog-actions>

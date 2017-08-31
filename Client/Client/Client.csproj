@@ -36,6 +36,7 @@
     <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
     <Content Include="src\app\lobby\session-help-page\session-help-page.component.html" />
     <Content Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.html" />
+    <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.html" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
     <Content Include="src\app\reputations\save-reputation-dialog\save-reputation-dialog.component.html" />
     <Content Include="src\app\settings\general-page\general-page.component.html" />
@@ -57,6 +58,7 @@
     <Content Include="_config.yml" />
     <Content Include="src\assets\icomoon\selection.json" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.scss" />
+    <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
@@ -89,6 +91,8 @@
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\index.ts" />
+    <TypeScriptCompile Include="src\app\reputations\reputation-details-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations-page\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations-page\reputations-page.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations.module.ts" />

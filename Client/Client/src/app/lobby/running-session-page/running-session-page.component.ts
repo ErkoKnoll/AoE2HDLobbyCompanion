@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ConfirmationDialogComponent, ConfirmationDialogData, AssignReputationDialogComponent, AssignReputationDialogData, UserProfileDialogComponent, UserProfileDialogData, CommandService, Commands, AppService, TrackingService, ReputationType } from '../../shared';
+import { ConfirmationDialogComponent, ConfirmationDialogData, AssignReputationDialogComponent, AssignReputationDialogData, UserProfileDialogComponent, UserProfileDialogData, CommandService, Commands, AppService, TrackingService } from '../../shared';
+import { ReputationType } from '../../app.models';
 import { LobbyService, Lobby, Player } from '../shared';
 import { MoreOptionsDialogComponent } from '../more-options-dialog';
 
@@ -101,8 +102,7 @@ export class RunningSessionPageComponent implements OnInit, OnDestroy {
     public openUserProfileDialog(player: Player) {
         let dialog = this.dialog.open(UserProfileDialogComponent, {
             data: <UserProfileDialogData>{
-                steamId: player.sSteamId,
-                lobbyId: this.lobby.sLobbyId
+                steamId: player.sSteamId
             },
             width: window.innerWidth * 0.75 + "px",
         });

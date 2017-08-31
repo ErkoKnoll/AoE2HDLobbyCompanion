@@ -30,6 +30,23 @@ namespace Backend.Controllers {
             });
         }
 
+        [HttpGet("{id}")]
+        public IEnumerable<Models.UserReputation> Get(int id) {
+            return _repository.Reputations.Include(r => r.UserReputations).ThenInclude(ur => ur.Lobby).Include(r => r.UserReputations).ThenInclude(ur => ur.User).FirstOrDefault(r => r.Id == id).UserReputations.OrderByDescending(ur => ur.Added).Select(ur => new Models.UserReputation() {
+                Id = ur.Id,
+                Added = ur.Added.ToString("d"),
+                Comment = ur.Comment,
+                User = new Models.User() {
+                    SSteamId = ur.User.SteamId.ToString(),
+                    Name = ur.User.Name
+                },
+                Lobby = new Models.Lobby() {
+                    LobbyId = ur.Lobby.LobbyId.ToString(),
+                    Name = ur.Lobby.Name
+                }
+            });
+        }
+
         [HttpPut]
         public void Put([FromBody] SaveReputationRequest request) {
             try {

@@ -10,5 +10,6 @@ namespace Backend.Models {
         public string Added { get; set; }
         public Reputation Reputation { get; set; }
         public Lobby Lobby { get; set; }
+        public User User { get; set; }
     }
 }

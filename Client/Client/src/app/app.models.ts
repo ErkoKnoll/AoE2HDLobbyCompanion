@@ -63,3 +63,52 @@ export interface PlayerReputationStats {
     negativeReputation: number;
     positiveReputation: number;
 }
+
+export interface User extends BasePlayer {
+    id: string;
+    sSteamId: string;
+    name: string;
+    location: string;
+    games: number;
+    rankRM: number;
+    rankDM: number;
+    positiveReputaton: number;
+    negativeReputation: number;
+    gamesStartedRM: number;
+    gamesEndedRM: number;
+    gamesWonRM: number;
+    gamesStartedDM: number;
+    gamesEndedDM: number;
+    gamesWonDM: number;
+    profilePrivate: boolean;
+    profileDataFetched: string;
+    knownNames: string[];
+    reputations: UserReputation[];
+}
+
+export interface UserReputation {
+    id: number;
+    comment: string;
+    added: string;
+    reputation: Reputation;
+    lobby: Lobby;
+    user: User;
+}
+
+export interface Lobby {
+    lobbyId: string;
+    name: string;
+}
+
+export interface Reputation {
+    id: number;
+    name: string;
+    type: ReputationType;
+    commentRequired: boolean;
+    orderSequence: number;
+}
+
+export enum ReputationType {
+    NEGATIVE = 0,
+    POSITIVE = 1
+}

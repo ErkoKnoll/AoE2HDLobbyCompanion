@@ -5,8 +5,8 @@ import { shell } from 'electron';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { BasePlayer } from '../../app.models';
-import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, Reputation } from '../';
+import { BasePlayer, Reputation, ReputationType, User, UserReputation } from '../../app.models';
+import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService } from '../';
 
 @Component({
     selector: 'user-profile-dialog',
@@ -14,7 +14,7 @@ import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, 
     styleUrls: ['./user-profile-dialog.component.scss']
 })
 export class UserProfileDialogComponent implements OnInit {
-    public profile: UserProfile;
+    public profile: User;
     public knownNames: string;
     public userReputationsDataSource: UserReputationsDataSource;
     public displayedColumns = ["lobbyName", "reputationType", "added", "comment", "actions"];
@@ -55,7 +55,7 @@ export class UserProfileDialogComponent implements OnInit {
     }
 
     private fetchProfile() {
-        this.httpService.get<UserProfile>("/api/userProfile/" + this.data.steamId).subscribe(response => {
+        this.httpService.get<User>("/api/userProfile/" + this.data.steamId).subscribe(response => {
             this.profile = response;
             this.userReputationsDataSource = new UserReputationsDataSource(response.reputations);
             if (this.profile.knownNames.length > 1) {
@@ -87,39 +87,4 @@ export class UserReputationsDataSource extends DataSource<UserReputation> {
 
 export interface UserProfileDialogData {
     steamId: string;
-    lobbyId: string;
-}
-
-interface UserProfile extends BasePlayer {
-    id: string;
-    sSteamId: string;
-    name: string;
-    location: string;
-    games: number;
-    rankRM: number;
-    rankDM: number;
-    positiveReputaton: number;
-    negativeReputation: number;
-    gamesStartedRM: number;
-    gamesEndedRM: number;
-    gamesWonRM: number;
-    gamesStartedDM: number;
-    gamesEndedDM: number;
-    gamesWonDM: number;
-    profilePrivate: boolean;
-    profileDataFetched: string;
-    knownNames: string[];
-    reputations: UserReputation[];
-}
-
-interface UserReputation {
-    id: number;
-    comment: string;
-    added: string;
-    reputation: Reputation;
-    lobby: Lobby;
-}
-
-interface Lobby {
-    name: string;
 }

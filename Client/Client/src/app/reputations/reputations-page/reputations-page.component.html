@@ -15,7 +15,9 @@
                 <md-table [dataSource]="negativeReputationsDataSource" class="noTablePadding">
                     <ng-container cdkColumnDef="name">
                         <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-                        <md-cell *cdkCellDef="let reputation">{{reputation.name}}</md-cell>
+                        <md-cell *cdkCellDef="let reputation">
+                            <span class="clickable" (click)="openReputationDetailsDialog(reputation)">{{reputation.name}}</span>
+                        </md-cell>
                     </ng-container>
                     <ng-container cdkColumnDef="commentRequired">
                         <md-header-cell *cdkHeaderCellDef>Comment Required</md-header-cell>
@@ -47,7 +49,9 @@
                 <md-table [dataSource]="positiveReputationsDataSource" class="noTablePadding">
                     <ng-container cdkColumnDef="name">
                         <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-                        <md-cell *cdkCellDef="let reputation">{{reputation.name}}</md-cell>
+                        <md-cell *cdkCellDef="let reputation">
+                            <span class="clickable" (click)="openReputationDetailsDialog(reputation)">{{reputation.name}}</span>
+                        </md-cell>
                     </ng-container>
                     <ng-container cdkColumnDef="commentRequired">
                         <md-header-cell *cdkHeaderCellDef>Comment Required</md-header-cell>
