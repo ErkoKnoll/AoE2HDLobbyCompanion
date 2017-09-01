@@ -48,7 +48,7 @@ Database is stored separately from the installation folder to make the sure the 
 
 ## Known Issues
 * Some Anti-Viruses might block NetHook2 DLL when a session is started. If it happens your Steam client along with the game will crash. To prevent it happening again you have to add an exclusion to your Anti-Virtus to prevent it from scanning NetHook2 process in the future.
-* Sometimes it can happen that it won't detect that you are in the lobby. If it happens then for some reason NetHook2 injection is not working properly. To fix it stop the lobby session, restart Steam client and start the session again, hopefully this time it works. It can also happen it won't work multiple times in a row. To tell if it is working without having to start up the game, start the session, click around in Steam client and if it works properly then to the console that is opened when you started the session should start printing out some logs when you click around.
+* Sometimes it can happen that it won't detect that you are in the lobby. To fix it stop the lobby session, restart Steam client and start the session again, hopefully this time it works. It can also happen it won't work multiple times in a row. To tell if it is working without having to start up the game, start the session, click around in Steam client and if it works properly then to the console that was opened when you started the session should start printing out some logs when you click around. To fix it permantently until NetHook2 receives support for WebSocket connection you can add -tcp flag to Steam client startup parameters. [Read more here](https://www.reddit.com/r/aoe2lc/comments/6xfdqo/temporary_fix_for_lobby_data_not_being_displayed/).
 
 
 ## Wiki
