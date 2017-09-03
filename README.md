@@ -22,7 +22,7 @@ Short link for sharing: [aoe2lc.net](http://aoe2lc.net)
 * [[UI] Reputations page (v1.2.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/ReputationsPage.png)
 
 ## Download
-[Download v1.2.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.2.0/AoE2HDLobbyCompanion-V1.2.0.zip)
+[Download v1.2.1](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.2.1/AoE2HDLobbyCompanion-V1.2.1.zip)
 
 **Minimum Requirements**: Windows 7 SP1 or newer
 
@@ -48,7 +48,7 @@ Database is stored separately from the installation folder to make the sure the 
 
 ## Known Issues
 * Some Anti-Viruses might block NetHook2 DLL when a session is started. If it happens your Steam client along with the game will crash. To prevent it happening again you have to add an exclusion to your Anti-Virtus to prevent it from scanning NetHook2 process in the future.
-* Sometimes it can happen that it won't detect that you are in the lobby. To fix it stop the lobby session, restart Steam client and start the session again, hopefully this time it works. It can also happen it won't work multiple times in a row. To tell if it is working without having to start up the game, start the session, click around in Steam client and if it works properly then to the console that was opened when you started the session should start printing out some logs when you click around. To fix it permantently until NetHook2 receives support for WebSocket connection you can add -tcp flag to Steam client startup parameters. [Read more here](https://www.reddit.com/r/aoe2lc/comments/6xfdqo/temporary_fix_for_lobby_data_not_being_displayed/).
+* Sometimes it can happen that it won't detect that you are in the lobby. To fix it stop the lobby session, restart Steam client and start the session again, hopefully this time it works. It can also happen it won't work multiple times in a row. To tell if it is working without having to start up the game, start the session, click around in Steam client and if it works properly then to the console that was opened when you started the session should start printing out some logs when you click around. To fix it permantently until NetHook2 receives support for WebSocket connection you can add -tcp flag to Steam client startup parameters. [Read more here](https://www.reddit.com/r/aoe2lc/comments/6xfdqo/temporary_fix_for_lobby_data_not_being_displayed/). **This bug should be fixed in v1.2.1**.
 
 
 ## Wiki
