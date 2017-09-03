@@ -9,7 +9,7 @@ import { TrackingService, ConfigurationService } from './';
 
 @Injectable()
 export class AppService {
-    public stringVersion = "1.2.0";
+    public stringVersion = "1.2.1";
     public lobbiesPageOpened = false;
     public sessionRunning = false;
     private nethookActive = false;

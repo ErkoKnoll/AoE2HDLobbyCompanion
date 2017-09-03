@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace Backend.Global {
     public class Variables {
-        public static int NumericVersion = 3;
+        public static int NumericVersion = 4;
         public static bool ReplayMode = false;
         public static bool LobbySession = false;
         public static string NethookDumpDir { get; set; }
