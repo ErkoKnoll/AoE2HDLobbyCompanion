@@ -76,16 +76,21 @@ namespace Backend.Controllers {
                 if (hasEvenNumberOfPlayers != null) {
                     return hasEvenNumberOfPlayers;
                 }
-                var players = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
+                var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = p.Rank
                 });
-                var bestMatch = FindBestMatch(players);
-                var team1 = bestMatch.Take(players.Count() / 2).OrderByDescending(p => p.Value);
-                var team2 = bestMatch.Skip(players.Count() / 2).OrderByDescending(p => p.Value);
+                var bestMatch = FindBestMatch(balanceCalculations).ToList();
+                var teams = "";
+                var players = bestMatch.Select(bc => bc.Player).ToList();
+                foreach (var balanceCalculation in balanceCalculations) {
+                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                }
+                var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
+                var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team1RankSum = team1.Sum(bc => bc.Value);
                 var team2RankSum = team2.Sum(bc => bc.Value);
-                var output = "[aoe2lc.net] Balanced Teams (Rank): Team 1: " + string.Join(", ", team1.Select(p => p.Player.Name + "(" + p.Value + ")")) + " - Team 2: " + string.Join(", ", team2.Select(p => p.Player.Name + "(" + p.Value + ")")) + " - Difference: " + Math.Abs(team1RankSum - team2RankSum);
+                var output = "Balanced Teams (Rank): " + teams + " | Team 1: " + (team1RankSum / (balanceCalculations.Count() / 2)) + " - Team 2: " + (team2RankSum / (balanceCalculations.Count() / 2)) + " | Calculated using Lobby Companion [aoe2lc.net]";
                 LogUtils.Info(output);
                 CopyToClipboard(output);
                 return null;
@@ -105,16 +110,21 @@ namespace Backend.Controllers {
                 if (memberHasPrivateProfile != null) {
                     return memberHasPrivateProfile;
                 }
-                var players = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
+                var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM : p.GameStats.TotalGamesDM
                 });
-                var bestMatch = FindBestMatch(players);
-                var team1 = bestMatch.Take(players.Count() / 2).OrderByDescending(p => p.Value);
-                var team2 = bestMatch.Skip(players.Count() / 2).OrderByDescending(p => p.Value);
+                var bestMatch = FindBestMatch(balanceCalculations).ToList();
+                var teams = "";
+                var players = bestMatch.Select(bc => bc.Player).ToList();
+                foreach (var balanceCalculation in balanceCalculations) {
+                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                }
+                var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
+                var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team1RankSum = team1.Sum(bc => bc.Value);
                 var team2RankSum = team2.Sum(bc => bc.Value);
-                var output = "[aoe2lc.net] Balanced Teams (Total Games): Team 1: " + string.Join(", ", team1.Select(p => p.Player.Name + "(" + p.Value + ")")) + " - Team 2: " + string.Join(", ", team2.Select(p => p.Player.Name + "(" + p.Value + ")")) + " - Difference: " + Math.Abs(team1RankSum - team2RankSum);
+                var output = "Balanced Teams (Total Games): " + teams + " | Team 1: " + (team1RankSum / (balanceCalculations.Count() / 2)) + " - Team 2: " + (team2RankSum / (balanceCalculations.Count() / 2)) + " | Calculated using Lobby Companion [aoe2lc.net]";
                 LogUtils.Info(output);
                 CopyToClipboard(output);
                 return null;
@@ -134,16 +144,21 @@ namespace Backend.Controllers {
                 if (memberHasPrivateProfile != null) {
                     return memberHasPrivateProfile;
                 }
-                var players = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
+                var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = Variables.Lobby.Ranked != 2 ? p.GameStats.WinRatioRM : p.GameStats.WinRatioDM
                 });
-                var bestMatch = FindBestMatch(players);
-                var team1 = bestMatch.Take(players.Count() / 2).OrderByDescending(p => p.Value);
-                var team2 = bestMatch.Skip(players.Count() / 2).OrderByDescending(p => p.Value);
+                var bestMatch = FindBestMatch(balanceCalculations).ToList();
+                var teams = "";
+                var players = bestMatch.Select(bc => bc.Player).ToList();
+                foreach (var balanceCalculation in balanceCalculations) {
+                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                }
+                var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
+                var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team1RankSum = team1.Sum(bc => bc.Value);
                 var team2RankSum = team2.Sum(bc => bc.Value);
-                var output = "[aoe2lc.net] Balanced Teams (Win Ratio): Team 1: " + string.Join(", ", team1.Select(p => p.Player.Name + "(" + p.Value + "%)")) + " - Team 2: " + string.Join(", ", team2.Select(p => p.Player.Name + "(" + p.Value + "%)")) + " - Difference: " + Math.Abs(team1RankSum - team2RankSum) + "%";
+                var output = "Balanced Teams (Win Ratio): " + teams + " | Team 1: " + (team1RankSum / (balanceCalculations.Count() / 2)) + "% - Team 2: " + (team2RankSum / (balanceCalculations.Count() / 2)) + "% | Calculated using Lobby Companion [aoe2lc.net]";
                 LogUtils.Info(output);
                 CopyToClipboard(output);
                 return null;
@@ -156,7 +171,7 @@ namespace Backend.Controllers {
         private string CopyPlayerStats() {
             try {
                 var players = Variables.Lobby.Players.Where(p => p.Profile != null && p.GameStats != null && !(p.Profile.ProfilePrivate && !p.Profile.ProfileDataFetched.HasValue));
-                var output = "[aoe2lc.net] Player Stats (Total Games/Win Ratio/Drop Ratio): " + string.Join(", ", players.Select(p => p.Name + "(" + (Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM + "/" + p.GameStats.WinRatioRM + "%/" + p.GameStats.DropRatioRM + "%" : p.GameStats.TotalGamesDM + "/" + p.GameStats.WinRatioDM + "%/" + p.GameStats.DropRatioDM + "%") + ")"));
+                var output = "[aoe2lc.net] Stats (Total Games/Win Ratio/Drop Ratio): " + string.Join(", ", players.Select(p => p.Name + "(" + (Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM + "/" + p.GameStats.WinRatioRM + "%/" + p.GameStats.DropRatioRM + "%" : p.GameStats.TotalGamesDM + "/" + p.GameStats.WinRatioDM + "%/" + p.GameStats.DropRatioDM + "%") + ")"));
                 LogUtils.Info(output);
                 CopyToClipboard(output);
                 return null;
