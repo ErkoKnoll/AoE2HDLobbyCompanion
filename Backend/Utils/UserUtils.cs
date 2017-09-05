@@ -80,6 +80,9 @@ namespace Backend.Utils {
                                     if (p.GameStats == null) {
                                         CalculateGameStats(p, startedRM, startedDM, winsRM, winsDM, endedRM, endedDM);
                                     }
+                                    if (p.RankRM != 1600 && startedRM == 0 || p.RankDM != 1600 && startedDM == 0) {
+                                        throw new Exception("Stats integrity error");
+                                    }
                                     Variables.PlayerGameStatsCache[p.SteamId] = p.GameStats;
                                     try {
                                         using (IRepository repository = new Repository()) {
@@ -96,18 +99,20 @@ namespace Backend.Utils {
                                             user.ProfileDataFetched = DateTime.UtcNow;
                                             repository.SetModified(user);
                                             repository.SaveChanges();
-                                            var lobbySlot = repository.LobbySlots.GetLobbySlot(p.SteamId, Variables.Lobby.LobbyId).FirstOrDefault();
-                                            if (lobbySlot == null) {
-                                                throw new Exception("Lobby slot not found in database");
+                                            lock (player) {
+                                                var lobbySlot = repository.LobbySlots.GetLobbySlot(p.SteamId, Variables.Lobby.LobbyId).FirstOrDefault();
+                                                if (lobbySlot == null) {
+                                                    throw new Exception("Lobby slot not found in database");
+                                                }
+                                                lobbySlot.GamesStartedRM = startedRM;
+                                                lobbySlot.GamesStartedDM = startedDM;
+                                                lobbySlot.GamesEndedRM = endedRM;
+                                                lobbySlot.GamesEndedDM = endedDM;
+                                                lobbySlot.GamesWonRM = winsRM;
+                                                lobbySlot.GamesWonDM = winsDM;
+                                                repository.SetModified(lobbySlot);
+                                                repository.SaveChanges();
                                             }
-                                            lobbySlot.GamesStartedRM = startedRM;
-                                            lobbySlot.GamesStartedDM = startedDM;
-                                            lobbySlot.GamesEndedRM = endedRM;
-                                            lobbySlot.GamesEndedDM = endedDM;
-                                            lobbySlot.GamesWonRM = winsRM;
-                                            lobbySlot.GamesWonDM = winsDM;
-                                            repository.SetModified(lobbySlot);
-                                            repository.SaveChanges();
                                         }
                                     } catch (Exception e) {
                                         LogUtils.Error(string.Format("Failed to persist game stats retrieved from Steam for player: {0}({1})", p?.Name, p?.SteamId), e);
@@ -252,13 +257,15 @@ namespace Backend.Utils {
                     user.ProfilePrivate = profilePrivate;
                     repository.SetModified(user);
                     repository.SaveChanges();
-                    var lobbySlot = repository.LobbySlots.GetLobbySlot(player.SteamId, Variables.Lobby.LobbyId).FirstOrDefault();
-                    if (lobbySlot == null) {
-                        throw new Exception("Lobby slot not found in database");
+                    lock (player) {
+                        var lobbySlot = repository.LobbySlots.GetLobbySlot(player.SteamId, Variables.Lobby.LobbyId).FirstOrDefault();
+                        if (lobbySlot == null) {
+                            throw new Exception("Lobby slot not found in database");
+                        }
+                        lobbySlot.Location = location;
+                        repository.SetModified(lobbySlot);
+                        repository.SaveChanges();
                     }
-                    lobbySlot.Location = location;
-                    repository.SetModified(lobbySlot);
-                    repository.SaveChanges();
                 }
             } catch (Exception e) {
                 LogUtils.Error(string.Format("Error while persisting profile retrieved from Steam for player: {0}({1})", player?.Name, player?.SteamId), e);
