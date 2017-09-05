@@ -15,9 +15,6 @@ export class ConfigurationService {
             this.configuration = configuration;
             done(true);
         }, error => {
-            //this.configuration = {
-            //    clientVersion: 0
-            //};
             console.log("Error while reading configuration", error);
             done(false);
         });

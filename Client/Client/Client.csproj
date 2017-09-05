@@ -40,6 +40,7 @@
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
     <Content Include="src\app\reputations\save-reputation-dialog\save-reputation-dialog.component.html" />
     <Content Include="src\app\settings\general-page\general-page.component.html" />
+    <Content Include="src\app\settings\overlay-page\overlay-page.component.html" />
     <Content Include="src\app\settings\settings-page\settings-page.component.html" />
     <Content Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.html" />
     <Content Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.html" />
@@ -101,6 +102,8 @@
     <TypeScriptCompile Include="src\app\settings\general-page\general-page.component.ts" />
     <TypeScriptCompile Include="src\app\settings\general-page\index.ts" />
     <TypeScriptCompile Include="src\app\settings\index.ts" />
+    <TypeScriptCompile Include="src\app\settings\overlay-page\index.ts" />
+    <TypeScriptCompile Include="src\app\settings\overlay-page\overlay-page.component.ts" />
     <TypeScriptCompile Include="src\app\settings\settings-page\index.ts" />
     <TypeScriptCompile Include="src\app\settings\settings-page\settings-page.component.ts" />
     <TypeScriptCompile Include="src\app\settings\settings.module.ts" />

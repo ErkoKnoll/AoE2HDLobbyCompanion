@@ -11,7 +11,7 @@
         Visibility="Hidden"
         Top="0"
         Left="0"
-        Title="MainWindow" Height="200" Width="715.96">
+        Title="MainWindow" Height="200" Width="716">
     <Window.Background>
         <SolidColorBrush Opacity="0.5" Color="Black" />
     </Window.Background>

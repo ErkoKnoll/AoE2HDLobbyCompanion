@@ -35,6 +35,10 @@ export interface Configuration {
     tosAccepted: boolean;
     skipSessionHelp: boolean;
     cmdPath: string;
+    overlayActiveTopPosition: number;
+    overlayActiveLeftPosition: number;
+    overlayInactiveTopPosition: number;
+    overlayInactiveLeftPosition: number;
 }
 
 export interface BasePlayer {

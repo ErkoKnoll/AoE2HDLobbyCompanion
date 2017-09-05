@@ -4,12 +4,16 @@ import { Configuration } from '../../app.models';
 import { ConfigurationService, AppService, TrackingService } from '../../shared';
 
 @Component({
-    selector: 'general-page',
-    templateUrl: 'general-page.component.html'
+    selector: 'overlay-page',
+    templateUrl: 'overlay-page.component.html'
 })
-export class GeneralPageComponent implements OnInit {
+export class OverlayPageComponent implements OnInit {
     public loading = false;
     public conf: Configuration;
+    public overlayActiveTopPosition: number;
+    public overlayActiveLeftPosition: number;
+    public overlayInactiveTopPosition: number;
+    public overlayInactiveLeftPosition: number;
 
     constructor(private configurationService: ConfigurationService, private appService: AppService, private trackingService: TrackingService) {
     }
@@ -32,7 +36,7 @@ export class GeneralPageComponent implements OnInit {
         this.configurationService.saveConfiguration().subscribe(() => {
             this.appService.toastSuccess("Settings saved.");
             this.readConfiguration();
-            this.trackingService.sendEvent("Settings", "GeneralSettingsSaved");
+            this.trackingService.sendEvent("Settings", "OverlaySettingsSaved");
         }, error => {
             this.loading = false;
             console.error("Failed to save settings", error);

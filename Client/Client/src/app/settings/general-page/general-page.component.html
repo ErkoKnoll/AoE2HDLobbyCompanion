@@ -1,13 +1,10 @@
 ﻿<center-spinner *ngIf="loading"></center-spinner>
 <div *ngIf="!loading" style="padding: 10px;">
-    <md-slide-toggle style="display: block;" color="primary" [checked]="conf.showOverlay" [(ngModel)]="conf.showOverlay">Show overlay</md-slide-toggle>
-    <md-slide-toggle style="display: block; margin-top: 10px;" color="primary" [checked]="conf.showOverlayWhenFocused" [(ngModel)]="conf.showOverlayWhenFocused">Show overlay only when the game is focused</md-slide-toggle>
-    <md-slide-toggle style="display: block; margin-top: 10px;" color="primary" [checked]="conf.showOverlayWhenInLobby" [(ngModel)]="conf.showOverlayWhenInLobby">Show overlay only when you are in lobby (<strong>you must start the session before joining or hosting a lobby, otherwhise overlay won't be shown</strong>)</md-slide-toggle>
-    <md-input-container style="width: 100%; margin-top: 20px;">
-        <input mdInput placeholder="Steam API Key" [value]="conf.steamApiKey" [(ngModel)]="conf.steamApiKey" />
+    <md-input-container style="width: 100%;">
+        <input mdInput placeholder="Steam API Key" [value]="conf.steamApiKey" [(ngModel)]="conf.steamApiKey"/>
     </md-input-container>
     <md-input-container style="width: 100%;">
-        <input mdInput placeholder="CMD Path" [value]="conf.cmdPath" [(ngModel)]="conf.cmdPath" />
+        <input mdInput placeholder="CMD Path" [value]="conf.cmdPath" [(ngModel)]="conf.cmdPath"/>
     </md-input-container>
     <div style="text-align: center;">
         <button md-raised-button class="primaryButton" (click)="save()">Save</button>

@@ -14,5 +14,9 @@ namespace Commons.Models {
         public bool TosAccepted { get; set; }
         public bool SkipSessionHelp { get; set; }
         public string CmdPath { get; set; }
+        public int OverlayActiveTopPosition { get; set; }
+        public int OverlayActiveLeftPosition { get; set; }
+        public int OverlayInactiveTopPosition { get; set; }
+        public int OverlayInactiveLeftPosition { get; set; }
     }
 }
