@@ -15,6 +15,7 @@ namespace Backend.Utils {
                 if (hasEvenNumberOfPlayers != null) {
                     return hasEvenNumberOfPlayers;
                 }
+                Variables.Teams = new Dictionary<ulong, int>();
                 var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = p.Rank
@@ -23,7 +24,9 @@ namespace Backend.Utils {
                 var teams = "";
                 var players = bestMatch.Select(bc => bc.Player).ToList();
                 foreach (var balanceCalculation in balanceCalculations) {
-                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                    var team = (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? 1 : 2;
+                    Variables.Teams[balanceCalculation.Player.SteamId] = team;
+                    teams += team.ToString();
                 }
                 var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
@@ -49,6 +52,7 @@ namespace Backend.Utils {
                 if (memberHasPrivateProfile != null) {
                     return memberHasPrivateProfile;
                 }
+                Variables.Teams = new Dictionary<ulong, int>();
                 var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM : p.GameStats.TotalGamesDM
@@ -57,7 +61,9 @@ namespace Backend.Utils {
                 var teams = "";
                 var players = bestMatch.Select(bc => bc.Player).ToList();
                 foreach (var balanceCalculation in balanceCalculations) {
-                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                    var team = (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? 1 : 2;
+                    Variables.Teams[balanceCalculation.Player.SteamId] = team;
+                    teams += team.ToString();
                 }
                 var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
@@ -83,6 +89,7 @@ namespace Backend.Utils {
                 if (memberHasPrivateProfile != null) {
                     return memberHasPrivateProfile;
                 }
+                Variables.Teams = new Dictionary<ulong, int>();
                 var balanceCalculations = Variables.Lobby.Players.Where(p => p.SteamId > 0).Select(p => new BalanceCalculation {
                     Player = p,
                     Value = Variables.Lobby.Ranked != 2 ? p.GameStats.WinRatioRM : p.GameStats.WinRatioDM
@@ -91,7 +98,9 @@ namespace Backend.Utils {
                 var teams = "";
                 var players = bestMatch.Select(bc => bc.Player).ToList();
                 foreach (var balanceCalculation in balanceCalculations) {
-                    teams += (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? "1" : "2";
+                    var team = (players.IndexOf(balanceCalculation.Player) < balanceCalculations.Count() / 2) ? 1 : 2;
+                    Variables.Teams[balanceCalculation.Player.SteamId] = team;
+                    teams += team.ToString();
                 }
                 var team1 = bestMatch.Take(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);
                 var team2 = bestMatch.Skip(balanceCalculations.Count() / 2).OrderByDescending(p => p.Value);

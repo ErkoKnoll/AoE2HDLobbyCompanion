@@ -22,7 +22,7 @@ namespace Backend.Jobs {
                         if (Variables.OverlayWindow != null) {
                             lock (Variables.LobbyPlayers) {
                                 LobbyUtils.CalculateLobbyPlayerFieldColors();
-                                Variables.OverlayWindow.UpdatePlayers(Variables.LobbyPlayers, Variables.Lobby.Ranked == 2);
+                                Variables.OverlayWindow.UpdatePlayers(Variables.LobbyPlayers, Variables.Teams, Variables.Lobby.Ranked == 2);
                             }
                         }
                     } catch (Exception e) {

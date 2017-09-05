@@ -204,6 +204,7 @@ namespace Backend.Controllers {
 
         private void CalculateBalancedTeamsRank() {
             if (Variables.LobbySession) {
+                Variables.OverlayWindow.ShowMessage("Calculating balanced teams...", true);
                 var message = BalancingUtils.CalculateBalancedTeamsBasedOnRank();
                 if (message == null) {
                     Variables.OverlayWindow.ShowMessage("Balanced teams were copied to your clipboard, you can paste them to lobby chat.", true);
@@ -217,6 +218,7 @@ namespace Backend.Controllers {
 
         private void CalculateBalancedTeamsTotalGames() {
             if (Variables.LobbySession) {
+                Variables.OverlayWindow.ShowMessage("Calculating balanced teams...", true);
                 var message = BalancingUtils.CalculateBalancedTeamsBasedOnTotalGames();
                 if (message == null) {
                     Variables.OverlayWindow.ShowMessage("Balanced teams were copied to your clipboard, you can paste them to lobby chat.", true);
@@ -230,6 +232,7 @@ namespace Backend.Controllers {
 
         private void CalculateBalancedTeamsWinRatio() {
             if (Variables.LobbySession) {
+                Variables.OverlayWindow.ShowMessage("Calculating balanced teams...", true);
                 var message = BalancingUtils.CalculateBalancedTeamsBasedOnWinRatio();
                 if (message == null) {
                     Variables.OverlayWindow.ShowMessage("Balanced teams were copied to your clipboard, you can paste them to lobby chat.", true);

@@ -24,6 +24,7 @@ namespace Backend.Global {
         public static Lobby Lobby { get; set; }
         public static List<Player> LobbyMembers = new List<Player>();
         public static List<Player> LobbyPlayers = new List<Player>();
+        public static Dictionary<ulong, int> Teams = new Dictionary<ulong, int>();
         public static Dictionary<ulong, PlayerGameStats> PlayerGameStatsCache = new Dictionary<ulong, PlayerGameStats>();
         public static Dictionary<ulong, PlayerProfile> PlayerProfilesCache = new Dictionary<ulong, PlayerProfile>();
         public static Dictionary<ulong, PlayerReputationStats> PlayerReputationStatsCache = new Dictionary<ulong, PlayerReputationStats>();

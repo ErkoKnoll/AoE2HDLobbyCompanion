@@ -111,7 +111,7 @@ namespace Overlay {
             UpdateVisibility();
         }
 
-        public void UpdatePlayers(List<Player> players, bool dm) {
+        public void UpdatePlayers(List<Player> players, Dictionary<ulong, int> teams, bool dm) {
             try {
                 if (players == null) {
                     players = new List<Player>();
@@ -127,6 +127,7 @@ namespace Overlay {
                             var gamesLabel = ((Label)GridContainer.FindName("Label" + index + "PlayerGames"));
                             var badRepLabel = ((Label)GridContainer.FindName("Label" + index + "PlayerBadRep"));
                             var goodRepLabel = ((Label)GridContainer.FindName("Label" + index + "PlayerGoodRep"));
+                            var teamLabel = ((Label)GridContainer.FindName("Label" + index + "PlayerTeam"));
                             var rank = "";
                             ((Label)GridContainer.FindName("Label" + index + "PlayerName")).Content = player.Name;
                             if (player.Rank > 0) {
@@ -165,6 +166,15 @@ namespace Overlay {
                                 locationLabel.Content = player.Profile.Location;
                             } else {
                                 locationLabel.Content = "";
+                            }
+                            if (teams.TryGetValue(player.SteamId, out int value)) {
+                                if (value > 0) {
+                                    teamLabel.Content = value;
+                                } else {
+                                    teamLabel.Content = "";
+                                }
+                            } else {
+                                teamLabel.Content = "";
                             }
                             if (player.ReputationStats != null) {
                                 gamesLabel.Content = player.ReputationStats.Games;
