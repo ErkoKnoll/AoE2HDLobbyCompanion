@@ -50,6 +50,7 @@
     <Content Include="src\assets\icomoon\style.css" />
     <Content Include="src\assets\img\ElevatedPermissions.png" />
     <Content Include="src\assets\img\NetHook2.png" />
+    <Content Include="src\assets\img\OverlayPositionsExample.png" />
     <Content Include="src\assets\material-icons\material-icons.css" />
     <Content Include="src\assets\material-icons\MaterialIcons-Regular.svg" />
     <Content Include="src\favicon.ico" />

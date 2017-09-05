@@ -76,6 +76,7 @@ namespace Overlay {
                 } else if (Visibility == Visibility.Hidden && show == true) {
                     Application.Current.Dispatcher.Invoke(() => Show());
                 }
+                UpdatePosition();
             } catch (Exception e) {
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 try {
@@ -180,6 +181,21 @@ namespace Overlay {
 
         public void HideMessage() {
             Application.Current.Dispatcher.Invoke(() => Height = 200);
+        }
+
+        private void UpdatePosition() {
+            var top = this._config.OverlayInactiveTopPosition;
+            var left = this._config.OverlayInactiveLeftPosition;
+            if (_processWindow != null && _processWindow.IsActivated) {
+                top = this._config.OverlayActiveTopPosition;
+                left = this._config.OverlayActiveLeftPosition;
+            }
+            if (Top != top || Left != left) {
+                Application.Current.Dispatcher.Invoke(() => {
+                    Top = top;
+                    Left = left;
+                });
+            }
         }
 
         private void UpdateFieldColor(Label label, Player player, string fieldName) {

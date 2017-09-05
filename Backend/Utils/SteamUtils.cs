@@ -50,7 +50,11 @@ namespace Backend.Utils {
 
         public static string GetSteamDirectory() {
 #if DEBUG
-            return "C:\\Steam";
+            if (Variables.ReplayMode) {
+                return "C:\\Steam";
+            } else {
+                return (string)Registry.GetValue(RegistryPathToSteam, "InstallPath", null);
+            }
 #else
             return (string)Registry.GetValue(RegistryPathToSteam, "InstallPath", null);
 #endif

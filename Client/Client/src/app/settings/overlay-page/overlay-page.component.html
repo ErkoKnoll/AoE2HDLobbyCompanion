@@ -7,20 +7,34 @@
     <div style="display: inline-block; width: 200px;">
         <div style="font-size: 16px; margin-bottom: 5px;">When game is active</div>
         <md-input-container style="display: inline-block; width: 50px;">
-            <input mdInput="number" placeholder="Top" [value]="overlayActiveTopPosition" [(ngModel)]="overlayActiveTopPosition">
+            <input mdInput="number" placeholder="Left" [value]="overlayActiveLeftPosition" [(ngModel)]="overlayActiveLeftPosition">
         </md-input-container>
         <md-input-container style="display: inline-block; width: 50px;">
-            <input mdInput="number" placeholder="Left" [value]="overlayActiveLeftPosition" [(ngModel)]="overlayActiveLeftPosition">
+            <input mdInput="number" placeholder="Top" [value]="overlayActiveTopPosition" [(ngModel)]="overlayActiveTopPosition">
         </md-input-container>
     </div>
     <div style="display: inline-block; width: 200px;">
         <div style="font-size: 16px; margin-bottom: 5px;">When game is inactive</div>
         <md-input-container style="display: inline-block; width: 50px;">
-            <input mdInput="number" placeholder="Top" [value]="overlayInactiveTopPosition" [(ngModel)]="overlayInactiveTopPosition">
-        </md-input-container>
-        <md-input-container style="display: inline-block; width: 50px;">
             <input mdInput="number" placeholder="Left" [value]="overlayInactiveLeftPosition" [(ngModel)]="overlayInactiveLeftPosition">
         </md-input-container>
+        <md-input-container style="display: inline-block; width: 50px;">
+            <input mdInput="number" placeholder="Top" [value]="overlayInactiveTopPosition" [(ngModel)]="overlayInactiveTopPosition">
+        </md-input-container>
+    </div>
+    <div *ngIf="!showOverlayPositioningHelp" class="clickable" style="font-size: 16px;" (click)="toggleOverlayPositioningHelp()">Show overlay positioning help</div>
+    <div *ngIf="showOverlayPositioningHelp" class="clickable" style="font-size: 16px;" (click)="toggleOverlayPositioningHelp()">Hide overlay positioning help</div>
+    <div *ngIf="showOverlayPositioningHelp">
+        <div>
+            Position coordinates are measured in pixels starting from top-left corner of your primary monitor. Active position coordinates are used when the game is active and inactive coordinates when the game is alt-tabbed. Use the same numbers for both fields if you don't want to move the overlay when the game is alt-tabbed. To have the overlay positioned in secondary monitor right to your primary monitor increase the width, to move the overlay to left monitor relative to your primary monitor decrease the width to negative value. Lets have a look at the following example:
+        </div>
+        <img src="../../../assets/img/OverlayPositionsExample.png" alt="Overlay Positions Example"/>
+        <div>Overlay width is always 716 pixels and height normally is 200 pixels but may be extended up to 240 pixels to show additional message. Given that all 3 monitors have the resolution of 1920 x 1080 pixels then to position overlays like shown in the image the coordinates would be following.</div>
+        <ul>
+            <li>1. Left: 0, Top: 0</li>
+            <li>2. Left: 3124 (2 x 1920 - 716), Top: 840 (1080 - 240)</li>
+            <li>3. Left: -1920 (0 - 1920), Top: 840 (1080 - 240)</li>
+        </ul>
     </div>
     <div style="text-align: center;">
         <button md-raised-button class="primaryButton" (click)="save()">Save</button>
