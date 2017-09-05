@@ -49,7 +49,7 @@ export class MoreOptionsDialogComponent {
                 this.appService.toastError(response.text());
                 this.loading = false;
             } else {
-                this.appService.toastSuccess("Balanced teams were copied to your clipboard, paste them to lobby chat.");
+                this.appService.toastSuccess("Balanced teams were copied to your clipboard, you can paste them to lobby chat.");
                 this.dialog.close();
             }
         }, error => {

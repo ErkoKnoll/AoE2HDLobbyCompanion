@@ -106,7 +106,9 @@
         <Label x:Name="Label8PlayerWins" Content="" HorizontalAlignment="Left" Margin="621,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
         <Label x:Name="Label8PlayerDrops" Content="" HorizontalAlignment="Left" Margin="665,178,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Padding="0,0,0,0"/>
 
-        <Label Content="Overlay will close automatically in 1 minute if the game started. If you want to close the overlay right now" HorizontalAlignment="Left" Margin="4,203,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="696" Padding="0,0,0,0"/>
-        <Label Content="or left the lobby then act in the Lobby Companion UI or join a new lobby." HorizontalAlignment="Left" Margin="4,220,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Padding="0,0,0,0"/>
+        <TextBlock x:Name="OverlayMessage" HorizontalAlignment="Left" Margin="4,203,0,0" TextWrapping="Wrap" FontSize="15" Foreground="White" VerticalAlignment="Top" Width="696" Height="40"></TextBlock>
+
+        <!--<Label Content="Overlay will close automatically in 1 minute if the game started. If you want to close the overlay right now" HorizontalAlignment="Left" Margin="4,203,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="696" Padding="0,0,0,0" Height="37"/>-->
+        <!--<Label Content="or left the lobby then act in the Lobby Companion UI or join a new lobby." HorizontalAlignment="Left" Margin="4,220,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Padding="0,0,0,0"/>-->
     </Grid>
 </Window>

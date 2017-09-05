@@ -36,11 +36,30 @@ namespace Overlay {
         private Configuration _config;
         private bool _inLobby = false;
         private bool _sessionRunning = false;
+        private HotKey _hotKeyCopyPlayerStats;
+        private HotKey _hotKeyCalculateTeamsRank;
+        private HotKey _hotKeyCalculateTeamsTotalGames;
+        private HotKey _hotKeyCalculateTeamsWinRatio;
+        private Action _copyPlayerStats;
+        private Action _calculateTeamsRank;
+        private Action _calculateTeamsTotalGames;
+        private Action _calculateTeamsWinRatio;
 
         public MainWindow() {
             InitializeComponent();
             StartVisibilityTimer();
             StartProcessTimer();
+            _hotKeyCopyPlayerStats = new HotKey(Key.D1, KeyModifier.Ctrl, OnHotKeyCopyPlayerStats);
+            _hotKeyCalculateTeamsRank = new HotKey(Key.D2, KeyModifier.Ctrl, OnHotKeyCalculateTeamsRank);
+            _hotKeyCalculateTeamsTotalGames = new HotKey(Key.D3, KeyModifier.Ctrl, OnHotKeyCalculateTeamsTotalGames);
+            _hotKeyCalculateTeamsWinRatio = new HotKey(Key.D4, KeyModifier.Ctrl, OnHotKeyCalculateTeamsWinRatio);
+        }
+
+        public void RegisterHotKeyHooks(Action copyPlayerStats, Action calculateTeamsRank, Action calculateTeamsTotalGames, Action calculateTeamsWinRatio) {
+            _copyPlayerStats = copyPlayerStats;
+            _calculateTeamsRank = calculateTeamsRank;
+            _calculateTeamsTotalGames = calculateTeamsTotalGames;
+            _calculateTeamsWinRatio = calculateTeamsWinRatio;
         }
 
         public void UpdateConfiguration(Configuration configuration, bool sessionRunning) {
@@ -175,8 +194,11 @@ namespace Overlay {
             }
         }
 
-        public void ShowMessage() {
-            Application.Current.Dispatcher.Invoke(() => Height = 240);
+        public void ShowMessage(string message, bool oneLiner = false) {
+            Application.Current.Dispatcher.Invoke(() => {
+                OverlayMessage.Text = message;
+                Height = oneLiner ? 225 : 245;
+            });
         }
 
         public void HideMessage() {
@@ -266,6 +288,22 @@ namespace Overlay {
             var hwnd = new WindowInteropHelper(this).Handle;
             var extendedStyle = Native.GetWindowLongPtr(hwnd, GwlExstyle);
             Native.SetWindowLongPtr(hwnd, GwlExstyle, new IntPtr(extendedStyle.ToInt32() | WsExTransparent));
+        }
+
+        private void OnHotKeyCopyPlayerStats(HotKey hotKey) {
+            _copyPlayerStats?.Invoke();
+        }
+
+        private void OnHotKeyCalculateTeamsRank(HotKey hotKey) {
+            _calculateTeamsRank?.Invoke();
+        }
+
+        private void OnHotKeyCalculateTeamsTotalGames(HotKey hotKey) {
+            _calculateTeamsTotalGames?.Invoke();
+        }
+
+        private void OnHotKeyCalculateTeamsWinRatio(HotKey hotKey) {
+            _calculateTeamsWinRatio?.Invoke();
         }
     }
 }

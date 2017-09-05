@@ -12,7 +12,6 @@ using Backend.Utils;
 using Backend.Global;
 using Backend.Jobs;
 using System.Threading;
-using System.Windows;
 using Overlay;
 using Database;
 using Backend.Filters;

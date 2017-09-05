@@ -169,7 +169,7 @@ namespace Backend.Jobs {
 
         private void ProcessLobbyLeave() {
             if (Variables.OverlayWindow != null) {
-                Variables.OverlayWindow.ShowMessage();
+                Variables.OverlayWindow.ShowMessage("Overlay will close automatically in 1 minute if the game started. If you want to close the overlay right now or left the lobby then act in the Lobby Companion UI or join a new lobby.");
             }
         }
 
