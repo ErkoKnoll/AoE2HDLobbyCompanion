@@ -76,8 +76,15 @@
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
         <md-row *cdkRowDef="let player; columns: displayedColumns;"></md-row>
     </md-table>
-    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 18px; margin-top: 20px;"><span class="clickable" (click)="stopSession()">Stop the session</span> when you are no longer going to play. <span class="clickable" (click)="startLobby()">Start the lobby manually</span> when the game has started. <span class="clickable" (click)="openMoreOptions()">More options</span>.</div>
-    <div *ngIf="lobbyStarted" style="font-size: 18px; margin-top: 10px;">
+    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 18px; margin-top: 20px;"><span class="clickable" (click)="stopSession()">Stop the session</span> when you are no longer going to play. <span class="clickable" (click)="startLobby()">Start the lobby manually</span> when the game has started.</div>
+    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 14px; margin-top: 5px;">
+        <span class="clickable" (click)="copyPlayerStats()">Copy player stats </span><span style="font-size: 12px;">(CTRL + 1)</span>
+        <span style="margin-left: 20px;">Calculate balanced teams based on player:</span>
+        <span class="clickable" (click)="calculateBalancedTeamsBasedOnRank()">Rank </span><span style="font-size: 12px;">(CTRL + 2), </span>
+        <span class="clickable" (click)="calculateBalancedTeamsBasedOnTotalGames()">Total Games </span><span style="font-size: 12px;">(CTRL + 3), </span>
+        <span class="clickable" (click)="calculateBalancedTeamsBasedOnWinRatio()">Win Ratio </span><span style="font-size: 12px;">(CTRL + 4)</span>
+    </div>
+    <div *ngIf="lobbyStarted" style="font-size: 18px; margin-top: 17px;">
         <table style="margin-left: auto; margin-right: auto;">
             <tr>
                 <td><span class="clickable" (click)="sealLobby()">Seal the lobby</span> when you are finished and have assigned reputations using</td>

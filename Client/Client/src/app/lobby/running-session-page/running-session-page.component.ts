@@ -136,6 +136,44 @@ export class RunningSessionPageComponent implements OnInit, OnDestroy {
         });
     }
 
+    public calculateBalancedTeamsBasedOnRank() {
+        this.calculateBalancedTeams(Commands.OUT.CALCULATE_BALANCED_TEAMS_BASED_ON_RANK);
+    }
+
+    public calculateBalancedTeamsBasedOnTotalGames() {
+        this.calculateBalancedTeams(Commands.OUT.CALCULATE_BALANCED_TEAMS_BASED_ON_TOTAL_GAMES);
+    }
+
+    public calculateBalancedTeamsBasedOnWinRatio() {
+        this.calculateBalancedTeams(Commands.OUT.CALCULATE_BALANCED_TEAMS_BASED_ON_WIN_RATIO);
+    }
+
+    public copyPlayerStats() {
+        this.commandService.sendCommandAndReadRawResponse(Commands.OUT.COPY_PLAYER_STATS).subscribe(response => {
+            if (response.text()) {
+                this.appService.toastError(response.text());
+            } else {
+                this.appService.toastSuccess("Player stats were copied to your clipboard, you can paste them to lobby chat.");
+            }
+        }, error => {
+            console.log("Failed to copy player stats", error);
+            this.appService.toastError("Failed to copy player stats.");
+        });
+    }
+
+    private calculateBalancedTeams(command: Commands.OUT) {
+        this.commandService.sendCommandAndReadRawResponse(command).subscribe(response => {
+            if (response.text()) {
+                this.appService.toastError(response.text());
+            } else {
+                this.appService.toastSuccess("Balanced teams were copied to your clipboard, you can paste them to lobby chat.");
+            }
+        }, error => {
+            console.log("Failed to calculate balanced teams", error);
+            this.appService.toastError("Failed to calculate balanced teams.");
+        });
+    }
+
     public ngOnDestroy() {
         if (this.lobbyFetcherInterval) {
             clearInterval(this.lobbyFetcherInterval);

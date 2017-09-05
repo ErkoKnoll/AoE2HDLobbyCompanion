@@ -16,9 +16,9 @@ function createWindow() {
     let size = electronScreen.getPrimaryDisplay().workAreaSize;
     win = new BrowserWindow({
         x: size.width / 2 - 1020 / 2,
-        y: size.height / 2 - 625 / 2,
+        y: size.height / 2 - 640 / 2,
         width: 1020,
-        height: 625
+        height: 640
     });
     win.loadURL('file://' + __dirname + '/index.html');
 }
