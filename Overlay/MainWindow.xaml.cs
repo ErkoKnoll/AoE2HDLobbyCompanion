@@ -49,10 +49,10 @@ namespace Overlay {
             InitializeComponent();
             StartVisibilityTimer();
             StartProcessTimer();
-            _hotKeyCopyPlayerStats = new HotKey(Key.D1, KeyModifier.Ctrl, OnHotKeyCopyPlayerStats);
-            _hotKeyCalculateTeamsRank = new HotKey(Key.D2, KeyModifier.Ctrl, OnHotKeyCalculateTeamsRank);
-            _hotKeyCalculateTeamsTotalGames = new HotKey(Key.D3, KeyModifier.Ctrl, OnHotKeyCalculateTeamsTotalGames);
-            _hotKeyCalculateTeamsWinRatio = new HotKey(Key.D4, KeyModifier.Ctrl, OnHotKeyCalculateTeamsWinRatio);
+            _hotKeyCopyPlayerStats = new HotKey(Key.D1, KeyModifier.Ctrl | KeyModifier.Alt, OnHotKeyCopyPlayerStats);
+            _hotKeyCalculateTeamsRank = new HotKey(Key.D2, KeyModifier.Ctrl | KeyModifier.Alt, OnHotKeyCalculateTeamsRank);
+            _hotKeyCalculateTeamsTotalGames = new HotKey(Key.D3, KeyModifier.Ctrl | KeyModifier.Alt, OnHotKeyCalculateTeamsTotalGames);
+            _hotKeyCalculateTeamsWinRatio = new HotKey(Key.D4, KeyModifier.Ctrl | KeyModifier.Alt, OnHotKeyCalculateTeamsWinRatio);
         }
 
         public void RegisterHotKeyHooks(Action copyPlayerStats, Action calculateTeamsRank, Action calculateTeamsTotalGames, Action calculateTeamsWinRatio) {
