@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { shell } from 'electron';
 
 import { Configuration } from '../../app.models';
 import { ConfigurationService, AppService, TrackingService } from '../../shared';
@@ -38,5 +39,10 @@ export class GeneralPageComponent implements OnInit {
             console.error("Failed to save settings", error);
             this.appService.toastError("Failed to save settings, check the logs.");
         });
+    }
+
+    public openApiKey() {
+        shell.openExternal("https://steamcommunity.com/dev/apikey");
+        this.trackingService.sendEvent("Settings", "ApiLinkOpened");
     }
 }

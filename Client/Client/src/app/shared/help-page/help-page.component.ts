@@ -1,14 +1,15 @@
-﻿import { Component, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { shell } from 'electron';
 
 import { TrackingService } from '../../shared';
 
 @Component({
-    selector: 'session-help-page',
-    templateUrl: 'session-help-page.component.html'
+    selector: 'help-page',
+    templateUrl: 'help-page.component.html'
 })
-export class SessionHelpPageComponent {
+export class HelpPageComponent {
     @Output() proceed = new EventEmitter<boolean>();
+    @Input() showControls;
     public skipNextTime = false;
 
     constructor(private trackingService: TrackingService) {
@@ -16,7 +17,7 @@ export class SessionHelpPageComponent {
 
     public openNethook() {
         shell.openExternal("https://github.com/SteamRE/SteamKit/tree/master/Resources/NetHook2");
-        this.trackingService.sendEvent("Lobby", "NetHookLinkOpened");
+        this.trackingService.sendEvent("HelpPage", "NetHookLinkOpened");
     }
 
     public proceedSubmit() {

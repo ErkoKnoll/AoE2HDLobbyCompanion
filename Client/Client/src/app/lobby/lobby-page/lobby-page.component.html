@@ -1,4 +1,4 @@
 ﻿<center-spinner *ngIf="lobbyState == 0"></center-spinner>
 <initial-page *ngIf="lobbyState == 1" (sessionStart)="sessionStart()"></initial-page>
 <running-session-page *ngIf="lobbyState == 2" [lobbyId]="lobbyId" (sessionStop)="sessionStop()" (lobbySealed)="lobbySealed()"></running-session-page>
-<session-help-page *ngIf="lobbyState == 3" (proceed)="proceedHelp($event)"></session-help-page>
+<help-page *ngIf="lobbyState == 3" [showControls]="true" (proceed)="proceedHelp($event)"></help-page>

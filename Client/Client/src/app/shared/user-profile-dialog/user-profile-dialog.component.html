@@ -2,6 +2,9 @@
 <md-dialog-content style="margin-top: -10px;">
     <center-spinner *ngIf="!profile"></center-spinner>
     <div *ngIf="profile">
+        <div *ngIf="apiKeyMissing" style="background-color: darkorange; color: white; padding: 5px; font-size: 15px;">
+            Game Stats are not fetched because Steam API Key is missing. Go to Settings and then to General tab to insert Steam API key.
+        </div>
         <div *ngIf="profile.profilePrivate" style="background-color: darkorange; color: white; padding: 5px; font-size: 15px;">
             <span *ngIf="!profile.profileDataFetched">User profile is private. Game stats are not available.</span>
             <span *ngIf="profile.profileDataFetched">User profile is private. Game stats are not up to date. Last retrieval date: {{profile.profileDataFetched}}.</span>

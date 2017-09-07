@@ -34,7 +34,6 @@
     <Content Include="src\app\lobby\initial-page\initial-page.component.html" />
     <Content Include="src\app\lobby\more-options-dialog\more-options-dialog.component.html" />
     <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
-    <Content Include="src\app\lobby\session-help-page\session-help-page.component.html" />
     <Content Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.html" />
     <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.html" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
@@ -44,12 +43,12 @@
     <Content Include="src\app\settings\settings-page\settings-page.component.html" />
     <Content Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.html" />
     <Content Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.html" />
+    <Content Include="src\app\shared\help-page\help-page.component.html" />
     <Content Include="src\app\shared\navbar\navbar.component.html" />
     <Content Include="src\app\shared\update-available-dialog\update-available-dialog.component.html" />
     <Content Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.html" />
     <Content Include="src\assets\icomoon\style.css" />
     <Content Include="src\assets\img\ElevatedPermissions.png" />
-    <Content Include="src\assets\img\NetHook2.png" />
     <Content Include="src\assets\img\OverlayPositionsExample.png" />
     <Content Include="src\assets\material-icons\material-icons.css" />
     <Content Include="src\assets\material-icons\MaterialIcons-Regular.svg" />
@@ -85,8 +84,6 @@
     <TypeScriptCompile Include="src\app\lobby\more-options-dialog\more-options-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\lobby\running-session-page\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\running-session-page\running-session-page.component.ts" />
-    <TypeScriptCompile Include="src\app\lobby\session-help-page\index.ts" />
-    <TypeScriptCompile Include="src\app\lobby\session-help-page\session-help-page.component.ts" />
     <TypeScriptCompile Include="src\app\lobby\shared\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\shared\lobby.models.ts" />
     <TypeScriptCompile Include="src\app\lobby\shared\lobby.service.ts" />
@@ -120,6 +117,9 @@
     <TypeScriptCompile Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\shared\confirmation-dialog\confirmation-dialog.module.ts" />
     <TypeScriptCompile Include="src\app\shared\confirmation-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\help-page\help-page.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\help-page\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\help-page\help-page.component.ts" />
     <TypeScriptCompile Include="src\app\shared\http.service.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\index.ts" />

@@ -1,11 +1,12 @@
 ﻿<center-spinner *ngIf="loading"></center-spinner>
 <div *ngIf="!loading" style="padding: 10px;">
     <md-input-container style="width: 100%;">
-        <input mdInput placeholder="Steam API Key" [value]="conf.steamApiKey" [(ngModel)]="conf.steamApiKey"/>
+        <input mdInput placeholder="CMD Path" [value]="conf.cmdPath" [(ngModel)]="conf.cmdPath" />
     </md-input-container>
     <md-input-container style="width: 100%;">
-        <input mdInput placeholder="CMD Path" [value]="conf.cmdPath" [(ngModel)]="conf.cmdPath"/>
+        <input mdInput placeholder="Steam API Key" [value]="conf.steamApiKey" [(ngModel)]="conf.steamApiKey"/>
     </md-input-container>
+    <div><span class="clickable" (click)="openApiKey()">Click here</span> to get Steam API Key.</div>
     <div style="text-align: center;">
         <button md-raised-button class="primaryButton" (click)="save()">Save</button>
     </div>

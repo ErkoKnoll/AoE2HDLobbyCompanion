@@ -6,7 +6,7 @@ import { shell } from 'electron';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { BasePlayer, Reputation, ReputationType, User, UserReputation } from '../../app.models';
-import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService } from '../';
+import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, ConfigurationService } from '../';
 
 @Component({
     selector: 'user-profile-dialog',
@@ -16,14 +16,16 @@ import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, 
 export class UserProfileDialogComponent implements OnInit {
     public profile: User;
     public knownNames: string;
+    public apiKeyMissing: boolean;
     public userReputationsDataSource: UserReputationsDataSource;
     public displayedColumns = ["lobbyName", "reputationType", "added", "comment", "actions"];
 
-    constructor( @Inject(MD_DIALOG_DATA) private data: UserProfileDialogData, private appService: AppService, private reputationService: ReputationService, private httpService: HttpService, private trackingService: TrackingService, private dialog: MdDialogRef<UserProfileDialogComponent>, private confirmationDialog: MdDialog) {
+    constructor( @Inject(MD_DIALOG_DATA) private data: UserProfileDialogData, private appService: AppService, private reputationService: ReputationService, private httpService: HttpService, private trackingService: TrackingService, private configurationService: ConfigurationService, private dialog: MdDialogRef<UserProfileDialogComponent>, private confirmationDialog: MdDialog) {
     }
 
     public ngOnInit() {
         this.fetchProfile();
+        this.apiKeyMissing = !this.configurationService.configuration.steamApiKey;
     }
 
     public deleteReputation(reputation: UserReputation) {

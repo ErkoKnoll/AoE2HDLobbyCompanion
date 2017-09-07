@@ -10,3 +10,4 @@ export * from './confirmation-dialog';
 export * from './assign-reputation-dialog';
 export * from './user-profile-dialog';
 export * from './update-available-dialog';
+export * from './help-page';

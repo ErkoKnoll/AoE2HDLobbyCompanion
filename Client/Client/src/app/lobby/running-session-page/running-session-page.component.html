@@ -77,9 +77,9 @@
         <md-row *cdkRowDef="let player; columns: displayedColumns;"></md-row>
     </md-table>
     <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 18px; margin-top: 20px;"><span class="clickable" (click)="stopSession()">Stop the session</span> when you are no longer going to play. <span class="clickable" (click)="startLobby()">Start the lobby manually</span> when the game has started.</div>
-    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 14px; margin-top: 5px;">
+    <div *ngIf="!lobbyStarted" style="text-align: center; font-size: 13px; margin-top: 5px;">
         <span class="clickable" (click)="copyPlayerStats()">Copy player stats </span><span style="font-size: 12px;">(SHIFT + ALT + 1)</span>
-        <span style="margin-left: 20px;">Calculate balanced teams based on player:</span>
+        <span> - Calculate balanced teams based on player:</span>
         <span class="clickable" (click)="calculateBalancedTeamsBasedOnRank()">Rank </span><span style="font-size: 12px;">(SHIFT + ALT + 2), </span>
         <span class="clickable" (click)="calculateBalancedTeamsBasedOnTotalGames()">Total Games </span><span style="font-size: 12px;">(SHIFT + ATL + 3), </span>
         <span class="clickable" (click)="calculateBalancedTeamsBasedOnWinRatio()">Win Ratio </span><span style="font-size: 12px;">(SHIFT + ALT + 4)</span>

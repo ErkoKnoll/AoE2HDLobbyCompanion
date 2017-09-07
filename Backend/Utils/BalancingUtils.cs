@@ -119,7 +119,7 @@ namespace Backend.Utils {
         public static string CopyPlayerStats() {
             try {
                 var players = Variables.Lobby.Players.Where(p => p.Profile != null && p.GameStats != null && !(p.Profile.ProfilePrivate && !p.Profile.ProfileDataFetched.HasValue));
-                var output = "[aoe2lc.net] Stats (Total Games/Win Ratio/Drop Ratio): " + string.Join(", ", players.Select(p => p.Name + "(" + (Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM + "/" + p.GameStats.WinRatioRM + "%/" + p.GameStats.DropRatioRM + "%" : p.GameStats.TotalGamesDM + "/" + p.GameStats.WinRatioDM + "%/" + p.GameStats.DropRatioDM + "%") + ")"));
+                var output = "Stats (Games/Wins/Drops): " + string.Join(", ", players.Select(p => GetPlayerName(p.Name) + "(" + (Variables.Lobby.Ranked != 2 ? p.GameStats.TotalGamesRM + "/" + p.GameStats.WinRatioRM + "%/" + p.GameStats.DropRatioRM + "%" : p.GameStats.TotalGamesDM + "/" + p.GameStats.WinRatioDM + "%/" + p.GameStats.DropRatioDM + "%") + ")"))+ " | Lobby Companion [aoe2lc.net]";
                 LogUtils.Info(output);
                 CopyToClipboard(output);
                 return null;
@@ -127,6 +127,13 @@ namespace Backend.Utils {
                 LogUtils.Error("Error while copying player stats", e);
                 return "Error while copying player stats, check the logs.";
             }
+        }
+
+        private static string GetPlayerName(string name) {
+            if (name.Length > 12) {
+                name = name.Substring(0, 9) + "...";
+            }
+            return name;
         }
 
         private static void CopyToClipboard(string text) {
