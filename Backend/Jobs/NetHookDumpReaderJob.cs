@@ -81,6 +81,7 @@ namespace Backend.Jobs {
                         switch (item.EMsg) {
                             case EMsg.ClientMMSLobbyData:
                                 ProcessLobbyUpdate(item);
+                                SetLobbyPresence(true);
                                 break;
                             case EMsg.ClientMMSCreateLobbyResponse:
                                 ProcessCreateLobbyResponse(item);
