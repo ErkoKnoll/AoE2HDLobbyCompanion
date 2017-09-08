@@ -5,7 +5,7 @@ import { ConfigurationService } from './';
 @Injectable()
 export class TrackingService {
     private analytics;
-    private version: "1.2.1";
+    private version: "1.3.0";
 
     constructor(private configurationService: ConfigurationService) {
         try {
