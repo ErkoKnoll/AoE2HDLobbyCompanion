@@ -22,7 +22,7 @@ Short link for sharing: [aoe2lc.net](http://aoe2lc.net)
 * [[UI] Reputations page (v1.2.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/ReputationsPage.png)
 
 ## Download
-[Download v1.2.1](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.2.1/AoE2HDLobbyCompanion-V1.2.1.zip)
+[Download v1.3.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.3.0/AoE2HDLobbyCompanion-V1.3.0.zip)
 
 **Minimum Requirements**: Windows 7 SP1 or newer
 
