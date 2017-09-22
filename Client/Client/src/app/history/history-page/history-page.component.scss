@@ -1,0 +1,25 @@
+﻿:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.cdk-column-joined {
+    flex: 0 0 90px;
+}
+
+.cdk-column-started {
+    flex: 0 0 50px;
+}
+
+.cdk-column-players {
+    flex: 0 0 50px;
+}
+
+.cdk-column-negativeReputations {
+    flex: 0 0 70px;
+}
+
+.cdk-column-positiveReputations {
+    flex: 0 0 70px;
+}

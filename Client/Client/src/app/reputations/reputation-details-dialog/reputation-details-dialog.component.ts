@@ -82,7 +82,6 @@ export class UserReputationsDataSource extends DataSource<UserReputation> {
     constructor(userReputations: UserReputation[], private paginator: MdPaginator) {
         super();
         this.userReputations = new BehaviorSubject<UserReputation[]>(userReputations);
-        console.log(paginator);
     }
 
     public connect() {

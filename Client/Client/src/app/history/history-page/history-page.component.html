@@ -1,0 +1,50 @@
+﻿<center-spinner *ngIf="loading"></center-spinner>
+<div [hidden]="loading">
+    <div style="padding-left: 24px; padding-top: 10px;">
+        <md-checkbox [checked]="showOnlyStartedLobbies" [(ngModel)]="showOnlyStartedLobbies" (change)="showOnlyStartedLobbiesChanged()">
+            Show Only Started Lobbies
+        </md-checkbox>
+    </div>
+    <md-table [dataSource]="matchHistoryDataSource">
+        <ng-container cdkColumnDef="lobbyName">
+            <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
+            <md-cell *cdkCellDef="let match">{{match.name}}</md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="joined">
+            <md-header-cell *cdkHeaderCellDef>Joined</md-header-cell>
+            <md-cell *cdkCellDef="let match">{{match.joined}}</md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="started">
+            <md-header-cell *cdkHeaderCellDef>Started</md-header-cell>
+            <md-cell *cdkCellDef="let match" style="text-align: center;">
+                <md-checkbox *ngIf="match.started" [checked]="true" [disabled]="true" style="margin-left: -10px;"></md-checkbox>
+                <md-checkbox *ngIf="!match.started" [checked]="false" [disabled]="true" style="margin-left: -10px;"></md-checkbox>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="players">
+            <md-header-cell *cdkHeaderCellDef>Players</md-header-cell>
+            <md-cell *cdkCellDef="let match" style="text-align: center;"><span style="margin-left: -5px;">{{match.players}}</span></md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="negativeReputations">
+            <md-header-cell *cdkHeaderCellDef>Neg. Reps</md-header-cell>
+            <md-cell *cdkCellDef="let match" style="text-align: center;">
+                <span [ngClass]="{cellColorDanger: match.negativeReputations > 0}" style="margin-left: -5px;">{{match.negativeReputations}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="positiveReputations">
+            <md-header-cell *cdkHeaderCellDef>Pos. Reps</md-header-cell>
+            <md-cell *cdkCellDef="let match" style="text-align: center;">
+                <span [ngClass]="{cellColorSafe: match.positiveReputations > 0}" style="margin-left: -12px;">{{match.positiveReputations}}</span>
+            </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let match; columns: displayedColumns;"></md-row>
+    </md-table>
+    <md-paginator #paginator
+                  [length]="matchHistoryDataSource?.matches.value.length"
+                  [pageIndex]="0"
+                  [pageSize]="25"
+                  [pageSizeOptions]="[25, 50, 100]">
+    </md-paginator>
+</div>

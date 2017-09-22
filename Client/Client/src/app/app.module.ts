@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { LobbyModule } from './lobby';
 import { SettingsModule } from './settings';
 import { ReputationsModule } from './reputations';
+import { HistoryModule } from './history';
 import { CenterSpinnerModule, NavBarModule } from './shared'
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CenterSpinnerModule, NavBarModule } from './shared'
         LobbyModule,
         SettingsModule,
         ReputationsModule,
+        HistoryModule,
         UpdateAvailableModule
     ],
     providers: [AppService, HttpService, CommandService, ConfigurationService, ReputationService, TrackingService],

@@ -30,6 +30,7 @@
     <None Include="rcedit.bat" />
     <Content Include="rcedit.exe" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\history\history-page\history-page.component.html" />
     <Content Include="src\app\lobby\lobby-page\lobby-page.component.html" />
     <Content Include="src\app\lobby\initial-page\initial-page.component.html" />
     <Content Include="src\app\lobby\more-options-dialog\more-options-dialog.component.html" />
@@ -60,6 +61,7 @@
     <Content Include="src\assets\icomoon\selection.json" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.scss" />
     <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.scss" />
+    <Content Include="src\app\history\history-page\history-page.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
@@ -74,6 +76,10 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.models.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\history\history-page\history-page.component.ts" />
+    <TypeScriptCompile Include="src\app\history\history-page\index.ts" />
+    <TypeScriptCompile Include="src\app\history\history.module.ts" />
+    <TypeScriptCompile Include="src\app\history\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\lobby-page\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\lobby-page\lobby-page.component.ts" />

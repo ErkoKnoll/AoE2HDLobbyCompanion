@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LobbyPageComponent } from './lobby';
 import { ReputationsPageComponent } from './reputations';
+import { HistoryPageComponent } from './history';
 import { SettingsPageComponent } from './settings';
 
 const routes: Routes = [
@@ -12,6 +13,9 @@ const routes: Routes = [
     }, {
         path: 'reputations',
         component: ReputationsPageComponent,
+    }, {
+        path: 'history',
+        component: HistoryPageComponent,
     }, {
         path: 'settings',
         component: SettingsPageComponent,
