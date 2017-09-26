@@ -112,6 +112,29 @@ export interface Reputation {
     orderSequence: number;
 }
 
+export interface MatchHistory {
+    id: number;
+    name: string;
+    players: number;
+    negativeReputations: number;
+    positiveReputations: number;
+    joined: string;
+    started: boolean;
+    lobbySlots: MatchHistoryLobbySlot[];
+    reputations: UserReputation[];
+}
+
+export interface MatchHistoryLobbySlot {
+    sSteamId: string;
+    name: string;
+    position: number;
+    rank: number;
+    totalGames: number;
+    winRatio: number;
+    dropRatip: number;
+    profilePrivate: boolean;
+}
+
 export enum ReputationType {
     NEGATIVE = 0,
     POSITIVE = 1

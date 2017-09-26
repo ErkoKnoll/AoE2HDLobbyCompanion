@@ -14,22 +14,22 @@
         </ng-container>
         <ng-container cdkColumnDef="location">
             <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
-            <md-cell *cdkCellDef="let player">{{player.profile?.location}}</md-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;"><span style="margin-left: -8px;">{{player.profile?.location}}</span></md-cell>
         </ng-container>
         <ng-container cdkColumnDef="games">
             <md-header-cell *cdkHeaderCellDef>Shared Games</md-header-cell>
-            <md-cell *cdkCellDef="let player"><span [ngClass]="{cellColorSafe: player.fieldColors?.Games == 1, cellColorDanger: player.fieldColors?.Games == 2}">{{player.reputationStats?.games}}</span></md-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;"><span [ngClass]="{cellColorSafe: player.fieldColors?.Games == 1, cellColorDanger: player.fieldColors?.Games == 2}" style="margin-left: -10px;">{{player.reputationStats?.games}}</span></md-cell>
         </ng-container>
         <ng-container cdkColumnDef="negativeRep">
             <md-header-cell *cdkHeaderCellDef>Negative Rep.</md-header-cell>
-            <md-cell *cdkCellDef="let player">
-                <table>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <table style="margin-left: auto; margin-right: auto;">
                     <tr>
                         <td>
                             <span [ngClass]="{cellColorSafe: player.fieldColors?.NegativeReputation == 1, cellColorDanger: player.fieldColors?.NegativeReputation == 2}">{{player.reputationStats?.negativeReputation}}</span>
                         </td>
                         <td>
-                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorDanger" style="margin-left: 5px; margin-top: 7px; cursor: pointer;" mdTooltip="Assign Negative Reputation" (click)="openNegativeReputationAssingmentDialog(player)">thumb_down</i>
+                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorDanger" style="margin-left: 5px; margin-right: 10px; margin-top: 7px; cursor: pointer;" mdTooltip="Assign Negative Reputation" (click)="openNegativeReputationAssingmentDialog(player)">thumb_down</i>
                         </td>
                     </tr>
                 </table>
@@ -37,14 +37,14 @@
         </ng-container>
         <ng-container cdkColumnDef="positiveRep">
             <md-header-cell *cdkHeaderCellDef>Positive Rep.</md-header-cell>
-            <md-cell *cdkCellDef="let player">
-                <table>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <table style="margin-left: auto; margin-right: auto;">
                     <tr>
                         <td>
                             <span [ngClass]="{cellColorSafe: player.fieldColors?.PositiveReputation == 1, cellColorDanger: player.fieldColors?.PositiveReputation == 2}">{{player.reputationStats?.positiveReputation}}</span>
                         </td>
                         <td>
-                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorSafe" style="margin-left: 5px; margin-top: -4px; cursor: pointer;" mdTooltip="Assign Positive Reputation" (click)="openPositiveReputationAssingmentDialog(player)">thumb_up</i>
+                            <i *ngIf="player.reputationStats && player.lobbySlotId != 0" class="material-icons md-24 cellColorSafe" style="margin-left: 5px; margin-right: 10px; margin-top: -4px; cursor: pointer;" mdTooltip="Assign Positive Reputation" (click)="openPositiveReputationAssingmentDialog(player)">thumb_up</i>
                         </td>
                     </tr>
                 </table>
@@ -52,7 +52,7 @@
         </ng-container>
         <ng-container cdkColumnDef="totalGames">
             <md-header-cell *cdkHeaderCellDef>Total Games</md-header-cell>
-            <md-cell *cdkCellDef="let player">
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
                 <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}">{{player.gameStatsNormalized?.totalGames}}</span>
                 <span *ngIf="player.profile?.profilePrivate && !player.profile?.profileDataFetched" class="cellColorDanger">PRIVATE ACCOUNT</span>
                 <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}">[{{player.gameStatsNormalized?.totalGames}}]</span>
@@ -60,14 +60,14 @@
         </ng-container>
         <ng-container cdkColumnDef="winRatio">
             <md-header-cell *cdkHeaderCellDef>Win Ratio</md-header-cell>
-            <md-cell *cdkCellDef="let player">
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
                 <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}">{{player.gameStatsNormalized?.winRatio}}<span *ngIf="player.gameStatsNormalized">%</span></span>
                 <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}">[{{player.gameStatsNormalized?.winRatio}}<span *ngIf="player.gameStatsNormalized">%</span>]</span>
             </md-cell>
         </ng-container>
         <ng-container cdkColumnDef="dropRatio">
             <md-header-cell *cdkHeaderCellDef>Drop Ratio</md-header-cell>
-            <md-cell *cdkCellDef="let player">
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
                 <span *ngIf="!player.profile?.profilePrivate" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}">{{player.gameStatsNormalized?.dropRatio}}<span *ngIf="player.gameStatsNormalized">%</span></span>
                 <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}">[{{player.gameStatsNormalized?.dropRatio}}<span *ngIf="player.gameStatsNormalized">%</span>]</span>
             </md-cell>

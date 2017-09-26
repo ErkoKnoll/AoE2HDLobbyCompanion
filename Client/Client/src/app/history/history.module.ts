@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdInputModule, MdTableModule, MdCheckboxModule, MdDialogModule, MdPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
 
-import { CenterSpinnerModule } from '../shared'
+import { CenterSpinnerModule, MatchDetailsDialogModule } from '../shared'
 import { HistoryPageComponent } from './history-page';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, MdButtonModule, MdInputModule, MdCheckboxModule, MdTableModule, MdDialogModule, MdPaginatorModule, CdkTableModule, CenterSpinnerModule],
+    imports: [BrowserModule, FormsModule, MdButtonModule, MdInputModule, MdCheckboxModule, MdTableModule, MdDialogModule, MdPaginatorModule, CdkTableModule, CenterSpinnerModule, MatchDetailsDialogModule],
     exports: [HistoryPageComponent],
     declarations: [HistoryPageComponent],
     entryComponents: []

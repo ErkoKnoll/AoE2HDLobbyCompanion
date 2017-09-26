@@ -45,6 +45,7 @@
     <Content Include="src\app\shared\assign-reputation-dialog\assign-reputation-dialog.component.html" />
     <Content Include="src\app\shared\confirmation-dialog\confirmation-dialog.component.html" />
     <Content Include="src\app\shared\help-page\help-page.component.html" />
+    <Content Include="src\app\shared\match-details-dialog\match-details-dialog.component.html" />
     <Content Include="src\app\shared\navbar\navbar.component.html" />
     <Content Include="src\app\shared\update-available-dialog\update-available-dialog.component.html" />
     <Content Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.html" />
@@ -62,6 +63,7 @@
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.scss" />
     <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.scss" />
     <Content Include="src\app\history\history-page\history-page.component.scss" />
+    <Content Include="src\app\shared\match-details-dialog\match-details-dialog.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
@@ -128,6 +130,9 @@
     <TypeScriptCompile Include="src\app\shared\help-page\help-page.component.ts" />
     <TypeScriptCompile Include="src\app\shared\http.service.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\match-details-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\match-details-dialog\match-details-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\match-details-dialog\match-details-dialog.module.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\index.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\navbar.component.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\navbar.module.ts" />

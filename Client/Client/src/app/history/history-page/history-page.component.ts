@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdPaginator } from '@angular/material';
+import { MdPaginator, MdDialog } from '@angular/material';
 import { DataSource } from '@angular/cdk';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -8,7 +8,8 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 
-import { AppService, HttpService } from '../../shared';
+import { AppService, HttpService, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../../shared';
+import { MatchHistory } from '../../app.models';
 
 @Component({
     selector: 'history-page',
@@ -23,11 +24,20 @@ export class HistoryPageComponent implements OnInit {
     private matches: MatchHistory[];
     @ViewChild(MdPaginator) paginator: MdPaginator;
 
-    constructor(private appService: AppService, private httpService: HttpService) {
+    constructor(private appService: AppService, private httpService: HttpService, private dialogController: MdDialog) {
     }
 
     public ngOnInit() {
         this.getMatches();
+    }
+
+    public openMatchDetails(match: MatchHistory) {
+        let dialog = this.dialogController.open(MatchDetailsDialogComponent, {
+            data: <MatchDetailsDialogData>{
+                id: match.id
+            },
+            width: window.innerWidth * 0.75 + "px",
+        });
     }
 
     private getMatches() {
@@ -73,14 +83,4 @@ export class MatchHistoryDataSource extends DataSource<MatchHistory> {
 
     public disconnect() {
     }
-}
-
-interface MatchHistory {
-    id: number;
-    name: string;
-    players: number;
-    negativeReputations: number;
-    positiveReputations: number;
-    joined: string;
-    started: boolean;
 }

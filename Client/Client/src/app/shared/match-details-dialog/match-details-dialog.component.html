@@ -1,0 +1,100 @@
+﻿<h2 md-dialog-title>{{match?.name}}</h2>
+<md-dialog-content style="margin-top: -10px;">
+    <center-spinner *ngIf="!match"></center-spinner>
+    <div *ngIf="match">
+        <table style="border-collapse: collapse;">
+            <tr>
+                <td>
+                    <span style="margin-right: 10px;">Joined <strong>{{match.joined}}</strong></span>
+                    <span *ngIf="match.started" style="margin-right: 10px;">Started <strong>Yes</strong></span>
+                    <span *ngIf="!match.started" style="margin-right: 10px;">Started <strong>No</strong></span>
+                </td>
+            </tr>
+        </table>
+        <md-tab-group style="margin-top: 10px;">
+            <md-tab label="Players">
+                <div style="background-color: darkorange; color: white; padding: 5px; font-size: 15px;">
+                    Player stats are displayed how they were at the time of joining this lobby.
+                </div>
+                <md-table [dataSource]="playersDataSource">
+                    <ng-container cdkColumnDef="name">
+                        <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
+                        <md-cell *cdkCellDef="let player">
+                            <span *ngIf="!player.sSteamId">{{player.name}}</span>
+                            <span *ngIf="player.sSteamId" class="clickable" (click)="openUserProfileDialog(player)">{{player.name}}</span>
+                        </md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="rank">
+                        <md-header-cell *cdkHeaderCellDef>Rank</md-header-cell>
+                        <md-cell *cdkCellDef="let player"><span *ngIf="player.rank > 0">{{player.rank}}</span></md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="totalGames">
+                        <md-header-cell *cdkHeaderCellDef>Total Games</md-header-cell>
+                        <md-cell *cdkCellDef="let player" style="text-align: center;">
+                            <span *ngIf="player.sSteamId && (player.totalGames > 0 || !player.profilePrivate)">{{player.totalGames}}</span>
+                            <span *ngIf="player.sSteamId && player.totalGames == 0 && player.profilePrivate" class="cellColorDanger">PRIVATE ACCOUNT</span>
+                        </md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="winRatio">
+                        <md-header-cell *cdkHeaderCellDef>Win Ratio</md-header-cell>
+                        <md-cell *cdkCellDef="let player" style="text-align: center;">
+                            <span *ngIf="player.totalGames > 0">{{player.winRatio}}%</span>
+                            <span *ngIf="player.sSteamId && player.totalGames == 0 && !player.profilePrivate">0%</span>
+                        </md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="dropRatio">
+                        <md-header-cell *cdkHeaderCellDef>Drop Ratio</md-header-cell>
+                        <md-cell *cdkCellDef="let player" style="text-align: center;">
+                            <span *ngIf="player.totalGames > 0">{{player.dropRatio}}%</span>
+                            <span *ngIf="player.sSteamId && player.totalGames == 0 && !player.profilePrivate">0%</span>
+                        </md-cell>
+                    </ng-container>
+
+                    <md-header-row *cdkHeaderRowDef="playersDisplayedColumns"></md-header-row>
+                    <md-row *cdkRowDef="let player; columns: playersDisplayedColumns;"></md-row>
+                </md-table>
+            </md-tab>
+            <md-tab label="Reputations">
+                <md-table [dataSource]="reputationsDataSource">
+                    <ng-container cdkColumnDef="player">
+                        <md-header-cell *cdkHeaderCellDef>Player</md-header-cell>
+                        <md-cell *cdkCellDef="let reputation">
+                            <span class="clickable" (click)="openUserProfileDialog(reputation.user)">{{reputation.user.name}}</span>
+                        </md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="reputation">
+                        <md-header-cell *cdkHeaderCellDef>Reputation</md-header-cell>
+                        <md-cell *cdkCellDef="let player">
+                            <table *ngIf="player.reputation.type == 0">
+                                <tr>
+                                    <td>
+                                        <i class="material-icons md-24 cellColorDanger" style="margin-top: 7px; margin-right: 5px;">thumb_down</i>
+                                    </td>
+                                    <td>{{player.reputation.name}}</td>
+                                </tr>
+                            </table>
+                            <table *ngIf="player.reputation.type == 1">
+                                <tr>
+                                    <td>
+                                        <i class="material-icons md-24 cellColorSafe" style="margin-top: -4px; margin-right: 5px;">thumb_up</i>
+                                    </td>
+                                    <td>{{player.reputation.name}}</td>
+                                </tr>
+                            </table>
+                        </md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="comment">
+                        <md-header-cell *cdkHeaderCellDef>Comment</md-header-cell>
+                        <md-cell *cdkCellDef="let reputation"><div style="max-width: 150px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" [title]="reputation.comment">{{reputation.comment}}</div></md-cell>
+                    </ng-container>
+
+                    <md-header-row *cdkHeaderRowDef="reputationsDisplayedColumns"></md-header-row>
+                    <md-row *cdkRowDef="let player; columns: reputationsDisplayedColumns;"></md-row>
+                </md-table>
+            </md-tab>
+        </md-tab-group>
+    </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="match">
+    <button md-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
+</md-dialog-actions>

@@ -8,7 +8,7 @@
     <md-table [dataSource]="matchHistoryDataSource">
         <ng-container cdkColumnDef="lobbyName">
             <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
-            <md-cell *cdkCellDef="let match">{{match.name}}</md-cell>
+            <md-cell *cdkCellDef="let match"><span class="clickable" (click)="openMatchDetails(match)">{{match.name}}</span></md-cell>
         </ng-container>
         <ng-container cdkColumnDef="joined">
             <md-header-cell *cdkHeaderCellDef>Joined</md-header-cell>
