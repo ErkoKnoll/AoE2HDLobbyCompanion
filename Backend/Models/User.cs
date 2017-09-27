@@ -23,7 +23,8 @@ namespace Backend.Models {
         public int GamesWonDM { get; set; }
         public bool ProfilePrivate { get; set; }
         public string ProfileDataFetched { get; set; }
-        public List<UserReputation> Reputations { get; set; }
         public List<string> KnownNames { get; set; }
+        public List<UserReputation> Reputations { get; set; }
+        public List<MatchHistory> Matches { get; set; }
     }
 }

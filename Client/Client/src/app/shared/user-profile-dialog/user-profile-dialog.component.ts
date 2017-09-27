@@ -1,12 +1,12 @@
-﻿import { Component, Inject, OnInit } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef, MdDialog } from '@angular/material';
+﻿import { Component, Inject, OnInit, ViewChild, ContentChild } from '@angular/core';
+import { MD_DIALOG_DATA, MdDialogRef, MdDialog, MdPaginator } from '@angular/material';
 import { DataSource, CollectionViewer } from '@angular/cdk';
 import { shell } from 'electron';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, ConfigurationService, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../';
-import { BasePlayer, Reputation, ReputationType, User, UserReputation, Lobby } from '../../app.models';
+import { BasePlayer, Reputation, ReputationType, User, UserReputation, Lobby, MatchHistory } from '../../app.models';
 
 @Component({
     selector: 'user-profile-dialog',
@@ -18,7 +18,9 @@ export class UserProfileDialogComponent implements OnInit {
     public knownNames: string;
     public apiKeyMissing: boolean;
     public userReputationsDataSource: UserReputationsDataSource;
-    public displayedColumns = ["lobbyName", "reputationType", "added", "comment", "actions"];
+    public matchesDataSource: MatchesDataSource;
+    public userReputationsDisplayedColumns = ["lobbyName", "reputationType", "added", "comment", "actions"];
+    public matchesDisplayedColumns = ["lobbyName", "joined"];
 
     constructor( @Inject(MD_DIALOG_DATA) private data: UserProfileDialogData, private appService: AppService, private reputationService: ReputationService, private httpService: HttpService, private trackingService: TrackingService, private configurationService: ConfigurationService, private dialog: MdDialogRef<UserProfileDialogComponent>, private dialogController: MdDialog) {
     }
@@ -70,6 +72,7 @@ export class UserProfileDialogComponent implements OnInit {
         this.httpService.get<User>("/api/userProfile/" + this.data.steamId).subscribe(response => {
             this.profile = response;
             this.userReputationsDataSource = new UserReputationsDataSource(response.reputations);
+            this.matchesDataSource = new MatchesDataSource(response.matches);
             if (this.profile.knownNames.length > 1) {
                 this.knownNames = this.profile.knownNames.join(", ");
             }
@@ -91,6 +94,22 @@ export class UserReputationsDataSource extends DataSource<UserReputation> {
 
     public connect(collectionViewer: CollectionViewer) {
         return this.reputations.asObservable();
+    }
+
+    public disconnect(collectionViewer: CollectionViewer) {
+    }
+}
+
+export class MatchesDataSource extends DataSource<MatchHistory> {
+    public matches: BehaviorSubject<MatchHistory[]>;
+
+    constructor(reputations: MatchHistory[]) {
+        super();
+        this.matches = new BehaviorSubject<MatchHistory[]>(reputations);
+    }
+
+    public connect(collectionViewer: CollectionViewer) {
+        return this.matches.asObservable();
     }
 
     public disconnect(collectionViewer: CollectionViewer) {

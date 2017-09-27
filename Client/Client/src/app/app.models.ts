@@ -88,6 +88,7 @@ export interface User extends BasePlayer {
     profileDataFetched: string;
     knownNames: string[];
     reputations: UserReputation[];
+    matches: MatchHistory[];
 }
 
 export interface UserReputation {

@@ -22,7 +22,7 @@ namespace Backend.Controllers {
 
         [HttpGet("{id}")]
         public User Get(string id) {
-            var user = _repository.Users.Include(u => u.LobbySlots).Include(u => u.Reputations).ThenInclude(ur => ur.Reputation).Include(u => u.Reputations).ThenInclude(u => u.Lobby).Select(u => new User {
+            var user = _repository.Users.Include(u => u.LobbySlots).ThenInclude(ls => ls.Lobby).Include(u => u.Reputations).ThenInclude(ur => ur.Reputation).Include(u => u.Reputations).ThenInclude(u => u.Lobby).Select(u => new User {
                 Id = u.Id,
                 SSteamId = u.SteamId.ToString(),
                 Name = u.Name,
@@ -59,6 +59,11 @@ namespace Backend.Controllers {
                         Id = ur.Lobby.Id,
                         Name = ur.Lobby.Name
                     } : null
+                }).ToList(),
+                Matches = u.LobbySlots.Where(ls => ls.Lobby.Started.HasValue && ls.Position > 0).OrderByDescending(ls => ls.Lobby.Joined).Select(ls => new MatchHistory {
+                    Id = ls.Lobby.Id,
+                    Name = ls.Lobby.Name,
+                    Joined = ls.Lobby.Joined.ToString("d")
                 }).ToList()
             }).FirstOrDefault(u => u.SSteamId == id);
             user.GameStats = UserUtils.GetGameStats(user.GamesStartedRM, user.GamesStartedDM, user.GamesWonRM, user.GamesWonDM, user.GamesEndedRM, user.GamesEndedDM);
