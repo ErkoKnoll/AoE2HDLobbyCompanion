@@ -8,7 +8,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 
-import { AppService, HttpService, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../../shared';
+import { AppService, HttpService, TrackingService, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../../shared';
 import { MatchHistory } from '../../app.models';
 
 @Component({
@@ -24,7 +24,7 @@ export class HistoryPageComponent implements OnInit {
     private matches: MatchHistory[];
     @ViewChild(MdPaginator) paginator: MdPaginator;
 
-    constructor(private appService: AppService, private httpService: HttpService, private dialogController: MdDialog) {
+    constructor(private appService: AppService, private httpService: HttpService, private dialogController: MdDialog, private trackingService: TrackingService) {
     }
 
     public ngOnInit() {
@@ -38,6 +38,7 @@ export class HistoryPageComponent implements OnInit {
             },
             width: window.innerWidth * 0.75 + "px",
         });
+        this.trackingService.sendEvent("HistoryPage", "OpenMatchDetails");
     }
 
     private getMatches() {

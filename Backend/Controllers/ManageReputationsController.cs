@@ -41,6 +41,7 @@ namespace Backend.Controllers {
                     Name = ur.User.Name
                 },
                 Lobby = new Models.Lobby() {
+                    Id = ur.Lobby.Id,
                     LobbyId = ur.Lobby.LobbyId.ToString(),
                     Name = ur.Lobby.Name
                 }

@@ -5,8 +5,8 @@ import { shell } from 'electron';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { BasePlayer, Reputation, ReputationType, User, UserReputation } from '../../app.models';
-import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, ConfigurationService } from '../';
+import { HttpService, AppService, TrackingService, ConfirmationDialogComponent, ConfirmationDialogData, ReputationService, ConfigurationService, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../';
+import { BasePlayer, Reputation, ReputationType, User, UserReputation, Lobby } from '../../app.models';
 
 @Component({
     selector: 'user-profile-dialog',
@@ -20,7 +20,7 @@ export class UserProfileDialogComponent implements OnInit {
     public userReputationsDataSource: UserReputationsDataSource;
     public displayedColumns = ["lobbyName", "reputationType", "added", "comment", "actions"];
 
-    constructor( @Inject(MD_DIALOG_DATA) private data: UserProfileDialogData, private appService: AppService, private reputationService: ReputationService, private httpService: HttpService, private trackingService: TrackingService, private configurationService: ConfigurationService, private dialog: MdDialogRef<UserProfileDialogComponent>, private confirmationDialog: MdDialog) {
+    constructor( @Inject(MD_DIALOG_DATA) private data: UserProfileDialogData, private appService: AppService, private reputationService: ReputationService, private httpService: HttpService, private trackingService: TrackingService, private configurationService: ConfigurationService, private dialog: MdDialogRef<UserProfileDialogComponent>, private dialogController: MdDialog) {
     }
 
     public ngOnInit() {
@@ -29,7 +29,7 @@ export class UserProfileDialogComponent implements OnInit {
     }
 
     public deleteReputation(reputation: UserReputation) {
-        let dialog = this.confirmationDialog.open(ConfirmationDialogComponent, {
+        let dialog = this.dialogController.open(ConfirmationDialogComponent, {
             data: <ConfirmationDialogData>{
                 title: "Deleting Reputation",
                 question: "Are you sure you want to delete assigned reputation?"
@@ -49,6 +49,16 @@ export class UserProfileDialogComponent implements OnInit {
                 });
             }
         });
+    }
+
+    public openMatchDetails(lobby: Lobby) {
+        let dialog = this.dialogController.open(MatchDetailsDialogComponent, {
+            data: <MatchDetailsDialogData>{
+                id: lobby.id
+            },
+            width: window.innerWidth * 0.75 + "px",
+        });
+        this.trackingService.sendEvent("UserProfileDialog", "OpenMatchDetails");
     }
 
     public openSteamProfile() {

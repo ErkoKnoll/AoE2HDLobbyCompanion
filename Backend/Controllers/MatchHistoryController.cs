@@ -50,6 +50,7 @@ namespace Backend.Controllers {
                         SSteamId = r.User.SteamId.ToString()
                     },
                     Reputation = new Models.Reputation {
+                        Id = r.Reputation.Id,
                         Name = r.Reputation.Name,
                         Type = r.Reputation.Type
                     }

@@ -8,8 +8,8 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 
-import { AppService, ReputationService, TrackingService, UserProfileDialogComponent, UserProfileDialogData, ConfirmationDialogComponent, ConfirmationDialogData } from '../../shared';
-import { Reputation, UserReputation } from '../../app.models';
+import { AppService, ReputationService, TrackingService, UserProfileDialogComponent, UserProfileDialogData, ConfirmationDialogComponent, ConfirmationDialogData, MatchDetailsDialogComponent, MatchDetailsDialogData } from '../../shared';
+import { Reputation, UserReputation, Lobby } from '../../app.models';
 
 @Component({
     selector: 'reputation-details-dialog',
@@ -73,6 +73,16 @@ export class ReputationDetailsDialogComponent implements OnInit {
                 });
             }
         });
+    }
+
+    public openMatchDetails(lobby: Lobby) {
+        let dialog = this.dialogController.open(MatchDetailsDialogComponent, {
+            data: <MatchDetailsDialogData>{
+                id: lobby.id
+            },
+            width: window.innerWidth * 0.75 + "px",
+        });
+        this.trackingService.sendEvent("ReputationTypeDetailsDialog", "OpenMatchDetails");
     }
 }
 

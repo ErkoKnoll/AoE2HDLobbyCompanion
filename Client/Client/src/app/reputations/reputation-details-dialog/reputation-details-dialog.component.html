@@ -5,7 +5,7 @@
         <md-table [dataSource]="userReputationsDataSource" class="noTablePadding">
             <ng-container cdkColumnDef="lobbyName">
                 <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
-                <md-cell *cdkCellDef="let reputation">{{reputation.lobby?.name}}</md-cell>
+                <md-cell *cdkCellDef="let reputation"><span class="clickable" (click)="openMatchDetails(reputation.lobby)">{{reputation.lobby?.name}}</span></md-cell>
             </ng-container>
             <ng-container cdkColumnDef="player">
                 <md-header-cell *cdkHeaderCellDef>Player</md-header-cell>

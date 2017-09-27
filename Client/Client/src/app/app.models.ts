@@ -100,6 +100,7 @@ export interface UserReputation {
 }
 
 export interface Lobby {
+    id: number;
     lobbyId: string;
     name: string;
 }
