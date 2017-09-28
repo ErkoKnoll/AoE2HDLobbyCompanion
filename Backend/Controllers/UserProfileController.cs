@@ -20,6 +20,32 @@ namespace Backend.Controllers {
             _repository = repository;
         }
 
+        [HttpGet]
+        public IEnumerable<Player> Get() {
+            //Secondary where clause is done in memory because there seems to be an EF bug
+            var users = _repository.Users.Where(u => u.Games > 0).ToList().Where(u => u.SteamId > 0).Select(u => new Player {
+                Name = u.Name,
+                RankRM = u.RankRM,
+                RankDM = u.RankDM,
+                SSteamId = u.SteamId.ToString(),
+                GameStats = UserUtils.GetGameStats(u.GamesStartedRM, u.GamesStartedDM, u.GamesWonRM, u.GamesWonDM, u.GamesEndedRM, u.GamesEndedDM),
+                Profile = new PlayerProfile {
+                    Location = u.Location,
+                    ProfilePrivate = u.ProfilePrivate,
+                    ProfileDataFetched = u.ProfileDataFetched
+                },
+                ReputationStats = new PlayerReputationStats {
+                    Games = u.Games,
+                    NegativeReputation = u.NegativeReputation,
+                    PositiveReputation = u.PositiveReputation
+                }
+            }).ToList();
+            foreach (var user in users) {
+                LobbyUtils.CalculateUserFieldColors(user, 0);
+            }
+            return users;
+        }
+
         [HttpGet("{id}")]
         public User Get(string id) {
             var user = _repository.Users.Include(u => u.LobbySlots).ThenInclude(ls => ls.Lobby).Include(u => u.Reputations).ThenInclude(ur => ur.Reputation).Include(u => u.Reputations).ThenInclude(u => u.Lobby).Select(u => new User {

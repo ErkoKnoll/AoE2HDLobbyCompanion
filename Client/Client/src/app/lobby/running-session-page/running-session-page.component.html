@@ -4,8 +4,8 @@
         <ng-container cdkColumnDef="name">
             <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
             <md-cell *cdkCellDef="let player">
-                <span *ngIf="!player.steamId">{{player.nameFormatted}}</span>
-                <span *ngIf="player.steamId" class="clickable" (click)="openUserProfileDialog(player)">{{player.nameFormatted}}</span>
+                <span *ngIf="!player.steamId">{{player.name}}</span>
+                <span *ngIf="player.steamId" class="clickable" (click)="openUserProfileDialog(player)">{{player.name}}</span>
             </md-cell>
         </ng-container>
         <ng-container cdkColumnDef="rank">

@@ -22,10 +22,6 @@ export class LobbyService {
 
     public normalizeLobbyData(lobby: Lobby) {
         lobby.players.forEach(player => {
-            player.nameFormatted = player.name;
-            if (player.name && player.name.length > 30) {
-                player.nameFormatted = player.name.substring(0, 30) + "...";
-            }
             if (player.gameStats) {
                 if (lobby.ranked == 2) {
                     player.gameStatsNormalized = {

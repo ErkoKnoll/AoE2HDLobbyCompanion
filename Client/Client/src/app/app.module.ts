@@ -16,6 +16,7 @@ import { LobbyModule } from './lobby';
 import { SettingsModule } from './settings';
 import { ReputationsModule } from './reputations';
 import { HistoryModule } from './history';
+import { PlayersModule } from './players';
 import { CenterSpinnerModule, NavBarModule } from './shared'
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CenterSpinnerModule, NavBarModule } from './shared'
         SettingsModule,
         ReputationsModule,
         HistoryModule,
+        PlayersModule,
         UpdateAvailableModule,
         MatchDetailsDialogModule
     ],

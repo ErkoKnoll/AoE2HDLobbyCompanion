@@ -50,7 +50,7 @@ namespace Backend {
             app.UseMvc();
 
             if (Variables.ReplayMode) {
-                Variables.NethookDumpDir = @"C:\Steam\nethook\_Aoe2HostLobby2";
+                Variables.NethookDumpDir = @"C:\Steam\nethook\_Aoe2HostLobby";
             } else {
                 _netHookDumpReaderJob = new NetHookDumpReaderJob();
             }

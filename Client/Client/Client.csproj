@@ -35,6 +35,7 @@
     <Content Include="src\app\lobby\initial-page\initial-page.component.html" />
     <Content Include="src\app\lobby\more-options-dialog\more-options-dialog.component.html" />
     <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
+    <Content Include="src\app\players\players-page\players-page.component.html" />
     <Content Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.html" />
     <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.html" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
@@ -64,6 +65,7 @@
     <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.scss" />
     <Content Include="src\app\history\history-page\history-page.component.scss" />
     <Content Include="src\app\shared\match-details-dialog\match-details-dialog.component.scss" />
+    <Content Include="src\app\players\players-page\players-page.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
@@ -95,6 +97,10 @@
     <TypeScriptCompile Include="src\app\lobby\shared\index.ts" />
     <TypeScriptCompile Include="src\app\lobby\shared\lobby.models.ts" />
     <TypeScriptCompile Include="src\app\lobby\shared\lobby.service.ts" />
+    <TypeScriptCompile Include="src\app\players\index.ts" />
+    <TypeScriptCompile Include="src\app\players\players-page\index.ts" />
+    <TypeScriptCompile Include="src\app\players\players-page\players-page.component.ts" />
+    <TypeScriptCompile Include="src\app\players\players.module.ts" />
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\index.ts" />

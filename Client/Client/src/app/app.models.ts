@@ -45,7 +45,7 @@ export interface BasePlayer {
     fieldColors: { [key: string]: number };
     gameStats: PlayerGameStats;
     profile: PlayerProfile;
-    reputatonStats: PlayerReputationStats;
+    reputationStats: PlayerReputationStats;
 }
 
 export interface PlayerGameStats {
@@ -59,6 +59,7 @@ export interface PlayerGameStats {
 
 export interface PlayerProfile {
     profilePrivate: boolean;
+    profileDataFetched: Date;
     location: string;
 }
 
@@ -135,6 +136,24 @@ export interface MatchHistoryLobbySlot {
     winRatio: number;
     dropRatip: number;
     profilePrivate: boolean;
+}
+
+export interface PlayerGameStatsNormalized {
+    totalGames: number;
+    winRatio: number;
+    dropRatio: number;
+}
+
+export interface Player extends BasePlayer {
+    sSteamId: string;
+    lobbySlotId: number;
+    name: string;
+    rank: number;
+    rankRM: number;
+    rankDM: number;
+    position: number;
+    profileDataFetched: Date;
+    gameStatsNormalized: PlayerGameStatsNormalized;
 }
 
 export enum ReputationType {

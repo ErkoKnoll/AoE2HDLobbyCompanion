@@ -1,0 +1,86 @@
+﻿<center-spinner [hidden]="!loading"></center-spinner>
+<div [hidden]="loading">
+    <div style="padding-left: 24px;">
+        <md-input-container>
+            <input mdInput #nameFilter placeholder="Player Name">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput #locationFilter placeholder="Location" style="width: 52px; margin-left: 10px;">
+        </md-input-container>
+        <md-checkbox [checked]="dm" [(ngModel)]="dm" (change)="dmChanged()" style="margin-left: 10px;">
+            Death Match
+        </md-checkbox>
+    </div>
+    <md-table [dataSource]="playersDataSource" mdSort>
+        <ng-container cdkColumnDef="name">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Name</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span class="clickable" (click)="openUserProfileDialog(player)">{{player.name}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="rank">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Rank</md-header-cell>
+            <md-cell *cdkCellDef="let player">
+                <span *ngIf="player.rankRM > 0 && !dm">{{player.rankRM}}</span>
+                <span *ngIf="player.rankDM > 0 && dm">{{player.rankDM}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="location">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Location</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;"><span style="margin-left: -14px;">{{player.profile?.location}}</span></md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="games">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Shared Games</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;"><span [ngClass]="{cellColorSafe: player.fieldColors?.Games == 1, cellColorDanger: player.fieldColors?.Games == 2}" style="margin-left: -14px;">{{player.reputationStats?.games}}</span></md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="negativeRep">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Negative Rep.</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <span [ngClass]="{cellColorSafe: player.fieldColors?.NegativeReputation == 1, cellColorDanger: player.fieldColors?.NegativeReputation == 2}" style="margin-left: -15px;">{{player.reputationStats?.negativeReputation}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="positiveRep">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Positive Rep.</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <span [ngClass]="{cellColorSafe: player.fieldColors?.PositiveReputation == 1, cellColorDanger: player.fieldColors?.PositiveReputation == 2}" style="margin-left: -15px;">{{player.reputationStats?.positiveReputation}}</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="totalGames">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Total Games</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <span *ngIf="player.profile?.profilePrivate && !player.profile?.profileDataFetched" class="cellColorDanger" style="margin-left: -10px;">PRIVATE ACCOUNT</span>
+                <span *ngIf="!player.profile?.profilePrivate && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}" style="margin-left: -10px;">{{player.gameStats?.totalGamesRM}}</span>
+                <span *ngIf="!player.profile?.profilePrivate && dm" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}" style="margin-left: -10px;">{{player.gameStats?.totalGamesDM}}</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}" style="margin-left: -10px;">[{{player.gameStats.totalGamesRM}}]</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && dm" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}" style="margin-left: -10px;">[{{player.gameStats.totalGamesDM}}]</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="winRatio">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Win Ratio</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <span *ngIf="!player.profile?.profilePrivate && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}" style="margin-left: -12px;">{{player.gameStats?.winRatioRM}}%</span>
+                <span *ngIf="!player.profile?.profilePrivate && dm" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}" style="margin-left: -12px;">{{player.gameStats?.winRatioDM}}%</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}" style="margin-left: -12px;">[{{player.gameStats?.winRatioRM}}%]</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && dm" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}" style="margin-left: -12px;">[{{player.gameStats?.winRatioDM}}%]</span>
+            </md-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="dropRatio">
+            <md-header-cell *cdkHeaderCellDef md-sort-header>Drop Ratio</md-header-cell>
+            <md-cell *cdkCellDef="let player" style="text-align: center;">
+                <span *ngIf="!player.profile?.profilePrivate && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}" style="margin-left: -14px;">{{player.gameStats?.dropRatioRM}}%</span>
+                <span *ngIf="!player.profile?.profilePrivate && dm" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}" style="margin-left: -14px;">{{player.gameStats?.dropRatioDM}}%</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && !dm" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.dropRatioRM == 2}" style="margin-left: -14px;">[{{player.gameStats?.dropRatioRM}}%]</span>
+                <span *ngIf="player.profile?.profilePrivate && player.profile?.profileDataFetched && dm" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.dropRatioDM == 2}" style="margin-left: -14px;">[{{player.gameStats?.dropRatioDM}}%]</span>
+            </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let player; columns: displayedColumns;"></md-row>
+    </md-table>
+    <md-paginator #paginator
+                  [length]="playersDataSource?.players.value.length"
+                  [pageIndex]="0"
+                  [pageSize]="25"
+                  [pageSizeOptions]="[25, 50, 100]">
+    </md-paginator>
+</div>

@@ -6,8 +6,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ConfirmationDialogComponent, ConfirmationDialogData, AssignReputationDialogComponent, AssignReputationDialogData, UserProfileDialogComponent, UserProfileDialogData, CommandService, Commands, AppService, TrackingService } from '../../shared';
-import { ReputationType } from '../../app.models';
-import { LobbyService, Lobby, Player } from '../shared';
+import { ReputationType, Player } from '../../app.models';
+import { LobbyService, Lobby } from '../shared';
 import { MoreOptionsDialogComponent } from '../more-options-dialog';
 
 @Component({

@@ -1,0 +1,37 @@
+﻿:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.cdk-column-rank {
+    flex: 0 0 50px;
+}
+
+.cdk-column-location {
+    flex: 0 0 65px;
+}
+
+.cdk-column-games {
+    flex: 0 0 100px;
+}
+
+.cdk-column-negativeRep {
+    flex: 0 0 95px;
+}
+
+.cdk-column-positiveRep {
+    flex: 0 0 90px;
+}
+
+.cdk-column-totalGames {
+    flex: 0 0 85px;
+}
+
+.cdk-column-winRatio {
+    flex: 0 0 70px;
+}
+
+.cdk-column-dropRatio {
+    flex: 0 0 75px;
+}
