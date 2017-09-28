@@ -31,21 +31,21 @@
                     <ng-container cdkColumnDef="totalGames">
                         <md-header-cell *cdkHeaderCellDef>Total Games</md-header-cell>
                         <md-cell *cdkCellDef="let player" style="text-align: center;">
-                            <span *ngIf="player.sSteamId && (player.totalGames > 0 || !player.profilePrivate)">{{player.totalGames}}</span>
+                            <span *ngIf="player.sSteamId && (player.totalGames > 0 || !player.profilePrivate)" [ngClass]="{cellColorSafe: player.fieldColors?.TotalGames == 1, cellColorDanger: player.fieldColors?.TotalGames == 2}">{{player.totalGames}}</span>
                             <span *ngIf="player.sSteamId && player.totalGames == 0 && player.profilePrivate" class="cellColorDanger">PRIVATE ACCOUNT</span>
                         </md-cell>
                     </ng-container>
                     <ng-container cdkColumnDef="winRatio">
                         <md-header-cell *cdkHeaderCellDef>Win Ratio</md-header-cell>
                         <md-cell *cdkCellDef="let player" style="text-align: center;">
-                            <span *ngIf="player.totalGames > 0">{{player.winRatio}}%</span>
+                            <span *ngIf="player.totalGames > 0" [ngClass]="{cellColorSafe: player.fieldColors?.WinRatio == 1, cellColorDanger: player.fieldColors?.WinRatio == 2}">{{player.winRatio}}%</span>
                             <span *ngIf="player.sSteamId && player.totalGames == 0 && !player.profilePrivate">0%</span>
                         </md-cell>
                     </ng-container>
                     <ng-container cdkColumnDef="dropRatio">
                         <md-header-cell *cdkHeaderCellDef>Drop Ratio</md-header-cell>
                         <md-cell *cdkCellDef="let player" style="text-align: center;">
-                            <span *ngIf="player.totalGames > 0">{{player.dropRatio}}%</span>
+                            <span *ngIf="player.totalGames > 0" [ngClass]="{cellColorSafe: player.fieldColors?.DropRatio == 1, cellColorDanger: player.fieldColors?.DropRatio == 2}">{{player.dropRatio}}%</span>
                             <span *ngIf="player.sSteamId && player.totalGames == 0 && !player.profilePrivate">0%</span>
                         </md-cell>
                     </ng-container>

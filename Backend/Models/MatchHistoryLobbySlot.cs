@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Commons.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Backend.Models {
-    public class MatchHistoryLobbySlot {
+    public class MatchHistoryLobbySlot : BasePlayer {
         public string SSteamId { get; set; }
         public string Name { get; set; }
         public int Position { get; set; }

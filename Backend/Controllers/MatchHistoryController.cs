@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Database.Domain;
+using Backend.Utils;
 
 namespace Backend.Controllers {
     [Route("api/[controller]")]
@@ -82,6 +83,8 @@ namespace Backend.Controllers {
                     player.WinRatio = lobbySlot.GamesStartedRM > 0 ? lobbySlot.GamesWonRM * 100 / lobbySlot.GamesStartedRM : 0;
                     player.DropRatio = lobbySlot.GamesStartedRM > 0 ? (lobbySlot.GamesStartedRM - lobbySlot.GamesEndedRM) * 100 / lobbySlot.GamesStartedRM : 0;
                 }
+                player.GameStats = UserUtils.GetGameStats(lobbySlot.GamesStartedRM, lobbySlot.GamesStartedDM, lobbySlot.GamesWonRM, lobbySlot.GamesWonDM, lobbySlot.GamesEndedRM, lobbySlot.GamesEndedDM);
+                LobbyUtils.CalculateUserFieldColors(player, 0);
             }
             return player;
         }

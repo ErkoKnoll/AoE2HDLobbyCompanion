@@ -127,7 +127,7 @@ export interface MatchHistory {
     reputations: UserReputation[];
 }
 
-export interface MatchHistoryLobbySlot {
+export interface MatchHistoryLobbySlot extends BasePlayer {
     sSteamId: string;
     name: string;
     position: number;
