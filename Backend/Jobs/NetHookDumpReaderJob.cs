@@ -97,6 +97,7 @@ namespace Backend.Jobs {
                             case EMsg.ClientMMSJoinLobby:
                                 LobbyUtils.ResetLobbyData();
                                 SetLobbyPresence(true);
+                                ClearOverlayTeams();
                                 break;
                             case EMsg.ClientMMSLeaveLobby:
                                 ProcessLobbyLeave();
@@ -189,6 +190,7 @@ namespace Backend.Jobs {
                     }
                     TryExtractLobbyData(lobbyData);
                     if (msg.Body.members.Count > 0) {
+                        this.ClearOverlayTeams();
                         var lobbyMembers = new List<Player>();
                         foreach (var playerData in msg.Body.members) {
                             var memberData = new KeyValue();
@@ -286,6 +288,10 @@ namespace Backend.Jobs {
             if (Variables.ReplayMode) {
                 Thread.Sleep(500);
             }
+        }
+
+        private void ClearOverlayTeams() {
+            Variables.Teams.Clear();
         }
 
         private void TryExtractNameAndRank(Player player, string lobbyName, bool rm) {
