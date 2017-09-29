@@ -1,4 +1,4 @@
-import { Injectable, Inject, forwardRef } from '@angular/core';
+﻿import { Injectable, Inject, forwardRef } from '@angular/core';
 import { remote } from 'electron';
 import { spawn, spawnSync, ChildProcess } from 'child_process';
 import { MdDialog } from '@angular/material';
@@ -11,7 +11,7 @@ import { Reputation } from '../app.models';
 
 @Injectable()
 export class AppService {
-    public stringVersion = "1.3.0";
+    public stringVersion = "1.4.0";
     public lobbiesPageOpened = false;
     public sessionRunning = false;
     private nethookActive = false;

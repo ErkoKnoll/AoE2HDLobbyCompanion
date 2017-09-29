@@ -42,6 +42,10 @@ export class HistoryPageComponent implements OnInit {
         this.trackingService.sendEvent("HistoryPage", "OpenMatchDetails");
     }
 
+    public showOnlyStartedLobbiesChanged() {
+        this.matchHistoryDataSource = new MatchHistoryDataSource(this.matches, this.paginator, this.showOnlyStartedLobbies)
+    }
+
     private getMatches() {
         this.loading = true;
         this.httpService.get<MatchHistory[]>("/api/matchHistory").subscribe(matches => {
@@ -52,10 +56,6 @@ export class HistoryPageComponent implements OnInit {
             console.error("Failed to fetch history", error);
             this.appService.toastError("Failed to retrieve history.");
         });
-    }
-
-    private showOnlyStartedLobbiesChanged() {
-        this.matchHistoryDataSource = new MatchHistoryDataSource(this.matches, this.paginator, this.showOnlyStartedLobbies)
     }
 }
 
