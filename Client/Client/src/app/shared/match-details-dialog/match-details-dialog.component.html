@@ -64,21 +64,14 @@
                     </ng-container>
                     <ng-container cdkColumnDef="reputation">
                         <md-header-cell *cdkHeaderCellDef>Reputation</md-header-cell>
-                        <md-cell *cdkCellDef="let player">
-                            <table *ngIf="player.reputation.type == 0">
+                        <md-cell *cdkCellDef="let reputation">
+                            <table>
                                 <tr>
                                     <td>
-                                        <i class="material-icons md-24 cellColorDanger" style="margin-top: 7px; margin-right: 5px;">thumb_down</i>
+                                        <i *ngIf="reputation.reputation.type == 0" class="material-icons md-24 cellColorDanger" style="margin-top: 7px; margin-right: 5px;">thumb_down</i>
+                                        <i *ngIf="reputation.reputation.type == 1" class="material-icons md-24 cellColorSafe" style="margin-top: -4px; margin-right: 5px;">thumb_up</i>
                                     </td>
-                                    <td>{{player.reputation.name}}</td>
-                                </tr>
-                            </table>
-                            <table *ngIf="player.reputation.type == 1">
-                                <tr>
-                                    <td>
-                                        <i class="material-icons md-24 cellColorSafe" style="margin-top: -4px; margin-right: 5px;">thumb_up</i>
-                                    </td>
-                                    <td>{{player.reputation.name}}</td>
+                                    <td><span class="clickable" (click)="openReputationDetailsDialog(reputation)">{{reputation.reputation.name}}</span></td>
                                 </tr>
                             </table>
                         </md-cell>
@@ -86,6 +79,10 @@
                     <ng-container cdkColumnDef="comment">
                         <md-header-cell *cdkHeaderCellDef>Comment</md-header-cell>
                         <md-cell *cdkCellDef="let reputation"><div style="max-width: 150px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" [title]="reputation.comment">{{reputation.comment}}</div></md-cell>
+                    </ng-container>
+                    <ng-container cdkColumnDef="actions">
+                        <md-header-cell *cdkHeaderCellDef></md-header-cell>
+                        <md-cell *cdkCellDef="let reputation"><i class="material-icons md-24 clickable" mdTooltip="Delete Reputation" (click)="deleteReputation(reputation)">delete_forever</i></md-cell>
                     </ng-container>
 
                     <md-header-row *cdkHeaderRowDef="reputationsDisplayedColumns"></md-header-row>
@@ -96,5 +93,5 @@
     </div>
 </md-dialog-content>
 <md-dialog-actions *ngIf="match">
-    <button md-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
+    <button md-raised-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
 </md-dialog-actions>

@@ -1,0 +1,2 @@
+﻿export { ReputationDetailsDialogModule } from './reputation-details-dialog.module';
+export { ReputationDetailsDialogComponent, ReputationDetailsDialogData } from './reputation-details-dialog.component';

@@ -20,7 +20,7 @@ namespace Backend.Controllers {
 
         [HttpGet]
         public IEnumerable<MatchHistory> Get() {
-            return _repository.Lobbies.Include(l => l.Reputations).ThenInclude(r => r.Reputation).Include(l => l.Players).OrderBy(l => l.Joined).Select(l => new MatchHistory() {
+            return _repository.Lobbies.Include(l => l.Reputations).ThenInclude(r => r.Reputation).Include(l => l.Players).OrderByDescending(l => l.Joined).Select(l => new MatchHistory() {
                 Id = l.Id,
                 Joined = l.Joined.ToString("d"),
                 Name = l.Name,
@@ -44,6 +44,7 @@ namespace Backend.Controllers {
                 Players = lobby.Players.Count(p => p.User != null && p.Position > 0),
                 LobbySlots = new List<MatchHistoryLobbySlot>(),
                 Reputations = lobby.Reputations.OrderBy(r => r.Reputation.Type).Select(r => new Models.UserReputation {
+                    Id = r.Id,
                     Added = r.Added.ToString("d"),
                     Comment = r.Comment,
                     User = new Models.User {

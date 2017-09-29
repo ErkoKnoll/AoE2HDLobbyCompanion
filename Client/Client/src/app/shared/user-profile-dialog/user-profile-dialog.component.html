@@ -59,7 +59,7 @@
         </div>
         <md-tab-group *ngIf="profile.matches?.length > 0" style="margin-top: 10px;">
             <md-tab label="Reputations">
-                <md-table [dataSource]="userReputationsDataSource" class="noTablePadding">
+                <md-table [dataSource]="userReputationsDataSource">
                     <ng-container cdkColumnDef="lobbyName">
                         <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
                         <md-cell *cdkCellDef="let reputation"><span class="clickable" (click)="openMatchDetails(reputation.lobby)">{{reputation.lobby?.name}}</span></md-cell>
@@ -73,7 +73,7 @@
                                         <i *ngIf="reputation.reputation.type == 0" class="material-icons md-24 cellColorDanger" style="margin-right: 5px; margin-top: 7px;">thumb_down</i>
                                         <i *ngIf="reputation.reputation.type == 1" class="material-icons md-24 cellColorSafe" style="margin-right: 5px; margin-top: -2px;">thumb_up</i>
                                     </td>
-                                    <td>{{reputation.reputation.name}}</td>
+                                    <td><span class="clickable" (click)="openReputationDetailsDialog(reputation)">{{reputation.reputation.name}}</span></td>
                                 </tr>
                             </table>
                         </md-cell>
@@ -96,7 +96,7 @@
                 </md-table>
             </md-tab>
             <md-tab label="Shared Games">
-                <md-table [dataSource]="matchesDataSource" class="noTablePadding">
+                <md-table [dataSource]="matchesDataSource">
                     <ng-container cdkColumnDef="lobbyName">
                         <md-header-cell *cdkHeaderCellDef>Lobby Name</md-header-cell>
                         <md-cell *cdkCellDef="let match"><span class="clickable" (click)="openMatchDetails(match)">{{match.name}}</span></md-cell>
@@ -115,5 +115,5 @@
     </div>
 </md-dialog-content>
 <md-dialog-actions *ngIf="profile">
-    <button md-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
+    <button md-raised-button style="margin-left: auto; margin-right: auto;" md-dialog-close>Close</button>
 </md-dialog-actions>

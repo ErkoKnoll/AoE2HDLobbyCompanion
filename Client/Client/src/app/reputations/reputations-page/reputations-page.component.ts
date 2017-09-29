@@ -3,10 +3,9 @@ import { DataSource, CollectionViewer } from '@angular/cdk';
 import { MdDialog } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { AppService, ReputationService, ReputationWithCount,  SaveReputationRequest, TrackingService } from '../../shared';
+import { AppService, ReputationService, ReputationWithCount, SaveReputationRequest, TrackingService } from '../../shared';
 import { SaveReputationDialogComponent, SaveReputationDialogData } from '../save-reputation-dialog';
 import { DeleteReputationDialogComponent } from '../delete-reputation-dialog';
-import { ReputationDetailsDialogComponent, ReputationDetailsDialogData } from '../reputation-details-dialog';
 import { ReputationType } from '../../app.models';
 
 @Component({
@@ -62,14 +61,7 @@ export class ReputationsPageComponent implements OnInit {
     }
 
     public openReputationDetailsDialog(reputation: ReputationWithCount) {
-        this.dialog.open(ReputationDetailsDialogComponent, {
-            data: <ReputationDetailsDialogData>{
-                reputation: reputation,
-                reputationDeleted: () => this.getReputations()
-            },
-            width: window.innerWidth * 0.75 + "px"
-        });
-        this.trackingService.sendEvent("Reputations", "ReputationTypeDetailsOpened");
+        this.appService.openReputationDetailsDialog("ReputationsPage", reputation, () => this.getReputations());
     }
 
     public moveUp(reputation: ReputationWithCount) {

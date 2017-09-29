@@ -10,7 +10,7 @@ import { MdButtonModule, MdInputModule, MdDialogModule } from '@angular/material
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppService, HttpService, CommandService, ConfigurationService, ReputationService, TrackingService, UpdateAvailableModule, MatchDetailsDialogModule } from './shared';
+import { AppService, HttpService, CommandService, ConfigurationService, ReputationService, TrackingService, UpdateAvailableModule, MatchDetailsDialogModule, ReputationDetailsDialogModule } from './shared';
 import { AppComponent } from './app.component';
 import { LobbyModule } from './lobby';
 import { SettingsModule } from './settings';
@@ -41,7 +41,7 @@ import { CenterSpinnerModule, NavBarModule } from './shared'
         HistoryModule,
         PlayersModule,
         UpdateAvailableModule,
-        MatchDetailsDialogModule
+        ReputationDetailsDialogModule
     ],
     providers: [AppService, HttpService, CommandService, ConfigurationService, ReputationService, TrackingService],
     bootstrap: [AppComponent]

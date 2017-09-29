@@ -5,7 +5,7 @@ import { DataSource, CollectionViewer } from '@angular/cdk';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { MatchHistory, MatchHistoryLobbySlot, UserReputation } from '../../app.models';
-import { HttpService, AppService, TrackingService, UserProfileDialogComponent, UserProfileDialogData } from '../';
+import { HttpService, AppService, TrackingService, ReputationService, UserProfileDialogComponent, UserProfileDialogData, ConfirmationDialogComponent, ConfirmationDialogData } from '../';
 
 @Component({
     selector: 'match-details-dialog',
@@ -17,9 +17,9 @@ export class MatchDetailsDialogComponent implements OnInit {
     public playersDataSource: PlayersDataSource;
     public reputationsDataSource: ReputationsDataSource;
     public playersDisplayedColumns = ["name", "rank", "totalGames", "winRatio", "dropRatio"];
-    public reputationsDisplayedColumns = ["player", "reputation", "comment"];
+    public reputationsDisplayedColumns = ["player", "reputation", "comment", "actions"];
 
-    constructor( @Inject(MD_DIALOG_DATA) private data: MatchDetailsDialogData, private appService: AppService, private httpService: HttpService, private trackingService: TrackingService, private dialog: MdDialogRef<MatchDetailsDialogComponent>, private dialogController: MdDialog) {
+    constructor( @Inject(MD_DIALOG_DATA) private data: MatchDetailsDialogData, private appService: AppService, private httpService: HttpService, private trackingService: TrackingService, private reputationService: ReputationService, private dialog: MdDialogRef<MatchDetailsDialogComponent>, private dialogController: MdDialog) {
     }
 
     public ngOnInit() {
@@ -34,6 +34,37 @@ export class MatchDetailsDialogComponent implements OnInit {
             width: window.innerWidth * 0.75 + "px",
         });
         this.trackingService.sendEvent("MatchDetails", "OpenUserProfile");
+    }
+
+    public openReputationDetailsDialog(reputation: UserReputation) {
+        console.log(reputation);
+        this.appService.openReputationDetailsDialog("UserProfileDialog", reputation.reputation, () => this.fetchMatchDetails());
+    }
+
+    public deleteReputation(reputation: UserReputation) {
+        let dialog = this.dialogController.open(ConfirmationDialogComponent, {
+            data: <ConfirmationDialogData>{
+                title: "Deleting Reputation",
+                question: "Are you sure you want to delete assigned reputation?"
+            }
+        });
+        dialog.afterClosed().subscribe((confirmation: boolean) => {
+            if (confirmation) {
+                this.match = null;
+                this.reputationService.deleteReputation(reputation.id).subscribe(() => {
+                    this.fetchMatchDetails();
+                    if (this.data.reputationDeleted) {
+                        this.data.reputationDeleted();
+                    }
+                    this.appService.toastSuccess("Reputation deleted.");
+                    this.trackingService.sendEvent("UserProfileDialog", "DeleteReputation");
+                }, error => {
+                    this.dialog.close();
+                    console.log("Error occurred while deleting reputation", error);
+                    this.appService.toastError("Failed to delete reputation. Check the logs.");
+                });
+            }
+        });
     }
 
     private fetchMatchDetails() {
@@ -83,4 +114,5 @@ export class ReputationsDataSource extends DataSource<UserReputation> {
 
 export interface MatchDetailsDialogData {
     id: number;
+    reputationDeleted?(): void;
 }

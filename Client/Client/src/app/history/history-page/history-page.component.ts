@@ -34,7 +34,8 @@ export class HistoryPageComponent implements OnInit {
     public openMatchDetails(match: MatchHistory) {
         let dialog = this.dialogController.open(MatchDetailsDialogComponent, {
             data: <MatchDetailsDialogData>{
-                id: match.id
+                id: match.id,
+                reputationDeleted: () => this.getMatches()
             },
             width: window.innerWidth * 0.75 + "px",
         });

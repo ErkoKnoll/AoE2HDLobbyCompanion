@@ -58,7 +58,8 @@ export class PlayersPageComponent implements OnInit {
     public openUserProfileDialog(player: Player) {
         let dialog = this.dialogController.open(UserProfileDialogComponent, {
             data: <UserProfileDialogData>{
-                steamId: player.sSteamId
+                steamId: player.sSteamId,
+                reputationDeleted: () => this.getPlayers()
             },
             width: window.innerWidth * 0.75 + "px",
         });

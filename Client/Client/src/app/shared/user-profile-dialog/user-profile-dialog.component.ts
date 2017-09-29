@@ -42,6 +42,9 @@ export class UserProfileDialogComponent implements OnInit {
                 this.profile = null;
                 this.reputationService.deleteReputation(reputation.id).subscribe(() => {
                     this.fetchProfile();
+                    if (this.data.reputationDeleted) {
+                        this.data.reputationDeleted();
+                    }
                     this.appService.toastSuccess("Reputation deleted.");
                     this.trackingService.sendEvent("UserProfileDialog", "DeleteReputation");
                 }, error => {
@@ -66,6 +69,10 @@ export class UserProfileDialogComponent implements OnInit {
     public openSteamProfile() {
         shell.openExternal("http://steamcommunity.com/profiles/" + this.profile.sSteamId);
         this.trackingService.sendEvent("UserProfileDialog", "SteamProfileOpened");
+    }
+
+    public openReputationDetailsDialog(reputation: UserReputation) {
+        this.appService.openReputationDetailsDialog("UserProfileDialog", reputation.reputation, () => this.fetchProfile());
     }
 
     private fetchProfile() {
@@ -118,4 +125,5 @@ export class MatchesDataSource extends DataSource<MatchHistory> {
 
 export interface UserProfileDialogData {
     steamId: string;
+    reputationDeleted?(): void; 
 }

@@ -37,7 +37,6 @@
     <Content Include="src\app\lobby\running-session-page\running-session-page.component.html" />
     <Content Include="src\app\players\players-page\players-page.component.html" />
     <Content Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.html" />
-    <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.html" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.html" />
     <Content Include="src\app\reputations\save-reputation-dialog\save-reputation-dialog.component.html" />
     <Content Include="src\app\settings\general-page\general-page.component.html" />
@@ -48,6 +47,7 @@
     <Content Include="src\app\shared\help-page\help-page.component.html" />
     <Content Include="src\app\shared\match-details-dialog\match-details-dialog.component.html" />
     <Content Include="src\app\shared\navbar\navbar.component.html" />
+    <Content Include="src\app\shared\reputation-details-dialog\reputation-details-dialog.component.html" />
     <Content Include="src\app\shared\update-available-dialog\update-available-dialog.component.html" />
     <Content Include="src\app\shared\user-profile-dialog\user-profile-dialog.component.html" />
     <Content Include="src\assets\icomoon\style.css" />
@@ -62,10 +62,10 @@
     <Content Include="_config.yml" />
     <Content Include="src\assets\icomoon\selection.json" />
     <Content Include="src\app\reputations\reputations-page\reputations-page.component.scss" />
-    <Content Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.scss" />
     <Content Include="src\app\history\history-page\history-page.component.scss" />
     <Content Include="src\app\shared\match-details-dialog\match-details-dialog.component.scss" />
     <Content Include="src\app\players\players-page\players-page.component.scss" />
+    <Content Include="src\app\shared\reputation-details-dialog\reputation-details-dialog.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="karma.conf.js" />
@@ -104,8 +104,6 @@
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\delete-reputation-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\delete-reputation-dialog\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\index.ts" />
-    <TypeScriptCompile Include="src\app\reputations\reputation-details-dialog\index.ts" />
-    <TypeScriptCompile Include="src\app\reputations\reputation-details-dialog\reputation-details-dialog.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations-page\index.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations-page\reputations-page.component.ts" />
     <TypeScriptCompile Include="src\app\reputations\reputations.module.ts" />
@@ -142,6 +140,9 @@
     <TypeScriptCompile Include="src\app\shared\navbar\index.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\navbar.component.ts" />
     <TypeScriptCompile Include="src\app\shared\navbar\navbar.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\reputation-details-dialog\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\reputation-details-dialog\reputation-details-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\reputation-details-dialog\reputation-details-dialog.module.ts" />
     <TypeScriptCompile Include="src\app\shared\reputation.service.ts" />
     <TypeScriptCompile Include="src\app\shared\tracking.service.ts" />
     <TypeScriptCompile Include="src\app\shared\update-available-dialog\index.ts" />
