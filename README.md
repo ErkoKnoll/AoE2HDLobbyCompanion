@@ -1,7 +1,7 @@
 # Age of Empires 2 Lobby Companion
 
 Lobby Companion is a **desktop app that works with Age of Empires 2 HD** and provides additional info for players who join your lobby. It works for both lobby hosting and lobby joining scenarios.
-Additional info that is being displayed is **Location, Total Games, Win Ratio and Drop Ratio** so you can make a more educated guess with whom you would like to play with.
+Additional info that is being displayed is **Location, Total Games, Win Ratio and Drop Ratio** so you can make a more educated guess whom you would like to play with.
 To keep the track of players who you don't want to play with in the future or who you would like to **you can use a reputation system**.
 Reputation system **allows to assign negative or positive reputation** for players who you played the game with so the next time the same player joins your lobby you can **check the reputation history** of that player and decide whether to let that person stay or not.
 **Players are tracked by SteamID**, so evasion is not possible by changing a name. To make the experience more nicer Lobby Companion is capable of **projecting in-game overlay** with all the information you need to make a decision about the player without having to alt-tab into the actual Lobby Companion app.
@@ -20,9 +20,13 @@ Short link for sharing: [aoe2lc.net](http://aoe2lc.net)
 * [[UI] Player profile (v1.0.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayerProfile.png)
 * [[UI] Calculate balanced teams (v1.1.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/CalculateBalancedTeams.png)
 * [[UI] Reputations page (v1.2.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/ReputationsPage.png)
+* [[UI] History page (v1.4.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/MatchHistoryPage.png)
+* [[UI] History details showing players (v1.4.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/MatchHistoryDetailsPlayersTab.png)
+* [[UI] History details showing reputations (v1.4.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/MatchHistoryDetailsReputationsTab.png)
+* [[UI] Players page (v1.4.0)](https://raw.githubusercontent.com/ThorConzales/AoE2HDLobbyCompanion/master/Screenshots/PlayersPage.png)
 
 ## Download
-[Download v1.3.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.3.0/AoE2HDLobbyCompanion-V1.3.0.zip)
+[Download v1.4.0](https://github.com/ThorConzales/AoE2HDLobbyCompanion/releases/download/v1.4.0/AoE2HDLobbyCompanion-V1.4.0.zip)
 
 **Minimum Requirements**: Windows 7 SP1 or newer
 
