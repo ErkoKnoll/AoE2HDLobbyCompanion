@@ -13,7 +13,7 @@ using System.Windows;
 namespace Backend.Global {
     public class Variables {
         public static int NumericVersion = 6;
-        public static bool ReplayMode = true;
+        public static bool ReplayMode = false;
         public static bool LobbySession = false;
         public static string NethookDumpDir { get; set; }
         public static string NethookDumpDirParsed { get; set; }
