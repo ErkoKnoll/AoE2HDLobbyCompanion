@@ -1,12 +1,12 @@
 # Age of Empires 2 Lobby Companion
 
 Lobby Companion is a **desktop app that works with Age of Empires 2 HD** and provides additional info for players who join your lobby. It works for both lobby hosting and lobby joining scenarios.
-Additional info that is being displayed is **Location, Total Games, Win Ratio and Drop Ratio** so you can make a more educated guess whom you would like to play with.
-To keep the track of players who you don't want to play with in the future or who you would like to **you can use a reputation system**.
-Reputation system **allows to assign negative or positive reputation** for players who you played the game with so the next time the same player joins your lobby you can **check the reputation history** of that player and decide whether to let that person stay or not.
-**Players are tracked by SteamID**, so evasion is not possible by changing a name. To make the experience more nicer Lobby Companion is capable of **projecting in-game overlay** with all the information you need to make a decision about the player without having to alt-tab into the actual Lobby Companion app.
-Optionally (which is enabled by default) overlay is also shown when the game is not active, so you can do other stuff while waiting for your lobby to get full and still keep an eye on the lobby progress without constantly alt-tabbing to check if the lobby is full. Additional features include **balanced team calculation** either based on Rank (ELO), Total Games or Win Ratio.
-**This tool does not require to log in with your Steam account nor require to provide any credentials**, it works side by side with your running Steam instance.
+Additional info that is being displayed is **Location, Total Games, Win Ratio, and Drop Ratio**, so you can make a more educated guess whom you would like to play with.
+To keep the track of players who you don't want to play with in the future, or who you would like to, **you can use a reputation system**.
+Reputation system **allows to assign negative or positive reputation** for players who you played the game with, so the next time when the same player joins your lobby you can **check player's reputation history** and decide whether to let that person stay or not.
+**Players are tracked by SteamID**, so evasion is not possible by changing a name. To increase the user experience Lobby Companion is capable of **projecting an in-game overlay** with all the information you need to make a decision about the player, without having to alt-tab into the actual Lobby Companion app.
+Optionally (which is enabled by default) overlay is also shown when the game is not active, so you can do other stuff while waiting for your lobby to get full, and still keep an eye on the lobby progress without constantly alt-tabbing to check if the lobby is full. Additional features include **balanced team calculation** either based on Rank (ELO), Total Games or Win Ratio.
+**This tool does not require logging into Steam account or ask any other credentials**, it works side by side with your running Steam instance.
 
 Short link for sharing: [aoe2lc.net](http://aoe2lc.net)
 
@@ -45,14 +45,13 @@ First time users have to go through a setup process where among other things mos
 Lobby Companion injects a [NetHook2](https://github.com/SteamRE/SteamKit/tree/master/Resources/NetHook2) DLL into Steam process to tap into Steam Client's network stream. That's how it is capable of knowing who the players are. 
 There are 3 distinct components that work together: AoE2HDLobbyCompanion.exe, Backend.exe and NetHook2.dll:
 * AoE2HDLobbyCompanion.exe is a main process and a UI layer that is built with [Electron](https://electron.atom.io/). It also spawns Backend.exe and NetHook2.dll processes, because it is not powerful enough to peform all the tasks on its own. Because it is spawning additional processes some Anti-Viruses may flag those processes as malicious activities and therefor block them. To avoid Anti-Virus interruptions you have to add exclusions for those files. If you scan those files separately you should see that there is nothing malicious about them.
-* Backend.exe is a [Kestrel web server](https://github.com/aspnet/KestrelHttpServer) built with .NET Core running on port 5000. It is a web server so the AoE2HDLobbyCompanion.exe could communicate with it. It's main purpose is to read NetHook2's network dump, deal with all the database operations and project an overlay.
+* Backend.exe is a [Kestrel web server](https://github.com/aspnet/KestrelHttpServer) built with .NET Core running on port 5000. It is a web server so the AoE2HDLobbyCompanion.exe could communicate with it. It's main purpose is to read NetHook2's network dump, deal with all the database related operations, and project an overlay.
 * NetHook2.dll purpose is to be injected into Steam Client's address space so the network traffic could be dumped for further inspection.
 
 Database is stored separately from the installation folder to make the sure the database is not lost while upgrading. To make a backup of your database make a copy of C:\Users\\[user]\AppData\Roaming\AoE2HDLobbyCompanion (AppData is hidden folder).
 
 ## Known Issues
-* Some Anti-Viruses might block NetHook2 DLL when a session is started. If it happens your Steam client along with the game will crash. To prevent it happening again you have to add an exclusion to your Anti-Virtus to prevent it from scanning NetHook2 process in the future.
-* Sometimes it can happen that it won't detect that you are in the lobby. To fix it stop the lobby session, restart Steam client and start the session again, hopefully this time it works. It can also happen it won't work multiple times in a row. To tell if it is working without having to start up the game, start the session, click around in Steam client and if it works properly then to the console that was opened when you started the session should start printing out some logs when you click around. To fix it permantently until NetHook2 receives support for WebSocket connection you can add -tcp flag to Steam client startup parameters. [Read more here](https://www.reddit.com/r/aoe2lc/comments/6xfdqo/temporary_fix_for_lobby_data_not_being_displayed/). **This bug should be fixed in v1.2.1**.
+* Some Anti-Viruses might block NetHook2 DLL when session is started. If it happens your Steam client along with the game will crash. To prevent it happening again you have to add an exclusion to your Anti-Virtus to prevent it from scanning NetHook2 process in the future.
 
 
 ## Wiki
